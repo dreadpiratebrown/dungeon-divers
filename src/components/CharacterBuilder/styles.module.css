@@ -1,0 +1,65 @@
+.main {
+  background: beige;
+  left: 50%;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+}
+
+.avatarList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.avatar {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.avatar input {
+  left: -9999px;
+  position: absolute;
+}
+
+.avatar img {
+  display: block;
+  max-width: 75px;
+}
+
+.avatar img:hover,
+.avatar input[type="radio"]:checked + label > img {
+  outline: 2px solid red;
+}
+
+.nameLabel {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2;
+}
+
+.main input[type="text"] {
+  font-size: 1rem;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.startButton {
+  border: none;
+  outline: none;
+  padding: 0 32px;
+  font-size: 32px;
+  cursor: pointer;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0px 0px 3px gray;
+  margin-top: 1rem;
+}

@@ -1,0 +1,22 @@
+.main {
+  background: beige;
+  left: 50%;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+}
+.startButton,
+.continueButton {
+  border: none;
+  outline: none;
+  padding: 0 32px;
+  font-size: 32px;
+  cursor: pointer;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  color: #fff;
+  box-shadow: 0px 0px 3px gray;
+}

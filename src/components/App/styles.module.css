@@ -1,0 +1,12 @@
+.main {
+  /*background: #bbd2c5;
+  background: linear-gradient(to bottom, #536976, #bbd2c5);*/
+  background: url(../../../public/assets/dungeon.jpg) center center / cover
+    no-repeat;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}

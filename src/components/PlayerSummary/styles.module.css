@@ -1,0 +1,61 @@
+.main,
+.mainFiend {
+  align-items: flex-start;
+  display: flex;
+}
+
+.mainFiend {
+  flex-direction: row-reverse;
+}
+
+.portrait {
+  display: flex;
+  align-items: flex-start;
+  background: beige;
+  width: 100px;
+  height: 100px;
+  justify-content: flex-end;
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+}
+
+.mainFiend .portrait {
+  justify-content: flex-start;
+}
+
+.portrait img {
+  max-width: 100px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+  transform: translate(-10px, 3px);
+}
+
+.mainFiend .info {
+  transform: translate(10px, 3px);
+}
+
+.levelName {
+  background: beige;
+  display: flex;
+  gap: 0.5rem;
+  padding: 5px;
+}
+
+.stats {
+  display: flex;
+  width: 300px;
+}
+
+.inventoryButton {
+  background: none;
+  border: none;
+  margin-left: auto;
+  padding: 0;
+}
+
+.inventoryButton img {
+  max-width: 1.25rem;
+}

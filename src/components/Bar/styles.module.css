@@ -1,0 +1,17 @@
+.main {
+  width: 100%;
+  background: #555555;
+  color: #fff;
+}
+
+.max {
+  height: 5px;
+  overflow: hidden;
+  background-color: black;
+}
+.value {
+  height: 100%;
+  background-image: linear-gradient(to right, #c79081 0%, #dfa579 100%);
+
+  transition: 0.35s;
+}
