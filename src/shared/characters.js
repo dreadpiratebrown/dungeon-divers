@@ -6,7 +6,7 @@ export const playerStats = {
   img: "/assets/barbarian.png",
   gold: 10,
   physicalDef: 0,
-  magicalDef: 25,
+  magicalDef: 0,
   primary: {
     name: "Rapier",
     item: "weapon",
@@ -28,6 +28,13 @@ export const playerStats = {
     item: "armor",
     type: "physical",
     icon: "/assets/leather-vest.png",
+    defense: 25,
+  },
+  helmet: {
+    name: "Feather Cap",
+    item: "helmet",
+    type: "magical",
+    icon: "/assets/feather-cap.png",
     defense: 25,
   },
   speed: 8,

@@ -6,6 +6,7 @@ import {
   changePrimary,
   changeSecondary,
   changeArmor,
+  changeHelmet,
   changeItem,
 } from "features/hero/heroSlice";
 import { add, remove } from "features/inventory/inventorySlice";
@@ -38,6 +39,11 @@ export const Inventory = () => {
     dispatch(changeArmor(null));
   };
 
+  const removeHelmet = () => {
+    dispatch(add(hero.helmet));
+    dispatch(changeHelmet(null));
+  };
+
   const equipPrimary = (item) => {
     if (hero.primary) {
       removePrimary();
@@ -59,6 +65,9 @@ export const Inventory = () => {
   const equipItem = (item) => {
     if (item.item === "armor" && hero.armor) {
       removeArmor();
+    }
+    if (item.item === "helmet" && hero.helmet) {
+      removeHelmet();
     }
     dispatch(changeItem(item));
     dispatch(remove(item));
@@ -85,7 +94,10 @@ export const Inventory = () => {
               Physical Defense{" "}
               {hero.armor ? hero.physicalDef + hero.armor.defense : 0}
             </li>
-            <li>Magical Defense {hero.magicalDef}</li>
+            <li>
+              Magical Defense{" "}
+              {hero.helmet ? hero.magicalDef + hero.helmet.defense : 0}
+            </li>
           </ul>
         </div>
         <div className={styles.equipment}>
@@ -110,7 +122,15 @@ export const Inventory = () => {
                 <button onClick={removeSecondary}>Unequip</button>
               )}
             </li>
-            <li>Helmet:</li>
+            <li
+              onMouseOver={() => setArmor(hero.helmet)}
+              onMouseOut={() => setArmor(null)}
+            >
+              Helmet:
+              {hero.helmet && <img src={hero.helmet.icon} alt="icon" />}
+              {hero.helmet && hero.helmet.name}
+              {hero.helmet && <button onClick={removeHelmet}>Unequip</button>}
+            </li>
             <li
               onMouseOver={() => setArmor(hero.armor)}
               onMouseOut={() => setArmor(null)}
@@ -190,7 +210,7 @@ export const Inventory = () => {
             </ul>
           </div>
         )}
-        {showItem && showItem.item === "armor" && (
+        {showItem && (showItem.item === "armor" || showItem.item === "helmet") && (
           <div className={styles.itemStats}>
             <ul>
               <li>{showItem.name}</li>

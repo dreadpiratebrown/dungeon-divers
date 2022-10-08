@@ -12,6 +12,7 @@ const initialState = {
   primary: playerStats.primary,
   secondary: playerStats.secondary,
   armor: playerStats.armor,
+  helmet: playerStats.helmet,
   physicalDef: playerStats.physicalDef,
   magicalDef: playerStats.magicalDef,
   speed: playerStats.speed,
@@ -51,6 +52,9 @@ export const heroSlice = createSlice({
     changeArmor: (state, action) => {
       state.armor = action.payload;
     },
+    changeHelmet: (state, action) => {
+      state.helmet = action.payload;
+    },
     changeItem: (state, action) => {
       state[action.payload.item] = action.payload;
     },
@@ -81,6 +85,7 @@ export const {
   changePrimary,
   changeSecondary,
   changeArmor,
+  changeHelmet,
   changeItem,
   reset,
 } = heroSlice.actions;

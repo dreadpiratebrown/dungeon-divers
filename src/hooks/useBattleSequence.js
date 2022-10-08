@@ -27,6 +27,9 @@ export const useBattleSequence = (sequence) => {
   useEffect(() => {
     const armor = playerStats.armor;
     setPlayerPD(playerPD + armor.defense);
+
+    const helmet = playerStats.helmet;
+    setPlayerMD(playerMD + helmet.defense);
   }, []);
 
   useEffect(() => {
