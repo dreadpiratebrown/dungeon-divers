@@ -111,7 +111,9 @@ export const Battle = ({ onLose, onWin }) => {
         />
       )}
       <BattleAnnouncer message={announcerMessage} />
-      {showInventory && <Inventory />}
+      {showInventory && (
+        <Inventory onCloseClick={() => setShowInventory(false)} />
+      )}
     </>
   );
 };

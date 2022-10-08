@@ -10,8 +10,9 @@ import {
   changeItem,
 } from "features/hero/heroSlice";
 import { add, remove } from "features/inventory/inventorySlice";
+import { ArmorStats, HeroStats, WeaponStats } from "components";
 
-export const Inventory = () => {
+export const Inventory = ({ onCloseClick }) => {
   const [weapon, setWeapon] = useState();
   const [armor, setArmor] = useState();
   const [showItem, setShowItem] = useState();
@@ -19,10 +20,6 @@ export const Inventory = () => {
   const hero = useSelector((state) => state.hero);
   const nextLevel = Math.round(Math.pow(hero.level / 0.3, 2));
   const inventory = useSelector((state) => state.inventory.items);
-
-  const showWeaponStats = (equipment) => {
-    setWeapon(equipment);
-  };
 
   const removePrimary = () => {
     dispatch(add(hero.primary));
@@ -78,33 +75,13 @@ export const Inventory = () => {
     <div className={styles.main}>
       <div className={styles.character}>
         <div className={styles.stats}>
-          <img src={hero.img} alt={hero.name} />
-          <ul className={styles.info}>
-            <li>
-              Level {hero.level} {hero.name}
-            </li>
-            <li>
-              HP {hero.health} / {hero.maxHealth}
-            </li>
-            <li>
-              Exp {hero.exp} - Next Level {nextLevel - hero.exp}
-            </li>
-            <li>Speed {hero.speed}</li>
-            <li>
-              Physical Defense{" "}
-              {hero.armor ? hero.physicalDef + hero.armor.defense : 0}
-            </li>
-            <li>
-              Magical Defense{" "}
-              {hero.helmet ? hero.magicalDef + hero.helmet.defense : 0}
-            </li>
-          </ul>
+          <HeroStats hero={hero} nextLevel={nextLevel} />
         </div>
         <div className={styles.equipment}>
           <ul>
             <li
-              onMouseOver={() => showWeaponStats(hero.primary)}
-              onMouseOut={() => showWeaponStats(null)}
+              onMouseOver={() => setWeapon(hero.primary)}
+              onMouseOut={() => setWeapon(null)}
             >
               Primary:
               {hero.primary && <img src={hero.primary.icon} alt="icon" />}
@@ -112,8 +89,8 @@ export const Inventory = () => {
               {hero.primary && <button onClick={removePrimary}>Unequip</button>}
             </li>
             <li
-              onMouseOver={() => showWeaponStats(hero.secondary)}
-              onMouseOut={() => showWeaponStats(null)}
+              onMouseOver={() => setWeapon(hero.secondary)}
+              onMouseOut={() => setWeapon(null)}
             >
               Secondary:
               {hero.secondary && <img src={hero.secondary.icon} alt="icon" />}
@@ -142,34 +119,14 @@ export const Inventory = () => {
             </li>
             <li>Accessory:</li>
           </ul>
-          {weapon && (
-            <div className={styles.weaponStats}>
-              <ul>
-                <li>{weapon.name}</li>
-                <li>Attack: {weapon.attack}</li>
-                <li>
-                  Type:{" "}
-                  {weapon.type.charAt(0).toUpperCase() + weapon.type.slice(1)}
-                </li>
-                <li>Range: {weapon.ranged === true ? "Ranged" : "Melee"}</li>
-              </ul>
-            </div>
-          )}
-          {armor && (
-            <div className={styles.weaponStats}>
-              <ul>
-                <li>{armor.name}</li>
-                <li>Defense: {armor.defense}</li>
-                <li>
-                  Type:{" "}
-                  {armor.type.charAt(0).toUpperCase() + armor.type.slice(1)}
-                </li>
-              </ul>
-            </div>
-          )}
+          {weapon && <WeaponStats weapon={weapon} />}
+          {armor && <ArmorStats armor={armor} />}
         </div>
       </div>
       <div className={styles.inventory}>
+        <button className={styles.closeBtn} onClick={onCloseClick}>
+          X
+        </button>
         <h1>Inventory</h1>
         <p>Gold: {hero.gold}</p>
         <ul>
@@ -197,28 +154,21 @@ export const Inventory = () => {
             </li>
           ))}
         </ul>
-        {showItem && showItem.item === "weapon" && (
+        {showItem && (
           <div className={styles.itemStats}>
             <ul>
               <li>{showItem.name}</li>
-              <li>Attack: {showItem.attack}</li>
+              {showItem.item === "weapon" && <li>Attack: {showItem.attack}</li>}
+              {(showItem.item === "armor" || showItem.item === "helmet") && (
+                <li>Defense: {showItem.defense}</li>
+              )}
               <li>
                 Type:{" "}
                 {showItem.type.charAt(0).toUpperCase() + showItem.type.slice(1)}
               </li>
-              <li>Range: {showItem.ranged === true ? "Ranged" : "Melee"}</li>
-            </ul>
-          </div>
-        )}
-        {showItem && (showItem.item === "armor" || showItem.item === "helmet") && (
-          <div className={styles.itemStats}>
-            <ul>
-              <li>{showItem.name}</li>
-              <li>Defense: {showItem.defense}</li>
-              <li>
-                Type:{" "}
-                {showItem.type.charAt(0).toUpperCase() + showItem.type.slice(1)}
-              </li>
+              {showItem.item === "weapon" && (
+                <li>Range: {showItem.ranged === true ? "Ranged" : "Melee"}</li>
+              )}
             </ul>
           </div>
         )}

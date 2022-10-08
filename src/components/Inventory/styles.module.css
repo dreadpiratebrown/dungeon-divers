@@ -17,6 +17,18 @@
   padding: 10px;
 }
 
+.closeBtn {
+  background: none;
+  border: none;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.closeBtn:hover {
+  outline: 1px solid #000;
+}
+
 .stats {
   display: flex;
   border-bottom: 2px solid gray;

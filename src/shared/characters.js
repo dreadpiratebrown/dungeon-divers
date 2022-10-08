@@ -8,6 +8,7 @@ export const playerStats = {
   physicalDef: 0,
   magicalDef: 0,
   primary: {
+    id: "790600fc-cbd6-42d3-b48e-01593f12eb16",
     name: "Rapier",
     item: "weapon",
     type: "physical",
@@ -16,6 +17,7 @@ export const playerStats = {
     ranged: false,
   },
   secondary: {
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Lesser Blast",
     item: "weapon",
     type: "magical",
@@ -24,6 +26,7 @@ export const playerStats = {
     ranged: true,
   },
   armor: {
+    id: "2ac57c80-a9fd-48b9-963e-272a91232284",
     name: "Leather Armor",
     item: "armor",
     type: "physical",
@@ -31,6 +34,7 @@ export const playerStats = {
     defense: 25,
   },
   helmet: {
+    id: "3bd4e9e4-0cbb-449c-a785-d8dc26d9e7bc",
     name: "Feather Cap",
     item: "helmet",
     type: "magical",
