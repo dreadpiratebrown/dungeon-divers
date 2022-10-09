@@ -98,18 +98,18 @@ export const Battle = ({ onLose, onWin }) => {
               onShowClick={() => setShowInventory(true)}
             />
           </div>
+          {showBattleMenu && (
+            <BattleMenu
+              onPrimary={(name, type, damage) =>
+                setSequence({ mode: type, turn, name, damage })
+              }
+              onSecondary={(name, type, damage) =>
+                setSequence({ mode: type, turn, name, damage })
+              }
+            />
+          )}
         </div>
       </div>
-      {showBattleMenu && (
-        <BattleMenu
-          onPrimary={(name, type, damage) =>
-            setSequence({ mode: type, turn, name, damage })
-          }
-          onSecondary={(name, type, damage) =>
-            setSequence({ mode: type, turn, name, damage })
-          }
-        />
-      )}
       <BattleAnnouncer message={announcerMessage} />
       {showInventory && (
         <Inventory onCloseClick={() => setShowInventory(false)} />

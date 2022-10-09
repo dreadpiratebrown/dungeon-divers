@@ -25,16 +25,30 @@ export const useBattleSequence = (sequence) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const physicalModifier =
+      playerStats.accessory && playerStats.accessory.type === "physical defense"
+        ? playerStats.accessory.value
+        : 0;
+    const magicalModifier =
+      playerStats.accessory && playerStats.accessory.type === "magical defense"
+        ? playerStats.accessory.value
+        : 0;
+
     const armor = playerStats.armor;
-    setPlayerPD(playerPD + armor.defense);
+    setPlayerPD(playerPD + armor.defense + physicalModifier);
 
     const helmet = playerStats.helmet;
-    setPlayerMD(playerMD + helmet.defense);
+    setPlayerMD(playerMD + helmet.defense + magicalModifier);
   }, []);
 
   useEffect(() => {
     // ROLL FOR INITIATIVE
-    const playerInitiative = Math.ceil(Math.random() * 20) + playerStats.speed;
+    const speedModifier =
+      playerStats.accessory && playerStats.accessory.type === "speed"
+        ? playerStats.accessory.value
+        : 0;
+    const playerInitiative =
+      Math.ceil(Math.random() * 20) + playerStats.speed + speedModifier;
     const fiendInitiative = Math.ceil(Math.random() * 20) + opponentStats.speed;
     setTurn(playerInitiative > fiendInitiative ? 0 : 1);
 

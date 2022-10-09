@@ -41,6 +41,7 @@ export const playerStats = {
     icon: "/assets/feather-cap.png",
     defense: 25,
   },
+  accessory: null,
   speed: 8,
 };
 export const fiends = [

@@ -1,13 +1,16 @@
 import styles from "./styles.module.css";
-import { fiends, travelText } from "shared";
+import { fiends, travelText, treasures } from "shared";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFiend } from "features/fiend/fiendSlice";
 import { reset } from "features/hero/heroSlice";
-import { resetInventory } from "features/inventory/inventorySlice";
+import { add, resetInventory } from "features/inventory/inventorySlice";
+import uuid from "react-uuid";
 
 export const TravelScreen = ({ onFightClick, newGame }) => {
   const [encounterType, setEncounterType] = useState();
+  const [treasure, setTreasure] = useState();
+  const [percentile, setPercentile] = useState();
 
   const dispatch = useDispatch();
 
@@ -19,17 +22,33 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
   }, [newGame]);
 
   const travel = Math.floor(Math.random() * travelText.length);
-  const percentile = Math.floor(Math.random() * 100) + 1;
+  useEffect(() => {
+    setPercentile(Math.floor(Math.random() * 100) + 1);
+  }, []);
 
   useEffect(() => {
-    if (percentile < 86) {
+    if (percentile && percentile < 86) {
       setEncounterType("fiend");
       const fiend = fiends[Math.floor(Math.random() * fiends.length)];
       dispatch(setFiend(fiend));
-    } else {
+    } else if (percentile && percentile >= 86) {
       setEncounterType("treasure");
+      let tempTreasure = {
+        ...treasures[Math.floor(Math.random() * treasures.length)],
+      };
+      const tempID = uuid();
+      if (!tempTreasure.id) {
+        tempTreasure.id = tempID;
+      }
+      setTreasure(tempTreasure);
+      dispatch(add(tempTreasure));
+      tempTreasure = null;
     }
   }, [percentile]);
+
+  const carryOn = () => {
+    setPercentile(Math.floor(Math.random() * 100) + 1);
+  };
 
   return (
     <div className={styles.main}>
@@ -39,7 +58,13 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
           You encounter a fiend! <button onClick={onFightClick}>Fight!</button>
         </p>
       )}
-      {encounterType === "treasure" && <p>You find treasure!</p>}
+      {encounterType === "treasure" && (
+        <>
+          <p>You find treasure!</p>
+          <p>You have found a {treasure.name}.</p>
+          <button onClick={carryOn}>Continue!</button>
+        </>
+      )}
     </div>
   );
 };

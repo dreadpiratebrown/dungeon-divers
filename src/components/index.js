@@ -6,6 +6,7 @@ export * from "./BattleMenu";
 export * from "./CharacterBuilder";
 export * from "./EndMenu";
 export * from "./Inventory";
+export * from "./Inventory/AccessoryStats";
 export * from "./Inventory/ArmorStats";
 export * from "./Inventory/HeroStats";
 export * from "./Inventory/WeaponStats";

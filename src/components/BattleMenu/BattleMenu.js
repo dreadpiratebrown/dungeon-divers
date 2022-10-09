@@ -4,6 +4,19 @@ import { useSelector } from "react-redux";
 export const BattleMenu = ({ onPrimary, onSecondary }) => {
   const primary = useSelector((state) => state.hero.primary);
   const secondary = useSelector((state) => state.hero.secondary);
+  const accessory = useSelector((state) => state.hero.accessory);
+  const physicalModifier =
+    accessory && accessory.type === "physical attack" ? accessory.value : 0;
+  const magicalModifier =
+    accessory && accessory.type === "magical attack" ? accessory.value : 0;
+  const primaryAttack =
+    primary.type === "physical"
+      ? primary.attack + physicalModifier
+      : primary.attack + magicalModifier;
+  const secondaryAttack =
+    secondary.type === "physical"
+      ? secondary.attack + physicalModifier
+      : secondary.attack + magicalModifier;
 
   return (
     <div className={styles.main}>
@@ -12,10 +25,10 @@ export const BattleMenu = ({ onPrimary, onSecondary }) => {
           <>
             <img src={primary.icon} alt={primary.name} />
             <span>{primary.name}</span>
-            <span>{primary.attack}</span>
+            <span>{primaryAttack}</span>
             <button
               onClick={() =>
-                onPrimary(primary.name, primary.type, primary.attack)
+                onPrimary(primary.name, primary.type, primaryAttack)
               }
             >
               Attack
@@ -28,10 +41,10 @@ export const BattleMenu = ({ onPrimary, onSecondary }) => {
           <>
             <img src={secondary.icon} alt={secondary.name} />
             <span>{secondary.name}</span>
-            <span>{secondary.attack}</span>
+            <span>{secondaryAttack}</span>
             <button
               onClick={() =>
-                onSecondary(secondary.name, secondary.type, secondary.attack)
+                onSecondary(secondary.name, secondary.type, secondaryAttack)
               }
             >
               Attack

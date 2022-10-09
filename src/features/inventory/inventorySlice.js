@@ -12,9 +12,7 @@ export const inventorySlice = createSlice({
       state.items.push(action.payload);
     },
     remove: (state, action) => {
-      state.items = state.items.filter(
-        (item) => item.name !== action.payload.name
-      );
+      state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
     resetInventory: () => initialState,
   },

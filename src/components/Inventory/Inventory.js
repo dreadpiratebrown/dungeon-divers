@@ -7,14 +7,14 @@ import {
   changeSecondary,
   changeArmor,
   changeHelmet,
+  changeAccessory,
   changeItem,
 } from "features/hero/heroSlice";
 import { add, remove } from "features/inventory/inventorySlice";
-import { ArmorStats, HeroStats, WeaponStats } from "components";
+import { AccessoryStats, ArmorStats, HeroStats, WeaponStats } from "components";
 
 export const Inventory = ({ onCloseClick }) => {
-  const [weapon, setWeapon] = useState();
-  const [armor, setArmor] = useState();
+  const [item, setItem] = useState();
   const [showItem, setShowItem] = useState();
   const dispatch = useDispatch();
   const hero = useSelector((state) => state.hero);
@@ -39,6 +39,11 @@ export const Inventory = ({ onCloseClick }) => {
   const removeHelmet = () => {
     dispatch(add(hero.helmet));
     dispatch(changeHelmet(null));
+  };
+
+  const removeAccessory = () => {
+    dispatch(add(hero.accessory));
+    dispatch(changeAccessory(null));
   };
 
   const equipPrimary = (item) => {
@@ -66,6 +71,9 @@ export const Inventory = ({ onCloseClick }) => {
     if (item.item === "helmet" && hero.helmet) {
       removeHelmet();
     }
+    if (item.item === "accessory" && hero.accessory) {
+      removeAccessory();
+    }
     dispatch(changeItem(item));
     dispatch(remove(item));
     setShowItem(null);
@@ -80,8 +88,8 @@ export const Inventory = ({ onCloseClick }) => {
         <div className={styles.equipment}>
           <ul>
             <li
-              onMouseOver={() => setWeapon(hero.primary)}
-              onMouseOut={() => setWeapon(null)}
+              onMouseOver={() => setItem(hero.primary)}
+              onMouseOut={() => setItem(null)}
             >
               Primary:
               {hero.primary && <img src={hero.primary.icon} alt="icon" />}
@@ -89,8 +97,8 @@ export const Inventory = ({ onCloseClick }) => {
               {hero.primary && <button onClick={removePrimary}>Unequip</button>}
             </li>
             <li
-              onMouseOver={() => setWeapon(hero.secondary)}
-              onMouseOut={() => setWeapon(null)}
+              onMouseOver={() => setItem(hero.secondary)}
+              onMouseOut={() => setItem(null)}
             >
               Secondary:
               {hero.secondary && <img src={hero.secondary.icon} alt="icon" />}
@@ -100,8 +108,8 @@ export const Inventory = ({ onCloseClick }) => {
               )}
             </li>
             <li
-              onMouseOver={() => setArmor(hero.helmet)}
-              onMouseOut={() => setArmor(null)}
+              onMouseOver={() => setItem(hero.helmet)}
+              onMouseOut={() => setItem(null)}
             >
               Helmet:
               {hero.helmet && <img src={hero.helmet.icon} alt="icon" />}
@@ -109,18 +117,33 @@ export const Inventory = ({ onCloseClick }) => {
               {hero.helmet && <button onClick={removeHelmet}>Unequip</button>}
             </li>
             <li
-              onMouseOver={() => setArmor(hero.armor)}
-              onMouseOut={() => setArmor(null)}
+              onMouseOver={() => setItem(hero.armor)}
+              onMouseOut={() => setItem(null)}
             >
               Armor:
               {hero.armor && <img src={hero.armor.icon} alt="icon" />}
               {hero.armor && hero.armor.name}
               {hero.armor && <button onClick={removeArmor}>Unequip</button>}
             </li>
-            <li>Accessory:</li>
+            <li
+              onMouseOver={() => setItem(hero.accessory)}
+              onMouseOut={() => setItem(null)}
+            >
+              Accessory:
+              {hero.accessory && <img src={hero.accessory.icon} alt="icon" />}
+              {hero.accessory && hero.accessory.name}
+              {hero.accessory && (
+                <button onClick={removeAccessory}>Unequip</button>
+              )}
+            </li>
           </ul>
-          {weapon && <WeaponStats weapon={weapon} />}
-          {armor && <ArmorStats armor={armor} />}
+          {item && item.item === "weapon" && <WeaponStats weapon={item} />}
+          {item && (item.item === "armor" || item.item === "helmet") && (
+            <ArmorStats armor={item} />
+          )}
+          {item && item.item === "accessory" && (
+            <AccessoryStats accessory={item} />
+          )}
         </div>
       </div>
       <div className={styles.inventory}>
@@ -162,10 +185,20 @@ export const Inventory = ({ onCloseClick }) => {
               {(showItem.item === "armor" || showItem.item === "helmet") && (
                 <li>Defense: {showItem.defense}</li>
               )}
-              <li>
-                Type:{" "}
-                {showItem.type.charAt(0).toUpperCase() + showItem.type.slice(1)}
-              </li>
+              {showItem.item !== "accessory" && (
+                <li>
+                  Type:{" "}
+                  {showItem.type.charAt(0).toUpperCase() +
+                    showItem.type.slice(1)}
+                </li>
+              )}
+              {showItem.item === "accessory" && (
+                <li>
+                  {showItem.type.charAt(0).toUpperCase() +
+                    showItem.type.slice(1)}
+                  : {showItem.value}
+                </li>
+              )}
               {showItem.item === "weapon" && (
                 <li>Range: {showItem.ranged === true ? "Ranged" : "Melee"}</li>
               )}
