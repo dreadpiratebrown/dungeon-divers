@@ -52,7 +52,7 @@ export const useBattleSequence = (sequence) => {
     const fiendInitiative = Math.ceil(Math.random() * 20) + opponentStats.speed;
     setTurn(playerInitiative > fiendInitiative ? 0 : 1);
 
-    const { mode, turn, name, damage } = sequence;
+    const { mode, turn, name, damage, weapon } = sequence;
 
     if (mode) {
       const attacker = turn === 0 ? playerStats : opponentStats;
@@ -61,9 +61,17 @@ export const useBattleSequence = (sequence) => {
         case "physical": {
           (async () => {
             setInSequence(true);
-            setAnnouncerMessage(
-              `${attacker.name} attacked with the ${name} for ${damage} damage.`
-            );
+            let miss = false;
+            if (turn === 0 && opponentStats.flying && !weapon.ranged) {
+              setAnnouncerMessage(
+                `${attacker.name} missed! Try a ranged attack!`
+              );
+              miss = true;
+            } else {
+              setAnnouncerMessage(
+                `${attacker.name} attacked with the ${name} for ${damage} damage.`
+              );
+            }
 
             turn === 0
               ? setPlayerAnimation("attack")
@@ -75,20 +83,24 @@ export const useBattleSequence = (sequence) => {
               : setOpponentAnimation("static");
             await wait(500);
 
-            turn === 0
-              ? setOpponentAnimation("damage")
-              : setPlayerAnimation("damage");
+            if (turn === 0 && !miss) {
+              setOpponentAnimation("damage");
+            } else if (turn === 1) {
+              setPlayerAnimation("damage");
+            }
             await wait(750);
 
-            turn === 0
-              ? setOpponentAnimation("static")
-              : setPlayerAnimation("static");
+            if (turn === 0 && !miss) {
+              setOpponentAnimation("static");
+            } else if (turn === 1) {
+              setPlayerAnimation("static");
+            }
 
-            if (turn === 0) {
+            if (turn === 0 && !miss) {
               opponentPD > 0
                 ? setOpponentPD((h) => (h - damage > 0 ? h - damage : 0))
                 : setOpponentHealth((h) => (h - damage > 0 ? h - damage : 0));
-            } else {
+            } else if (turn === 1) {
               playerPD > 0
                 ? setPlayerPD((h) => (h - damage > 0 ? h - damage : 0))
                 : dispatch(takeDamage(damage));

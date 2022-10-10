@@ -49,6 +49,10 @@
   width: 300px;
 }
 
+.flying {
+  margin-left: auto;
+}
+
 .inventoryButton {
   background: none;
   border: none;

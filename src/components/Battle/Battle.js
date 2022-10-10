@@ -79,6 +79,7 @@ export const Battle = ({ onLose, onWin }) => {
               maxPD={opponentStats.physicalDef}
               md={opponentMD}
               maxMD={opponentStats.magicalDef}
+              flying={opponentStats.flying}
             />
           </div>
         </div>
@@ -101,10 +102,22 @@ export const Battle = ({ onLose, onWin }) => {
           {showBattleMenu && (
             <BattleMenu
               onPrimary={(name, type, damage) =>
-                setSequence({ mode: type, turn, name, damage })
+                setSequence({
+                  mode: type,
+                  turn,
+                  name,
+                  damage,
+                  weapon: playerStats.primary,
+                })
               }
               onSecondary={(name, type, damage) =>
-                setSequence({ mode: type, turn, name, damage })
+                setSequence({
+                  mode: type,
+                  turn,
+                  name,
+                  damage,
+                  weapon: playerStats.secondary,
+                })
               }
             />
           )}

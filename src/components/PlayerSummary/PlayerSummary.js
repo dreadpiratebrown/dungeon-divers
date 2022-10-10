@@ -12,6 +12,7 @@ export const PlayerSummary = ({
   maxPD,
   md,
   maxMD,
+  flying,
   onShowClick,
 }) => {
   return (
@@ -27,6 +28,9 @@ export const PlayerSummary = ({
             <button className={styles.inventoryButton} onClick={onShowClick}>
               <img src="/assets/knapsack.png" alt="Inventory" />
             </button>
+          )}
+          {type === "fiend" && flying && (
+            <span className={styles.flying}>Flying</span>
           )}
         </div>
         <div className={styles.stats}>

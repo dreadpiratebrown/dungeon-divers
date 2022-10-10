@@ -107,6 +107,7 @@ export const fiends = [
       attack: 5,
     },
     speed: 6,
+    flying: true,
   },
   {
     level: 1,
