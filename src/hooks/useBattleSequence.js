@@ -22,6 +22,8 @@ export const useBattleSequence = (sequence) => {
   const [playerAnimation, setPlayerAnimation] = useState("static");
   const [opponentAnimation, setOpponentAnimation] = useState("static");
 
+  const [fleeing, setFleeing] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -157,6 +159,25 @@ export const useBattleSequence = (sequence) => {
           break;
         }
 
+        case "flee": {
+          (async () => {
+            setInSequence(true);
+            const fleeRatio = (0.5 * playerStats.level) / opponentStats.level;
+            const target = Math.random();
+            if (target < fleeRatio) {
+              setAnnouncerMessage("You flee!");
+              await wait(1000);
+              setFleeing(true);
+              setInSequence(false);
+            } else {
+              setAnnouncerMessage("Your attempt to flee fails.");
+              await wait(2000);
+              setTurn(1);
+              setInSequence(false);
+            }
+          })();
+        }
+
         default:
           break;
       }
@@ -177,5 +198,6 @@ export const useBattleSequence = (sequence) => {
     playerAnimation,
     opponentAnimation,
     announcerMessage,
+    fleeing,
   };
 };

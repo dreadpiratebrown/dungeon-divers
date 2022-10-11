@@ -4,6 +4,7 @@ import {
   Battle,
   CharacterBuilder,
   EndMenu,
+  FleeScreen,
   StartMenu,
   VictoryScreen,
   TravelScreen,
@@ -61,12 +62,24 @@ export const App = () => {
             setWinner(winner);
             setMode("victory");
           }}
+          onFlee={() => {
+            setMode("flee");
+          }}
         />
       )}
 
       {mode === "victory" && !!winner && (
         <VictoryScreen
           fiend={winner}
+          onStartClick={() => {
+            setMode("travel");
+            setNewGame(false);
+          }}
+        />
+      )}
+
+      {mode === "flee" && (
+        <FleeScreen
           onStartClick={() => {
             setMode("travel");
             setNewGame(false);

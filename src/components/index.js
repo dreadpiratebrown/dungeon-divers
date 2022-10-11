@@ -5,6 +5,7 @@ export * from "./BattleAnnouncer";
 export * from "./BattleMenu";
 export * from "./CharacterBuilder";
 export * from "./EndMenu";
+export * from "./FleeScreen";
 export * from "./Inventory";
 export * from "./Inventory/AccessoryStats";
 export * from "./Inventory/ArmorStats";

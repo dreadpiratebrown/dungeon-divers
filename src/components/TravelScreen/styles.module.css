@@ -7,3 +7,16 @@
   transform: translate(-50%, -50%);
   width: 500px;
 }
+
+.fightBtn {
+  border: 2px solid gold;
+  outline: none;
+  padding: 4px 32px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background-color: initial;
+  background-image: radial-gradient(#009ffd, #2a2a72);
+  border-radius: 2px;
+  color: #fff;
+  box-shadow: 0px 0px 3px gray;
+}

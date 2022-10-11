@@ -54,15 +54,20 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
     <div className={styles.main}>
       <p>{travelText[travel]}</p>
       {encounterType === "fiend" && (
-        <p>
-          You encounter a fiend! <button onClick={onFightClick}>Fight!</button>
-        </p>
+        <>
+          <p>You encounter a fiend! </p>
+          <button onClick={onFightClick} className={styles.fightBtn}>
+            Fight!
+          </button>
+        </>
       )}
       {encounterType === "treasure" && (
         <>
           <p>You find treasure!</p>
           <p>You have found a {treasure.name}.</p>
-          <button onClick={carryOn}>Continue!</button>
+          <button onClick={carryOn} className={styles.fightBtn}>
+            Continue!
+          </button>
         </>
       )}
     </div>

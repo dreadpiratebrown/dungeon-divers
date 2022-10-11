@@ -9,7 +9,7 @@ import {
 import { wait } from "shared";
 import { useState, useEffect } from "react";
 
-export const Battle = ({ onLose, onWin }) => {
+export const Battle = ({ onLose, onWin, onFlee }) => {
   const [sequence, setSequence] = useState({});
   const [showBattleMenu, setShowBattleMenu] = useState(true);
   const [showInventory, setShowInventory] = useState(false);
@@ -28,6 +28,7 @@ export const Battle = ({ onLose, onWin }) => {
     playerAnimation,
     opponentAnimation,
     announcerMessage,
+    fleeing,
   } = useBattleSequence(sequence);
 
   const aiChoice = useAIOpponent(turn);
@@ -62,6 +63,12 @@ export const Battle = ({ onLose, onWin }) => {
       })();
     }
   }, [playerHealth, opponentHealth, onWin, onLose]);
+
+  useEffect(() => {
+    if (fleeing) {
+      onFlee();
+    }
+  }, [fleeing]);
 
   return (
     <>
@@ -117,6 +124,12 @@ export const Battle = ({ onLose, onWin }) => {
                   name,
                   damage,
                   weapon: playerStats.secondary,
+                })
+              }
+              onFleeClick={() =>
+                setSequence({
+                  mode: "flee",
+                  turn,
                 })
               }
             />
