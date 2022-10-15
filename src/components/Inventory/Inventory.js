@@ -12,10 +12,12 @@ import {
 } from "features/hero/heroSlice";
 import { add, remove } from "features/inventory/inventorySlice";
 import { AccessoryStats, ArmorStats, HeroStats, WeaponStats } from "components";
+import { useItem } from "hooks";
 
 export const Inventory = ({ onCloseClick }) => {
   const [item, setItem] = useState();
   const [showItem, setShowItem] = useState();
+  const [itemUsed, setItemUsed] = useState();
   const dispatch = useDispatch();
   const hero = useSelector((state) => state.hero);
   const nextLevel = Math.round(Math.pow(hero.level / 0.3, 2));
@@ -78,6 +80,8 @@ export const Inventory = ({ onCloseClick }) => {
     dispatch(remove(item));
     setShowItem(null);
   };
+
+  useItem(itemUsed, setShowItem);
 
   return (
     <div className={styles.main}>
@@ -171,8 +175,11 @@ export const Inventory = ({ onCloseClick }) => {
                   </button>
                 </>
               )}
-              {item.item !== "weapon" && (
+              {item.item !== "weapon" && item.equippable && (
                 <button onClick={() => equipItem(item)}>Equip</button>
+              )}
+              {item.usable && (
+                <button onClick={() => setItemUsed(item)}>Use</button>
               )}
             </li>
           ))}
@@ -185,7 +192,7 @@ export const Inventory = ({ onCloseClick }) => {
               {(showItem.item === "armor" || showItem.item === "helmet") && (
                 <li>Defense: {showItem.defense}</li>
               )}
-              {showItem.item !== "accessory" && (
+              {showItem.item !== "accessory" && !showItem.usable && (
                 <li>
                   Type:{" "}
                   {showItem.type.charAt(0).toUpperCase() +
@@ -202,6 +209,7 @@ export const Inventory = ({ onCloseClick }) => {
               {showItem.item === "weapon" && (
                 <li>Range: {showItem.ranged === true ? "Ranged" : "Melee"}</li>
               )}
+              {showItem.usable && <li>{showItem.description}</li>}
             </ul>
           </div>
         )}

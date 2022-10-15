@@ -8,4 +8,13 @@ export const travelText = [
   "Your trek leads you down a short, steep slope. You manage to keep your feet and come to a stop at the bottom.",
   "The walls are wet and slimy here. You try to stick to the center of the corridor.",
   "You fight your way through thick cobwebs. You hope you don't meet whatever made them.",
+  "It is pitch black. You are likely to be eaten by a grue.",
+  "The walls are riddled with holes here, and the floor littered with tiny darts. And a few skeletons. You cautiously inch forward but feel no sting. Guess this trap is all used up.",
+  "You enter a chamber that has clearly been used as some creature's den. There is a nest of sorts in one corner and bones are strewn around.",
+  "The walls, floor, and ceiling here are covered in strange symbols and pictures. They make you feel uneasy. You hurry on down the corridor.",
+  "You come to a place where two tunnels converge. From one tunnel mouth emits an overwhelming stench, and you can hear screams in the distance. You choose the other tunnel.",
+  "This chamber is clean and seems trouble-free. After a short rest, you carry on.",
+  "The passage is flooded here. You slosh your way through the knee-deep water, looking for an exit.",
+  "An ancient rope bridge crosses a chasm here. You pick your way carefully across the bridge, trying not to look down.",
+  "A thick layer of dust covers everything in this area. You cover your mouth and nose and squint your eyes against the grit.",
 ];

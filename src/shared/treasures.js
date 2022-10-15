@@ -6,6 +6,8 @@ export const treasures = [
     icon: "/assets/stiletto.png",
     attack: 35,
     ranged: false,
+    equippable: true,
+    usable: false,
   },
   {
     name: "Long Sword",
@@ -14,6 +16,8 @@ export const treasures = [
     icon: "/assets/stiletto.png",
     attack: 45,
     ranged: false,
+    equippable: true,
+    usable: false,
   },
   {
     name: "Leather Boots",
@@ -21,6 +25,8 @@ export const treasures = [
     type: "speed",
     icon: "/assets/leather-boot.png",
     value: 1,
+    equippable: true,
+    usable: false,
   },
   {
     name: "Leather Gloves",
@@ -28,6 +34,8 @@ export const treasures = [
     type: "physical attack",
     icon: "/assets/gloves.png",
     value: 10,
+    equippable: true,
+    usable: false,
   },
   {
     name: "Magic Ring",
@@ -35,5 +43,7 @@ export const treasures = [
     type: "magical defense",
     icon: "/assets/ring.png",
     value: 10,
+    equippable: true,
+    usable: false,
   },
 ];

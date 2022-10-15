@@ -33,6 +33,12 @@ export const heroSlice = createSlice({
       state.health =
         state.health - action.payload > 0 ? state.health - action.payload : 0;
     },
+    heal: (state, action) => {
+      state.health =
+        state.health + action.payload > playerStats.maxHealth
+          ? playerStats.maxHealth
+          : state.health + action.payload;
+    },
     increaseExp: (state, action) => {
       state.exp += action.payload;
     },
@@ -71,6 +77,7 @@ export const heroSlice = createSlice({
       state.primary = initialState.primary;
       state.secondary = initialState.secondary;
       state.armor = initialState.armor;
+      state.helmet = initialState.helmet;
       state.accessory = initialState.accessory;
       state.physicalDef = initialState.physicalDef;
       state.magicalDef = initialState.magicalDef;
@@ -84,6 +91,7 @@ export const {
   setName,
   setImage,
   takeDamage,
+  heal,
   increaseExp,
   increaseGold,
   increaseLevel,

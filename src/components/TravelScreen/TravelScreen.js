@@ -1,7 +1,8 @@
 import styles from "./styles.module.css";
 import { fiends, travelText, treasures } from "shared";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { resetApp } from "features/app/appSlice";
 import { setFiend } from "features/fiend/fiendSlice";
 import { reset } from "features/hero/heroSlice";
 import { add, resetInventory } from "features/inventory/inventorySlice";
@@ -16,11 +17,13 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
 
   useEffect(() => {
     if (newGame) {
+      dispatch(resetApp());
       dispatch(reset());
       dispatch(resetInventory());
     }
   }, [newGame]);
 
+  const level = useSelector((state) => state.hero.level);
   const travel = Math.floor(Math.random() * travelText.length);
   useEffect(() => {
     setPercentile(Math.floor(Math.random() * 100) + 1);
@@ -29,7 +32,11 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
   useEffect(() => {
     if (percentile && percentile < 86) {
       setEncounterType("fiend");
-      const fiend = fiends[Math.floor(Math.random() * fiends.length)];
+      const range = { low: level - 2, high: level + 2 };
+      const fiendPool = fiends.filter(
+        (f) => f.level >= range.low && f.level <= range.high
+      );
+      const fiend = fiendPool[Math.floor(Math.random() * fiendPool.length)];
       dispatch(setFiend(fiend));
     } else if (percentile && percentile >= 86) {
       setEncounterType("treasure");

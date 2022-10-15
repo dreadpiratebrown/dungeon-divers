@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import { loadState } from "app/storage";
 
-export const StartMenu = ({ onStartClick, onLoadClick }) => {
+export const StartMenu = ({ onStartClick, onLoadClick, onGenClick }) => {
   const savedState = loadState();
 
   return (
@@ -18,6 +18,7 @@ export const StartMenu = ({ onStartClick, onLoadClick }) => {
           Load Saved Game
         </button>
       )}
+      {/* <button onClick={onGenClick}>Generator</button> */}
     </div>
   );
 };

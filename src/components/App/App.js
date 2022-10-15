@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { exitDungeon } from "features/app/appSlice";
 import styles from "./styles.module.css";
 import {
   Battle,
   CharacterBuilder,
   EndMenu,
+  ExitScreen,
   FleeScreen,
+  Generator,
   StartMenu,
-  VictoryScreen,
   TravelScreen,
+  VictoryScreen,
 } from "components";
 
 export const App = () => {
@@ -15,11 +20,21 @@ export const App = () => {
   const [newGame, setNewGame] = useState(false);
   const [winner, setWinner] = useState();
 
+  const exit = useSelector((state) => state.app.exit);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (mode === "battle") {
       setWinner(undefined);
     }
   }, [mode]);
+
+  useEffect(() => {
+    if (exit) {
+      setMode("exit");
+    }
+  }, [exit]);
 
   return (
     <div className={styles.main}>
@@ -32,8 +47,13 @@ export const App = () => {
           onLoadClick={() => {
             setMode("travel");
           }}
+          onGenClick={() => {
+            setMode("generator");
+          }}
         />
       )}
+
+      {mode === "generator" && <Generator />}
 
       {mode === "build" && (
         <CharacterBuilder
@@ -87,8 +107,18 @@ export const App = () => {
         />
       )}
 
+      {mode === "exit" && (
+        <ExitScreen
+          onDungeonClick={() => {
+            dispatch(exitDungeon(false));
+            setMode("travel");
+            setNewGame(false);
+          }}
+        />
+      )}
+
       {mode === "gameOver" && !!winner && (
-        <EndMenu winner={winner} onStartClick={() => setMode("battle")} />
+        <EndMenu winner={winner} onStartClick={() => setMode("start")} />
       )}
     </div>
   );
