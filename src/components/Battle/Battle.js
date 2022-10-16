@@ -1,18 +1,12 @@
 import styles from "./styles.module.css";
 import { useAIOpponent, useBattleSequence } from "hooks";
-import {
-  BattleAnnouncer,
-  BattleMenu,
-  Inventory,
-  PlayerSummary,
-} from "components";
+import { BattleAnnouncer, BattleMenu, PlayerSummary } from "components";
 import { wait } from "shared";
 import { useState, useEffect } from "react";
 
 export const Battle = ({ onLose, onWin, onFlee }) => {
   const [sequence, setSequence] = useState({});
   const [showBattleMenu, setShowBattleMenu] = useState(true);
-  const [showInventory, setShowInventory] = useState(false);
 
   const {
     turn,
@@ -30,6 +24,17 @@ export const Battle = ({ onLose, onWin, onFlee }) => {
     announcerMessage,
     fleeing,
   } = useBattleSequence(sequence);
+
+  const maxPD =
+    (playerStats.armor ? playerStats.armor.defense : 0) +
+    (playerStats.accessory && playerStats.accessory.type === "physical defense"
+      ? playerStats.accessory.value
+      : 0);
+  const maxMD =
+    (playerStats.helmet ? playerStats.helmet.defense : 0) +
+    (playerStats.accessory && playerStats.accessory.type === "magical defense"
+      ? playerStats.accessory.value
+      : 0);
 
   const aiChoice = useAIOpponent(turn);
 
@@ -100,10 +105,9 @@ export const Battle = ({ onLose, onWin, onFlee }) => {
               health={playerHealth}
               maxHealth={playerStats.maxHealth}
               pd={playerPD}
-              maxPD={playerStats.physicalDef}
+              maxPD={maxPD}
               md={playerMD}
-              maxMD={playerStats.magicalDef}
-              onShowClick={() => setShowInventory(true)}
+              maxMD={maxMD}
             />
           </div>
           {showBattleMenu && (
@@ -137,9 +141,6 @@ export const Battle = ({ onLose, onWin, onFlee }) => {
         </div>
       </div>
       <BattleAnnouncer message={announcerMessage} />
-      {showInventory && (
-        <Inventory onCloseClick={() => setShowInventory(false)} />
-      )}
     </>
   );
 };

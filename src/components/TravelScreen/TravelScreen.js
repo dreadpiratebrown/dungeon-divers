@@ -6,12 +6,14 @@ import { resetApp } from "features/app/appSlice";
 import { setFiend } from "features/fiend/fiendSlice";
 import { reset } from "features/hero/heroSlice";
 import { add, resetInventory } from "features/inventory/inventorySlice";
+import { Inventory } from "components";
 import uuid from "react-uuid";
 
 export const TravelScreen = ({ onFightClick, newGame }) => {
   const [encounterType, setEncounterType] = useState();
   const [treasure, setTreasure] = useState();
   const [percentile, setPercentile] = useState();
+  const [showInventory, setShowInventory] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -58,25 +60,42 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
   };
 
   return (
-    <div className={styles.main}>
-      <p>{travelText[travel]}</p>
-      {encounterType === "fiend" && (
-        <>
-          <p>You encounter a fiend! </p>
-          <button onClick={onFightClick} className={styles.fightBtn}>
-            Fight!
-          </button>
-        </>
+    <>
+      <div className={styles.main}>
+        <p>{travelText[travel]}</p>
+        {encounterType === "fiend" && (
+          <>
+            <p>You encounter a fiend! </p>
+            <button
+              className={styles.fightBtn}
+              onClick={() => setShowInventory(true)}
+            >
+              Inventory
+            </button>
+            <button onClick={onFightClick} className={styles.fightBtn}>
+              Fight!
+            </button>
+          </>
+        )}
+        {encounterType === "treasure" && (
+          <>
+            <p>You find treasure!</p>
+            <p>You have found a {treasure.name}.</p>
+            <button
+              className={styles.fightBtn}
+              onClick={() => setShowInventory(true)}
+            >
+              Inventory
+            </button>
+            <button onClick={carryOn} className={styles.fightBtn}>
+              Continue!
+            </button>
+          </>
+        )}
+      </div>
+      {showInventory && (
+        <Inventory onCloseClick={() => setShowInventory(false)} />
       )}
-      {encounterType === "treasure" && (
-        <>
-          <p>You find treasure!</p>
-          <p>You have found a {treasure.name}.</p>
-          <button onClick={carryOn} className={styles.fightBtn}>
-            Continue!
-          </button>
-        </>
-      )}
-    </div>
+    </>
   );
 };

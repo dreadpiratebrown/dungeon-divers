@@ -13,7 +13,6 @@ export const PlayerSummary = ({
   md,
   maxMD,
   flying,
-  onShowClick,
 }) => {
   return (
     <div className={type === "fiend" ? styles.mainFiend : styles.main}>
@@ -24,11 +23,6 @@ export const PlayerSummary = ({
         <div className={styles.levelName}>
           <span className={styles.level}>Lv. {level}</span>
           <span className={styles.name}>{name}</span>
-          {type === "player" && (
-            <button className={styles.inventoryButton} onClick={onShowClick}>
-              <img src="/assets/knapsack.png" alt="Inventory" />
-            </button>
-          )}
           {type === "fiend" && flying && (
             <span className={styles.flying}>Flying</span>
           )}

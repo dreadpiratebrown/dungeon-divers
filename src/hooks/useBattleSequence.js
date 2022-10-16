@@ -9,8 +9,22 @@ export const useBattleSequence = (sequence) => {
 
   const playerStats = useSelector((state) => state.hero);
   const playerHealth = playerStats.health;
-  const [playerPD, setPlayerPD] = useState(playerStats.physicalDef);
-  const [playerMD, setPlayerMD] = useState(playerStats.magicalDef);
+  const [playerPD, setPlayerPD] = useState(() => {
+    const armor = playerStats.armor ? playerStats.armor.defense : 0;
+    const modifier =
+      playerStats.accessory && playerStats.accessory.type === "physical defense"
+        ? playerStats.accessory.value
+        : 0;
+    return armor + modifier;
+  });
+  const [playerMD, setPlayerMD] = useState(() => {
+    const helmet = playerStats.helmet ? playerStats.helmet.defense : 0;
+    const modifier =
+      playerStats.accessory && playerStats.accessory.type === "magical defense"
+        ? playerStats.accessory.value
+        : 0;
+    return helmet + modifier;
+  });
 
   const opponentStats = useSelector((state) => state.fiend);
   const [opponentHealth, setOpponentHealth] = useState(opponentStats.maxHealth);
@@ -25,23 +39,6 @@ export const useBattleSequence = (sequence) => {
   const [fleeing, setFleeing] = useState(false);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const physicalModifier =
-      playerStats.accessory && playerStats.accessory.type === "physical defense"
-        ? playerStats.accessory.value
-        : 0;
-    const magicalModifier =
-      playerStats.accessory && playerStats.accessory.type === "magical defense"
-        ? playerStats.accessory.value
-        : 0;
-
-    const armor = playerStats.armor;
-    setPlayerPD(playerPD + armor.defense + physicalModifier);
-
-    const helmet = playerStats.helmet;
-    setPlayerMD(playerMD + helmet.defense + magicalModifier);
-  }, []);
 
   useEffect(() => {
     // ROLL FOR INITIATIVE

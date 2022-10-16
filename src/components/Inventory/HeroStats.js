@@ -1,11 +1,9 @@
 import styles from "./styles.module.css";
 
 export const HeroStats = ({ hero, nextLevel }) => {
-  let pdModifier,
-    mdModifier,
+  let pdModifier = 0,
+    mdModifier = 0,
     speedModifier = 0;
-  pdModifier = hero.armor ? hero.armor.defense : 0;
-  mdModifier = hero.helmet ? hero.helmet.defense : 0;
   if (hero.accessory) {
     switch (hero.accessory.type) {
       case "speed": {
@@ -38,8 +36,14 @@ export const HeroStats = ({ hero, nextLevel }) => {
           Exp {hero.exp} - Next Level {nextLevel - hero.exp}
         </li>
         <li>Speed {hero.speed + speedModifier}</li>
-        <li>Physical Defense {hero.physicalDef + pdModifier}</li>
-        <li>Magical Defense {hero.magicalDef + mdModifier}</li>
+        <li>
+          Physical Defense{" "}
+          {hero.armor ? hero.armor.defense + pdModifier : pdModifier}
+        </li>
+        <li>
+          Magical Defense{" "}
+          {hero.helmet ? hero.helmet.defense + mdModifier : mdModifier}
+        </li>
       </ul>
     </>
   );
