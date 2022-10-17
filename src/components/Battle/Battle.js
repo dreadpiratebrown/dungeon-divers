@@ -79,37 +79,35 @@ export const Battle = ({ onLose, onWin, onFlee }) => {
     <>
       <div className={styles.characters}>
         <div className={styles.fiend}>
-          <div className={styles[opponentAnimation]}>
-            <PlayerSummary
-              type="fiend"
-              name={opponentStats.name}
-              level={opponentStats.level}
-              image={opponentStats.img}
-              health={opponentHealth}
-              maxHealth={opponentStats.maxHealth}
-              pd={opponentPD}
-              maxPD={opponentStats.physicalDef}
-              md={opponentMD}
-              maxMD={opponentStats.magicalDef}
-              flying={opponentStats.flying}
-            />
-          </div>
+          <PlayerSummary
+            type="fiend"
+            name={opponentStats.name}
+            level={opponentStats.level}
+            image={opponentStats.img}
+            health={opponentHealth}
+            maxHealth={opponentStats.maxHealth}
+            pd={opponentPD}
+            maxPD={opponentStats.physicalDef}
+            md={opponentMD}
+            maxMD={opponentStats.magicalDef}
+            flying={opponentStats.flying}
+            animation={opponentAnimation}
+          />
         </div>
         <div className={styles.player}>
-          <div className={styles[playerAnimation]}>
-            <PlayerSummary
-              type="player"
-              name={playerStats.name}
-              level={playerStats.level}
-              image={playerStats.img}
-              health={playerHealth}
-              maxHealth={playerStats.maxHealth}
-              pd={playerPD}
-              maxPD={maxPD}
-              md={playerMD}
-              maxMD={maxMD}
-            />
-          </div>
+          <PlayerSummary
+            type="player"
+            name={playerStats.name}
+            level={playerStats.level}
+            image={playerStats.img}
+            health={playerHealth}
+            maxHealth={playerStats.maxHealth}
+            pd={playerPD}
+            maxPD={maxPD}
+            md={playerMD}
+            maxMD={maxMD}
+            animation={playerAnimation}
+          />
           {showBattleMenu && (
             <BattleMenu
               onPrimary={(name, type, damage) =>

@@ -71,7 +71,7 @@ export const useBattleSequence = (sequence) => {
             turn === 0
               ? setPlayerAnimation("attack")
               : setOpponentAnimation("attack");
-            await wait(100);
+            await wait(250);
 
             turn === 0
               ? setPlayerAnimation("static")
@@ -116,7 +116,7 @@ export const useBattleSequence = (sequence) => {
             turn === 0
               ? setPlayerAnimation("magic")
               : setOpponentAnimation("magic");
-            await wait(1000);
+            await wait(500);
 
             turn === 0
               ? setPlayerAnimation("static")
@@ -124,8 +124,8 @@ export const useBattleSequence = (sequence) => {
             await wait(500);
 
             turn === 0
-              ? setOpponentAnimation("damage")
-              : setPlayerAnimation("damage");
+              ? setOpponentAnimation("magicDamage")
+              : setPlayerAnimation("magicDamage");
             await wait(750);
 
             turn === 0

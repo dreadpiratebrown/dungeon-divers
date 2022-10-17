@@ -13,11 +13,15 @@ export const PlayerSummary = ({
   md,
   maxMD,
   flying,
+  animation,
 }) => {
   return (
     <div className={type === "fiend" ? styles.mainFiend : styles.main}>
-      <div className={styles.portrait}>
-        <img src={image} alt="character portrait" />
+      <div className={styles[animation]}>
+        <div className={styles.portrait}>
+          <div className={styles.gradientOverlay}></div>
+          <img src={image} alt="character portrait" />
+        </div>
       </div>
       <div className={styles.info}>
         <div className={styles.levelName}>
