@@ -62,14 +62,10 @@ export const useBattleSequence = (sequence) => {
             setInSequence(true);
             let miss = false;
             if (turn === 0 && opponentStats.flying && !weapon.ranged) {
-              setAnnouncerMessage(
-                `${attacker.name} missed! Try a ranged attack!`
-              );
+              setAnnouncerMessage(`[Miss! Try a ranged attack!]`);
               miss = true;
             } else {
-              setAnnouncerMessage(
-                `${attacker.name} attacked with the ${name} for ${damage} damage.`
-              );
+              setAnnouncerMessage(`[${name} - ${damage} damage]`);
             }
 
             turn === 0
@@ -116,9 +112,7 @@ export const useBattleSequence = (sequence) => {
         case "magical": {
           (async () => {
             setInSequence(true);
-            setAnnouncerMessage(
-              `${attacker.name} cast ${name} for ${damage} damage.`
-            );
+            setAnnouncerMessage(`[${name} - ${damage} damage]`);
             turn === 0
               ? setPlayerAnimation("magic")
               : setOpponentAnimation("magic");
