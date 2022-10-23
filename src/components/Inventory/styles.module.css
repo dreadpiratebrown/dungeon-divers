@@ -17,6 +17,10 @@
   padding: 10px;
 }
 
+.inventory h1 {
+  margin-top: 0;
+}
+
 .closeBtn {
   background: none;
   border: none;

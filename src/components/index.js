@@ -14,6 +14,7 @@ export * from "./Inventory/ArmorStats";
 export * from "./Inventory/HeroStats";
 export * from "./Inventory/WeaponStats";
 export * from "./PlayerSummary";
+export * from "./Shop";
 export * from "./StartMenu";
 export * from "./TravelScreen";
 export * from "./VictoryScreen";

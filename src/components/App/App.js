@@ -10,6 +10,7 @@ import {
   ExitScreen,
   FleeScreen,
   Generator,
+  Shop,
   StartMenu,
   TravelScreen,
   VictoryScreen,
@@ -114,8 +115,13 @@ export const App = () => {
             setMode("travel");
             setNewGame(false);
           }}
+          onShopClick={() => {
+            setMode("shop");
+          }}
         />
       )}
+
+      {mode === "shop" && <Shop />}
 
       {mode === "gameOver" && !!winner && (
         <EndMenu winner={winner} onStartClick={() => setMode("start")} />

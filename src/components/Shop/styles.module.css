@@ -1,0 +1,129 @@
+.main {
+  left: 5%;
+  padding: 1rem;
+  position: absolute;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  gap: 10px;
+}
+
+.shop,
+.inventory {
+  background: beige;
+  flex: 1 1 50%;
+  box-shadow: 0 0 10px rgb(0 0 0 / 75%);
+  padding: 10px;
+}
+
+.shop h1,
+.inventory h1 {
+  margin-top: 0;
+}
+
+.shop table {
+  width: 100%;
+}
+
+.shop tbody tr:hover {
+  background: linear-gradient(0deg, gold, transparent);
+}
+
+.shop th {
+  border-bottom: 1px solid #000;
+  text-align: left;
+}
+
+.shop tr {
+  position: relative;
+}
+
+.shop td img {
+  margin-right: 5px;
+  max-width: 1.25rem;
+  vertical-align: bottom;
+}
+
+.shop td button {
+  border: 2px solid gold;
+  outline: none;
+  padding: 2px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: initial;
+  background-image: radial-gradient(#c62128, #a00000);
+  border-radius: 2px;
+  color: #fff;
+  box-shadow: 0px 0px 3px gray;
+}
+
+.inventory ul {
+  font-size: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inventory li {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.inventory li:hover {
+  background: linear-gradient(0deg, gold, transparent);
+}
+
+.inventory li img {
+  max-width: 1.25rem;
+}
+
+.itemStats {
+  background: #fff;
+  box-shadow: 0 0 10px rgb(0 0 0 / 75%);
+  color: #000;
+  left: 0;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  transform: translateX(calc(-100% - 15px));
+  z-index: 10;
+}
+
+.shop .itemStats {
+  left: auto;
+  right: 0;
+  transform: translateX(100%);
+}
+
+.shop .itemStats ul {
+  font-size: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inventory .itemStats::after {
+  border-bottom: 5px solid transparent;
+  border-left: 10px solid #fff;
+  border-top: 5px solid transparent;
+  content: "";
+  display: block;
+  position: absolute;
+  right: -10px;
+  top: 10px;
+}
+
+.shop .itemStats::after {
+  border-bottom: 5px solid transparent;
+  border-right: 10px solid #fff;
+  border-top: 5px solid transparent;
+  content: "";
+  display: block;
+  position: absolute;
+  left: -10px;
+  top: 10px;
+}

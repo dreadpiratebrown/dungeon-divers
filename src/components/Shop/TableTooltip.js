@@ -1,0 +1,53 @@
+import { useState } from "react";
+import styles from "./styles.module.css";
+
+export const TableTooltip = ({ item }) => {
+  const [active, setActive] = useState(false);
+
+  const showTip = () => {
+    setActive(true);
+  };
+
+  const hideTip = () => {
+    setActive(false);
+  };
+
+  return (
+    <tr onMouseOver={showTip} onMouseOut={hideTip}>
+      <td>
+        <img src={item.icon} alt={item.name} />
+        {item.name}
+        {active && item && (
+          <div className={styles.itemStats}>
+            <ul>
+              <li>{item.name}</li>
+              {item.item === "weapon" && <li>Attack: {item.attack}</li>}
+              {(item.item === "armor" || item.item === "helmet") && (
+                <li>Defense: {item.defense}</li>
+              )}
+              {item.item !== "accessory" && !item.usable && (
+                <li>
+                  Type: {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                </li>
+              )}
+              {item.item === "accessory" && (
+                <li>
+                  {item.type.charAt(0).toUpperCase() + item.type.slice(1)}:{" "}
+                  {item.value}
+                </li>
+              )}
+              {item.item === "weapon" && (
+                <li>Range: {item.ranged === true ? "Ranged" : "Melee"}</li>
+              )}
+              {item.usable && <li>{item.description}</li>}
+            </ul>
+          </div>
+        )}
+      </td>
+      <td>{item.buy}</td>
+      <td>
+        <button>Buy</button>
+      </td>
+    </tr>
+  );
+};

@@ -3,7 +3,7 @@ import { heal } from "features/hero/heroSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 
-export const ExitScreen = ({ onDungeonClick }) => {
+export const ExitScreen = ({ onDungeonClick, onShopClick }) => {
   const [innText, setInnText] = useState(false);
   const dispatch = useDispatch();
   const max = useSelector((state) => state.hero.maxHealth);
@@ -26,7 +26,9 @@ export const ExitScreen = ({ onDungeonClick }) => {
       <button className={styles.actionBtn} onClick={inn}>
         Inn
       </button>
-      <button className={styles.actionBtn}>Shop</button>
+      <button className={styles.actionBtn} onClick={onShopClick}>
+        Shop
+      </button>
       <button className={styles.actionBtn} onClick={onDungeonClick}>
         Dungeon
       </button>

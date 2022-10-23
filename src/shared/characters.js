@@ -9,14 +9,16 @@ export const playerStats = {
   magicalDef: 0,
   primary: {
     id: "790600fc-cbd6-42d3-b48e-01593f12eb16",
-    name: "Rapier",
+    name: "Dagger",
     item: "weapon",
     type: "physical",
-    icon: "/assets/stiletto.png",
+    icon: "/assets/plain-dagger.png",
     attack: 10,
     ranged: false,
     equippable: true,
     usable: false,
+    buy: 20,
+    sell: 4,
   },
   secondary: {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
