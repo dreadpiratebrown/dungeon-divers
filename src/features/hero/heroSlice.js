@@ -45,6 +45,9 @@ export const heroSlice = createSlice({
     increaseGold: (state, action) => {
       state.gold += action.payload;
     },
+    decreaseGold: (state, action) => {
+      state.gold -= action.payload;
+    },
     increaseLevel: (state, action) => {
       state.level++;
       state.maxHealth += action.payload;
@@ -94,6 +97,7 @@ export const {
   heal,
   increaseExp,
   increaseGold,
+  decreaseGold,
   increaseLevel,
   changePrimary,
   changeSecondary,

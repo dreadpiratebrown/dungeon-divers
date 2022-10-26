@@ -121,7 +121,13 @@ export const App = () => {
         />
       )}
 
-      {mode === "shop" && <Shop />}
+      {mode === "shop" && (
+        <Shop
+          onCloseClick={() => {
+            setMode("exit");
+          }}
+        />
+      )}
 
       {mode === "gameOver" && !!winner && (
         <EndMenu winner={winner} onStartClick={() => setMode("start")} />

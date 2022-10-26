@@ -14,13 +14,193 @@ import {
   scrolls,
   swords,
 } from "shared";
-import { TableTooltip } from "./TableTooltip";
 import { Tooltip } from "./Tooltip";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decreaseGold,
+  increaseGold,
+  changePrimary,
+  changeSecondary,
+  changeArmor,
+  changeHelmet,
+  changeAccessory,
+} from "features/hero/heroSlice";
+import { add, remove } from "features/inventory/inventorySlice";
+import uuid from "react-uuid";
 
-export const Shop = () => {
+const TableHeader = () => {
+  return (
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+  );
+};
+
+const WeaponRow = (weapon) => {
+  const dispatch = useDispatch();
+
+  const buyItem = (item) => {
+    dispatch(decreaseGold(item.buy));
+    const tempItem = { ...item };
+    if (!tempItem.id) {
+      tempItem.id = uuid();
+    }
+    dispatch(add(tempItem));
+  };
+
+  return (
+    <tr>
+      <td>
+        <img src={weapon.weapon.icon} alt={weapon.weapon.name} />
+        {weapon.weapon.name}
+      </td>
+      <td>
+        {weapon.weapon.type} attack: {weapon.weapon.attack},{" "}
+        {weapon.weapon.ranged ? "ranged" : "melee"}
+      </td>
+      <td>{weapon.weapon.buy}</td>
+      <td>
+        <button onClick={() => buyItem(weapon.weapon)}>Buy</button>
+      </td>
+    </tr>
+  );
+};
+
+const ArmorRow = (armor) => {
+  const dispatch = useDispatch();
+
+  const buyItem = (item) => {
+    dispatch(decreaseGold(item.buy));
+    const tempItem = { ...item };
+    if (!tempItem.id) {
+      tempItem.id = uuid();
+    }
+    dispatch(add(tempItem));
+  };
+
+  return (
+    <tr>
+      <td>
+        <img src={armor.armor.icon} alt={armor.armor.name} />
+        {armor.armor.name}
+      </td>
+      <td>
+        {armor.armor.type} defense: {armor.armor.defense}
+      </td>
+      <td>{armor.armor.buy}</td>
+      <td>
+        <button onClick={() => buyItem(armor.armor)}>Buy</button>
+      </td>
+    </tr>
+  );
+};
+
+const ScrollRow = (scroll) => {
+  const dispatch = useDispatch();
+
+  const buyItem = (item) => {
+    dispatch(decreaseGold(item.buy));
+    const tempItem = { ...item };
+    if (!tempItem.id) {
+      tempItem.id = uuid();
+    }
+    dispatch(add(tempItem));
+  };
+  return (
+    <tr>
+      <td>
+        <img src={scroll.scroll.icon} alt={scroll.scroll.name} />
+        {scroll.scroll.name}
+      </td>
+      <td>{scroll.scroll.description}</td>
+      <td>{scroll.scroll.buy}</td>
+      <td>
+        <button onClick={() => buyItem(scroll.scroll)}>Buy</button>
+      </td>
+    </tr>
+  );
+};
+
+const AccessoryRow = (accessory) => {
+  const dispatch = useDispatch();
+
+  const buyItem = (item) => {
+    dispatch(decreaseGold(item.buy));
+    const tempItem = { ...item };
+    if (!tempItem.id) {
+      tempItem.id = uuid();
+    }
+    dispatch(add(tempItem));
+  };
+  return (
+    <tr>
+      <td>
+        <img src={accessory.accessory.icon} alt={accessory.accessory.name} />
+        {accessory.accessory.name}
+      </td>
+      <td>
+        {accessory.accessory.type}: {accessory.accessory.value}
+      </td>
+      <td>{accessory.accessory.buy}</td>
+      <td>
+        <button onClick={() => buyItem(accessory.accessory)}>Buy</button>
+      </td>
+    </tr>
+  );
+};
+
+export const Shop = ({ onCloseClick }) => {
   const hero = useSelector((state) => state.hero);
   const inventory = useSelector((state) => state.inventory.items);
+  const dispatch = useDispatch();
+
+  const sellItem = (item) => {
+    dispatch(increaseGold(item.sell));
+    dispatch(remove(item));
+  };
+
+  const unequip = (item) => {
+    switch (item) {
+      case "primary": {
+        dispatch(add(hero.primary));
+        dispatch(changePrimary(null));
+
+        break;
+      }
+      case "secondary": {
+        dispatch(add(hero.secondary));
+        dispatch(changeSecondary(null));
+
+        break;
+      }
+      case "armor": {
+        dispatch(add(hero.armor));
+        dispatch(changeArmor(null));
+
+        break;
+      }
+      case "helmet": {
+        dispatch(add(hero.helmet));
+        dispatch(changeHelmet(null));
+
+        break;
+      }
+      case "accessory": {
+        dispatch(add(hero.accessory));
+        dispatch(changeAccessory(null));
+
+        break;
+      }
+
+      default:
+        break;
+    }
+  };
 
   return (
     <div className={styles.main}>
@@ -37,235 +217,68 @@ export const Shop = () => {
 
           <TabPanel>
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th></th>
-                </tr>
-              </thead>
+              <TableHeader />
               <tbody>
                 {swords.map((sword, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={sword.icon} alt={sword.name} />
-                      {sword.name}
-                    </td>
-                    <td>
-                      {sword.type} attack: {sword.attack},{" "}
-                      {sword.ranged ? "ranged" : "melee"}
-                    </td>
-                    <td>{sword.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <WeaponRow weapon={sword} key={index} />
                 ))}
                 {bows.map((bow, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={bow.icon} alt={bow.name} />
-                      {bow.name}
-                    </td>
-                    <td>
-                      {bow.type} attack: {bow.attack},{" "}
-                      {bow.ranged ? "ranged" : "melee"}
-                    </td>
-                    <td>{bow.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <WeaponRow weapon={bow} key={index} />
                 ))}
               </tbody>
             </table>
           </TabPanel>
           <TabPanel>
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th></th>
-                </tr>
-              </thead>
+              <TableHeader />
               <tbody>
                 {magic.map((spell, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={spell.icon} alt={spell.name} />
-                      {spell.name}
-                    </td>
-                    <td>
-                      {spell.type} defense: {spell.attack}
-                    </td>
-                    <td>{spell.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <WeaponRow weapon={spell} key={index} />
                 ))}
                 {scrolls.map((scroll, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={scroll.icon} alt={scroll.name} />
-                      {scroll.name}
-                    </td>
-                    <td>{scroll.description}</td>
-                    <td>{scroll.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <ScrollRow scroll={scroll} key={index} />
                 ))}
               </tbody>
             </table>
           </TabPanel>
           <TabPanel>
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th></th>
-                </tr>
-              </thead>
+              <TableHeader />
               <tbody>
                 {armor.map((a, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={a.icon} alt={a.name} />
-                      {a.name}
-                    </td>
-                    <td>
-                      {a.type} defense: {a.defense}
-                    </td>
-                    <td>{a.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <ArmorRow armor={a} key={index} />
                 ))}
               </tbody>
             </table>
           </TabPanel>
           <TabPanel>
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th></th>
-                </tr>
-              </thead>
+              <TableHeader />
               <tbody>
                 {helmets.map((helmet, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={helmet.icon} alt={helmet.name} />
-                      {helmet.name}
-                    </td>
-                    <td>
-                      {helmet.type} defense: {helmet.defense}
-                    </td>
-                    <td>{helmet.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <ArmorRow armor={helmet} key={index} />
                 ))}
               </tbody>
             </table>
           </TabPanel>
           <TabPanel style={{ overflow: "auto", maxHeight: "70vh" }}>
             <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th></th>
-                </tr>
-              </thead>
+              <TableHeader />
               <tbody>
                 {boots.map((boot, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={boot.icon} alt={boot.name} />
-                      {boot.name}
-                    </td>
-                    <td>
-                      {boot.type}: {boot.value}
-                    </td>
-                    <td>{boot.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <AccessoryRow accessory={boot} key={index} />
                 ))}
                 {gloves.map((glove, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={glove.icon} alt={glove.name} />
-                      {glove.name}
-                    </td>
-                    <td>
-                      {glove.type}: {glove.value}
-                    </td>
-                    <td>{glove.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <AccessoryRow accessory={glove} key={index} />
                 ))}
                 {bracelets.map((bracelet, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={bracelet.icon} alt={bracelet.name} />
-                      {bracelet.name}
-                    </td>
-                    <td>
-                      {bracelet.type}: {bracelet.value}
-                    </td>
-                    <td>{bracelet.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <AccessoryRow accessory={bracelet} key={index} />
                 ))}
                 {necklaces.map((necklace, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={necklace.icon} alt={necklace.name} />
-                      {necklace.name}
-                    </td>
-                    <td>
-                      {necklace.type}: {necklace.value}
-                    </td>
-                    <td>{necklace.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <AccessoryRow accessory={necklace} key={index} />
                 ))}
                 {jewelry.map((jewel, index) => (
-                  <tr key={index}>
-                    <td>
-                      <img src={jewel.icon} alt={jewel.name} />
-                      {jewel.name}
-                    </td>
-                    <td>
-                      {jewel.type}: {jewel.value}
-                    </td>
-                    <td>{jewel.buy}</td>
-                    <td>
-                      <button>Buy</button>
-                    </td>
-                  </tr>
+                  <AccessoryRow accessory={jewel} key={index} />
                 ))}
               </tbody>
             </table>
@@ -273,6 +286,9 @@ export const Shop = () => {
         </Tabs>
       </div>
       <div className={styles.inventory}>
+        <button className={styles.closeBtn} onClick={onCloseClick}>
+          X
+        </button>
         <p>Gold: {hero.gold}</p>
         <h2>Equipment</h2>
         <ul>
@@ -281,6 +297,7 @@ export const Shop = () => {
             {hero.primary && (
               <>
                 <img src={hero.primary.icon} alt="icon" /> {hero.primary.name}
+                <button onClick={() => unequip("primary")}>Unequip</button>
               </>
             )}
           </Tooltip>
@@ -290,6 +307,7 @@ export const Shop = () => {
               <>
                 <img src={hero.secondary.icon} alt="icon" />{" "}
                 {hero.secondary.name}
+                <button onClick={() => unequip("secondary")}>Unequip</button>
               </>
             )}
           </Tooltip>
@@ -298,6 +316,7 @@ export const Shop = () => {
             {hero.helmet && (
               <>
                 <img src={hero.helmet.icon} alt="icon" /> {hero.helmet.name}
+                <button onClick={() => unequip("helmet")}>Unequip</button>
               </>
             )}
           </Tooltip>
@@ -306,6 +325,7 @@ export const Shop = () => {
             {hero.armor && (
               <>
                 <img src={hero.armor.icon} alt="icon" /> {hero.armor.name}
+                <button onClick={() => unequip("armor")}>Unequip</button>
               </>
             )}
           </Tooltip>
@@ -315,6 +335,7 @@ export const Shop = () => {
               <>
                 <img src={hero.accessory.icon} alt="icon" />
                 {hero.accessory.name}
+                <button onClick={() => unequip("accessory")}>Unequip</button>
               </>
             )}
           </Tooltip>
@@ -325,6 +346,7 @@ export const Shop = () => {
             <Tooltip key={index} item={item}>
               <img src={item.icon} alt={item.name} />
               {item.name}
+              <button onClick={() => sellItem(item)}>Sell ({item.sell})</button>
             </Tooltip>
           ))}
         </ul>

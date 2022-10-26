@@ -12,9 +12,11 @@ const initialState = {
       icon: "/assets/scroll-unfurled.png",
       equippable: false,
       usable: true,
+      buy: 75,
+      sell: 15,
     },
     {
-      id: "1",
+      id: "631a2f83-a63f-4cd9-976c-6274cb1564d1",
       name: "Scroll of Healing I",
       item: "scroll",
       effect: "heal",
@@ -24,6 +26,8 @@ const initialState = {
       icon: "/assets/scroll-unfurled.png",
       equippable: false,
       usable: true,
+      buy: 40,
+      sell: 8,
     },
   ],
 };
