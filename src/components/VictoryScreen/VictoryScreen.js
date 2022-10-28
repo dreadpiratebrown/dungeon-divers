@@ -5,16 +5,21 @@ import {
   increaseGold,
   increaseLevel,
 } from "features/hero/heroSlice";
+import { decrementRecharge } from "features/app/appSlice";
 import { useEffect, useState } from "react";
 
 export const VictoryScreen = ({ fiend, onStartClick }) => {
   const [levelUp, setLevelUp] = useState(false);
 
   const dispatch = useDispatch();
+  const recharging = useSelector((state) => state.app.teleportRecharging);
 
   useEffect(() => {
     dispatch(increaseExp(fiend.exp));
     dispatch(increaseGold(fiend.gold));
+    if (recharging) {
+      dispatch(decrementRecharge());
+    }
   }, [fiend]);
 
   const exp = useSelector((state) => state.hero.exp);

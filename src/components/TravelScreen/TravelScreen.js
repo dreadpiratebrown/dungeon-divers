@@ -2,7 +2,12 @@ import styles from "./styles.module.css";
 import { fiends, travelText, treasures } from "shared";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetApp } from "features/app/appSlice";
+import {
+  exitDungeon,
+  rechargeTeleport,
+  setRecharge,
+  resetApp,
+} from "features/app/appSlice";
 import { setFiend } from "features/fiend/fiendSlice";
 import { reset } from "features/hero/heroSlice";
 import { add, resetInventory } from "features/inventory/inventorySlice";
@@ -14,6 +19,7 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
   const [treasure, setTreasure] = useState();
   const [percentile, setPercentile] = useState();
   const [showInventory, setShowInventory] = useState(false);
+  const [confirmTeleport, setConfirmTeleport] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -26,7 +32,9 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
   }, [newGame]);
 
   const level = useSelector((state) => state.hero.level);
+  const recharging = useSelector((state) => state.app.teleportRecharging);
   const travel = Math.floor(Math.random() * travelText.length);
+
   useEffect(() => {
     setPercentile(Math.floor(Math.random() * 100) + 1);
   }, []);
@@ -59,42 +67,74 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
     setPercentile(Math.floor(Math.random() * 100) + 1);
   };
 
+  const teleportOut = () => {
+    dispatch(rechargeTeleport(true));
+    dispatch(setRecharge(Math.floor(Math.random() * 4) + 3));
+    dispatch(exitDungeon(true));
+  };
+
   return (
     <>
-      <div className={styles.main}>
-        <p>{travelText[travel]}</p>
-        {encounterType === "fiend" && (
-          <>
-            <p>You encounter a fiend! </p>
-            <button
-              className={styles.fightBtn}
-              onClick={() => setShowInventory(true)}
-            >
-              Inventory
-            </button>
-            <button onClick={onFightClick} className={styles.fightBtn}>
-              Fight!
-            </button>
-          </>
-        )}
-        {encounterType === "treasure" && (
-          <>
-            <p>You find treasure!</p>
-            <p>You have found a {treasure.name}.</p>
-            <button
-              className={styles.fightBtn}
-              onClick={() => setShowInventory(true)}
-            >
-              Inventory
-            </button>
-            <button onClick={carryOn} className={styles.fightBtn}>
-              Continue!
-            </button>
-          </>
-        )}
-      </div>
+      {!confirmTeleport && (
+        <div className={styles.main}>
+          <p>{travelText[travel]}</p>
+          {encounterType === "fiend" && (
+            <>
+              <p>You encounter a fiend! </p>
+              <button onClick={onFightClick} className={styles.fightBtn}>
+                Fight!
+              </button>
+              <button
+                className={styles.fightBtn}
+                onClick={() => setShowInventory(true)}
+              >
+                Inventory
+              </button>
+              <button
+                className={styles.fightBtn}
+                onClick={() => setConfirmTeleport(true)}
+                disabled={recharging ? "disabled" : ""}
+              >
+                Teleport Out {recharging ? "(Recharging)" : ""}
+              </button>
+            </>
+          )}
+          {encounterType === "treasure" && (
+            <>
+              <p>You find treasure!</p>
+              <p>You have found a {treasure.name}.</p>
+              <button
+                className={styles.fightBtn}
+                onClick={() => setShowInventory(true)}
+              >
+                Inventory
+              </button>
+              <button onClick={carryOn} className={styles.fightBtn}>
+                Continue!
+              </button>
+            </>
+          )}
+        </div>
+      )}
       {showInventory && (
         <Inventory onCloseClick={() => setShowInventory(false)} />
+      )}
+      {confirmTeleport && (
+        <div className={styles.main}>
+          <p>
+            Are you sure you want to teleport out? Your teleport skill will take
+            some time to recharge.
+          </p>
+          <button className={styles.fightBtn} onClick={teleportOut}>
+            Yes, take me out
+          </button>
+          <button
+            className={styles.fightBtn}
+            onClick={() => setConfirmTeleport(false)}
+          >
+            No, take me back
+          </button>
+        </div>
       )}
     </>
   );

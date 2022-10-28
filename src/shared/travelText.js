@@ -17,4 +17,5 @@ export const travelText = [
   "The passage is flooded here. You slosh your way through the knee-deep water, looking for an exit.",
   "An ancient rope bridge crosses a chasm here. You pick your way carefully across the bridge, trying not to look down.",
   "A thick layer of dust covers everything in this area. You cover your mouth and nose and squint your eyes against the grit.",
+  "The floor is strewn with garbage, the walls are covered in graffiti, and the smell is unbearable. You can't stay here. This is goblin country.",
 ];

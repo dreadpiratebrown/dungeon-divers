@@ -67,6 +67,12 @@
   box-shadow: 0px 0px 3px gray;
 }
 
+.shop td button[disabled] {
+  border-color: #999;
+  background-image: radial-gradient(#5e5c5c, #9dc5c3);
+  cursor: not-allowed;
+}
+
 .inventory li button {
   margin-left: auto;
 }

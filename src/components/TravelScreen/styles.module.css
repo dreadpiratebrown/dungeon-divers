@@ -20,3 +20,9 @@
   color: #fff;
   box-shadow: 0px 0px 3px gray;
 }
+
+.fightBtn[disabled] {
+  border-color: #999;
+  background-image: radial-gradient(#5e5c5c, #9dc5c3);
+  cursor: not-allowed;
+}

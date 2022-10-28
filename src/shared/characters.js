@@ -4,7 +4,7 @@ export const playerStats = {
   maxHealth: 25,
   name: "Brian",
   img: "/assets/barbarian.png",
-  gold: 100,
+  gold: 0,
   physicalDef: 0,
   magicalDef: 0,
   primary: {
