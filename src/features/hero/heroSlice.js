@@ -35,8 +35,8 @@ export const heroSlice = createSlice({
     },
     heal: (state, action) => {
       state.health =
-        state.health + action.payload > playerStats.maxHealth
-          ? playerStats.maxHealth
+        state.health + action.payload > state.maxHealth
+          ? state.maxHealth
           : state.health + action.payload;
     },
     increaseExp: (state, action) => {
