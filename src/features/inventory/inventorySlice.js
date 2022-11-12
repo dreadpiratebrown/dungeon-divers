@@ -9,7 +9,7 @@ const initialState = {
       effect: "exit",
       description:
         "Use this scroll to exit the dungeon. Scrolls can only be used once.",
-      icon: "/assets/scroll-unfurled.png",
+      icon: require("../../images/scroll-unfurled.png"),
       equippable: false,
       usable: true,
       buy: 75,
@@ -23,7 +23,7 @@ const initialState = {
       value: 20,
       description:
         "Use this scroll to gain 20 HP. Scrolls can only be used once.",
-      icon: "/assets/scroll-unfurled.png",
+      icon: require("../../images/scroll-unfurled.png"),
       equippable: false,
       usable: true,
       buy: 40,

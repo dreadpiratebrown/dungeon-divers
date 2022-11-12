@@ -9,12 +9,12 @@ import {
   resetApp,
 } from "features/app/appSlice";
 import { setFiend } from "features/fiend/fiendSlice";
-import { reset } from "features/hero/heroSlice";
+import { resetHero } from "features/hero/heroSlice";
 import { add, resetInventory } from "features/inventory/inventorySlice";
 import { Inventory } from "components";
 import uuid from "react-uuid";
 
-export const TravelScreen = ({ onFightClick, newGame }) => {
+export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
   const [encounterType, setEncounterType] = useState();
   const [treasure, setTreasure] = useState();
   const [percentile, setPercentile] = useState();
@@ -26,7 +26,7 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
   useEffect(() => {
     if (newGame) {
       dispatch(resetApp());
-      dispatch(reset());
+      dispatch(resetHero());
       dispatch(resetInventory());
     }
   }, [newGame]);
@@ -62,10 +62,6 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
       tempTreasure = null;
     }
   }, [percentile]);
-
-  const carryOn = () => {
-    setPercentile(Math.floor(Math.random() * 100) + 1);
-  };
 
   const teleportOut = () => {
     dispatch(rechargeTeleport(true));
@@ -109,7 +105,7 @@ export const TravelScreen = ({ onFightClick, newGame }) => {
               >
                 Inventory
               </button>
-              <button onClick={carryOn} className={styles.fightBtn}>
+              <button onClick={onCarryOn} className={styles.fightBtn}>
                 Continue!
               </button>
             </>

@@ -10,6 +10,7 @@ import {
   ExitScreen,
   FleeScreen,
   Generator,
+  Map,
   Shop,
   StartMenu,
   TravelScreen,
@@ -59,8 +60,18 @@ export const App = () => {
       {mode === "build" && (
         <CharacterBuilder
           onStartClick={() => {
-            setMode("travel");
+            setMode("map");
           }}
+        />
+      )}
+
+      {mode === "map" && (
+        <Map
+          onEncounter={() => {
+            setMode("travel");
+            setNewGame(false);
+          }}
+          newGame={newGame}
         />
       )}
 
@@ -68,6 +79,9 @@ export const App = () => {
         <TravelScreen
           onFightClick={() => {
             setMode("battle");
+          }}
+          onCarryOn={() => {
+            setMode("map");
           }}
           newGame={newGame}
         />
@@ -93,8 +107,7 @@ export const App = () => {
         <VictoryScreen
           fiend={winner}
           onStartClick={() => {
-            setMode("travel");
-            setNewGame(false);
+            setMode("map");
           }}
         />
       )}
@@ -112,7 +125,7 @@ export const App = () => {
         <ExitScreen
           onDungeonClick={() => {
             dispatch(exitDungeon(false));
-            setMode("travel");
+            setMode("map");
             setNewGame(false);
           }}
           onShopClick={() => {

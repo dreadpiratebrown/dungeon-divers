@@ -71,7 +71,7 @@ export const heroSlice = createSlice({
     changeItem: (state, action) => {
       state[action.payload.item] = action.payload;
     },
-    reset: (state) => {
+    resetHero: (state) => {
       state.health = initialState.health;
       state.maxHealth = initialState.maxHealth;
       state.exp = initialState.exp;
@@ -105,7 +105,7 @@ export const {
   changeHelmet,
   changeAccessory,
   changeItem,
-  reset,
+  resetHero,
 } = heroSlice.actions;
 
 export default heroSlice.reducer;

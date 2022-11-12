@@ -3,7 +3,7 @@ export const playerStats = {
   exp: 0,
   maxHealth: 25,
   name: "Brian",
-  img: "/assets/barbarian.png",
+  img: require("../images/barbarian.png"),
   gold: 0,
   physicalDef: 0,
   magicalDef: 0,
@@ -12,7 +12,7 @@ export const playerStats = {
     name: "Dagger",
     item: "weapon",
     type: "physical",
-    icon: "/assets/plain-dagger.png",
+    icon: require("../images/plain-dagger.png"),
     attack: 10,
     ranged: false,
     equippable: true,
@@ -25,7 +25,7 @@ export const playerStats = {
     name: "Lesser Blast",
     item: "weapon",
     type: "magical",
-    icon: "/assets/magic-swirl.png",
+    icon: require("../images/magic-swirl.png"),
     attack: 10,
     ranged: true,
     equippable: true,
@@ -38,7 +38,7 @@ export const playerStats = {
     name: "Leather Armor",
     item: "armor",
     type: "physical",
-    icon: "/assets/leather-vest.png",
+    icon: require("../images/leather-vest.png"),
     defense: 25,
     equippable: true,
     usable: false,
@@ -50,7 +50,7 @@ export const playerStats = {
     name: "Bandana",
     item: "helmet",
     type: "magical",
-    icon: "/assets/bandana.png",
+    icon: require("../images/bandana.png"),
     defense: 25,
     equippable: true,
     usable: false,
@@ -66,7 +66,7 @@ export const fiends = [
     exp: 3,
     name: "Skeleton",
     maxHealth: 6,
-    img: "/assets/skeleton.png",
+    img: require("../images/skeleton.png"),
     gold: 2,
     physicalDef: 9,
     magicalDef: 9,
@@ -87,7 +87,7 @@ export const fiends = [
     exp: 2,
     name: "Rat",
     maxHealth: 4,
-    img: "/assets/rat.png",
+    img: require("../images/rat.png"),
     gold: 2,
     physicalDef: 8,
     magicalDef: 9,
@@ -108,7 +108,7 @@ export const fiends = [
     exp: 6,
     name: "Bat",
     maxHealth: 8,
-    img: "/assets/bat.png",
+    img: require("../images/bat.png"),
     gold: 1,
     physicalDef: 2,
     magicalDef: 5,
@@ -130,7 +130,7 @@ export const fiends = [
     exp: 1,
     name: "Slime",
     maxHealth: 6,
-    img: "/assets/slime.png",
+    img: require("../images/slime.png"),
     gold: 4,
     physicalDef: 4,
     magicalDef: 12,
@@ -151,7 +151,7 @@ export const fiends = [
     exp: 8,
     name: "Goblin",
     maxHealth: 16,
-    img: "/assets/goblin.png",
+    img: require("../images/goblin.png"),
     gold: 7,
     physicalDef: 12,
     magicalDef: 2,
@@ -172,7 +172,7 @@ export const fiends = [
     exp: 7,
     name: "Evil Gnome",
     maxHealth: 10,
-    img: "/assets/bad-gnome.png",
+    img: require("../images/bad-gnome.png"),
     gold: 10,
     physicalDef: 12,
     magicalDef: 9,
@@ -191,7 +191,7 @@ export const fiends = [
   {
     level: 2,
     name: "Ghost",
-    img: "/assets/ghost.png",
+    img: require("../images/ghost.png"),
     maxHealth: 9,
     primary: {
       name: "Drain",
@@ -212,7 +212,7 @@ export const fiends = [
   {
     level: 4,
     name: "Giant Frog",
-    img: "/assets/frog.png",
+    img: require("../images/frog.png"),
     maxHealth: 13,
     primary: {
       name: "Flying Leap",
@@ -233,7 +233,7 @@ export const fiends = [
   {
     level: 4,
     name: "Zombie",
-    img: "/assets/shambling-zombie.png",
+    img: require("../images/shambling-zombie.png"),
     maxHealth: 21,
     primary: {
       name: "Bite",
@@ -254,7 +254,7 @@ export const fiends = [
   {
     level: 5,
     name: "Imp",
-    img: "/assets/imp.png",
+    img: require("../images/imp.png"),
     maxHealth: 21,
     primary: {
       name: "Barbed Tail",
@@ -276,7 +276,7 @@ export const fiends = [
   {
     level: 6,
     name: "Spider",
-    img: "/assets/spider-alt.png",
+    img: require("../images/spider-alt.png"),
     maxHealth: 31,
     primary: {
       name: "Bite",
@@ -297,7 +297,7 @@ export const fiends = [
   {
     level: 6,
     name: "Giant Crab",
-    img: "/assets/crab.png",
+    img: require("../images/crab.png"),
     maxHealth: 27,
     primary: {
       name: "Claws",
@@ -318,7 +318,7 @@ export const fiends = [
   {
     level: 7,
     name: "Killer Wasp",
-    img: "/assets/wasp-sting.png",
+    img: require("../images/wasp-sting.png"),
     maxHealth: 39,
     primary: {
       name: "Battering Wings",
@@ -340,7 +340,7 @@ export const fiends = [
   {
     level: 7,
     name: "Mantis",
-    img: "/assets/praying-mantis.png",
+    img: require("../images/praying-mantis.png"),
     maxHealth: 33,
     primary: {
       name: "Razor Claws",
@@ -361,7 +361,7 @@ export const fiends = [
   {
     level: 8,
     name: "Mummy",
-    img: "/assets/mummy-head.png",
+    img: require("../images/mummy-head.png"),
     maxHealth: 35,
     primary: {
       name: "Necrotic Grasp",
@@ -382,7 +382,7 @@ export const fiends = [
   {
     level: 8,
     name: "Giant Snake",
-    img: "/assets/snake.png",
+    img: require("../images/snake.png"),
     maxHealth: 37,
     primary: {
       name: "Bite",
@@ -403,7 +403,7 @@ export const fiends = [
   {
     level: 8,
     name: "Troglodyte",
-    img: "/assets/troglodyte.png",
+    img: require("../images/troglodyte.png"),
     maxHealth: 47,
     primary: {
       name: "Talons",
@@ -424,7 +424,7 @@ export const fiends = [
   {
     level: 9,
     name: "Giant Centipede",
-    img: "/assets/centipede.png",
+    img: require("../images/centipede.png"),
     maxHealth: 45,
     primary: {
       name: "Bite",
@@ -445,7 +445,7 @@ export const fiends = [
   {
     level: 9,
     name: "Fish-Man",
-    img: "/assets/fish-monster.png",
+    img: require("../images/fish-monster.png"),
     maxHealth: 32,
     primary: {
       name: "Trident",
@@ -466,7 +466,7 @@ export const fiends = [
   {
     level: 10,
     name: "Medusa",
-    img: "/assets/medusa-head.png",
+    img: require("../images/medusa-head.png"),
     maxHealth: 42,
     primary: {
       name: "Snakebites",
@@ -487,7 +487,7 @@ export const fiends = [
   {
     level: 10,
     name: "Salamander",
-    img: "/assets/salamander.png",
+    img: require("../images/salamander.png"),
     maxHealth: 29,
     primary: {
       name: "Burn",
@@ -508,7 +508,7 @@ export const fiends = [
   {
     level: 11,
     name: "Bear",
-    img: "/assets/bear-head.png",
+    img: require("../images/bear-head.png"),
     maxHealth: 62,
     primary: {
       name: "Jaws",
@@ -529,7 +529,7 @@ export const fiends = [
   {
     level: 12,
     name: "Evil Book",
-    img: "/assets/evil-book.png",
+    img: require("../images/evil-book.png"),
     maxHealth: 53,
     primary: {
       name: "Greater Blast",
@@ -551,7 +551,7 @@ export const fiends = [
   {
     level: 12,
     name: "Carnivorous Plant",
-    img: "/assets/carnivorous-plant.png",
+    img: require("../images/carnivorous-plant.png"),
     maxHealth: 55,
     primary: {
       name: "Devour",
@@ -572,7 +572,7 @@ export const fiends = [
   {
     level: 13,
     name: "Megascorpion",
-    img: "/assets/scorpion.png",
+    img: require("../images/scorpion.png"),
     maxHealth: 67,
     primary: {
       name: "Pincers",
@@ -593,7 +593,7 @@ export const fiends = [
   {
     level: 14,
     name: "Mimic",
-    img: "/assets/mimic-chest.png",
+    img: require("../images/mimic-chest.png"),
     maxHealth: 53,
     primary: {
       name: "Giant Bite",
@@ -614,7 +614,7 @@ export const fiends = [
   {
     level: 14,
     name: "Spectre",
-    img: "/assets/spectre.png",
+    img: require("../images/spectre.png"),
     maxHealth: 58,
     primary: {
       name: "Siphon",
@@ -635,7 +635,7 @@ export const fiends = [
   {
     level: 15,
     name: "Tunnel Worm",
-    img: "/assets/leeching-worm.png",
+    img: require("../images/leeching-worm.png"),
     maxHealth: 81,
     primary: {
       name: "Rasp",
@@ -656,7 +656,7 @@ export const fiends = [
   {
     level: 15,
     name: "Fire Elemental",
-    img: "/assets/unfriendly-fire.png",
+    img: require("../images/unfriendly-fire.png"),
     maxHealth: 80,
     primary: {
       name: "Flashfire",
@@ -677,7 +677,7 @@ export const fiends = [
   {
     level: 16,
     name: "Gargoyle",
-    img: "/assets/gargoyle.png",
+    img: require("../images/gargoyle.png"),
     maxHealth: 81,
     primary: {
       name: "Stone Grasp",
@@ -698,7 +698,7 @@ export const fiends = [
   {
     level: 16,
     name: "Giant Croc",
-    img: "/assets/croc-jaws.png",
+    img: require("../images/croc-jaws.png"),
     maxHealth: 69,
     primary: {
       name: "Enormous Bite",
@@ -719,7 +719,7 @@ export const fiends = [
   {
     level: 18,
     name: "Werewolf",
-    img: "/assets/werewolf.png",
+    img: require("../images/werewolf.png"),
     maxHealth: 94,
     primary: {
       name: "Rip & Tear",
@@ -740,7 +740,7 @@ export const fiends = [
   {
     level: 18,
     name: "Vampire",
-    img: "/assets/female-vampire.png",
+    img: require("../images/female-vampire.png"),
     maxHealth: 112,
     primary: {
       name: "Suck Your Blood",
@@ -761,7 +761,7 @@ export const fiends = [
   {
     level: 19,
     name: "Minotaur",
-    img: "/assets/minotaur.png",
+    img: require("../images/minotaur.png"),
     maxHealth: 100,
     primary: {
       name: "Gore",
@@ -782,7 +782,7 @@ export const fiends = [
   {
     level: 19,
     name: "Creepy",
-    img: "/assets/gluttonous-smile.png",
+    img: require("../images/gluttonous-smile.png"),
     maxHealth: 98,
     primary: {
       name: "Gobble",
@@ -803,7 +803,7 @@ export const fiends = [
   {
     level: 20,
     name: "Orc",
-    img: "/assets/orc-head.png",
+    img: require("../images/orc-head.png"),
     maxHealth: 97,
     primary: {
       name: "Hack",
@@ -824,7 +824,7 @@ export const fiends = [
   {
     level: 20,
     name: "Wyvern",
-    img: "/assets/wyvern.png",
+    img: require("../images/wyvern.png"),
     maxHealth: 105,
     primary: {
       name: "Hack",
@@ -845,7 +845,7 @@ export const fiends = [
   {
     level: 21,
     name: "Wyvern",
-    img: "/assets/wyvern.png",
+    img: require("../images/wyvern.png"),
     maxHealth: 107,
     primary: {
       name: "Talons",
@@ -866,7 +866,7 @@ export const fiends = [
   {
     level: 21,
     name: "Ifrit",
-    img: "/assets/ifrit.png",
+    img: require("../images/ifrit.png"),
     maxHealth: 109,
     primary: {
       name: "Giant Claws",
@@ -887,7 +887,7 @@ export const fiends = [
   {
     level: 21,
     name: "Djinn",
-    img: "/assets/djinn.png",
+    img: require("../images/djinn.png"),
     maxHealth: 124,
     primary: {
       name: "Scimitar",
@@ -908,7 +908,7 @@ export const fiends = [
   {
     level: 22,
     name: "Lesser Dragon",
-    img: "/assets/dragon-head.png",
+    img: require("../images/dragon-head.png"),
     maxHealth: 112,
     primary: {
       name: "Raking Claws",
@@ -929,7 +929,7 @@ export const fiends = [
   {
     level: 22,
     name: "Ogre",
-    img: "/assets/ogre.png",
+    img: require("../images/ogre.png"),
     maxHealth: 112,
     primary: {
       name: "Club",
@@ -950,7 +950,7 @@ export const fiends = [
   {
     level: 23,
     name: "Stone Golem",
-    img: "/assets/rock-golem.png",
+    img: require("../images/rock-golem.png"),
     maxHealth: 102,
     primary: {
       name: "Pummel",
@@ -971,7 +971,7 @@ export const fiends = [
   {
     level: 23,
     name: "Troll",
-    img: "/assets/troll.png",
+    img: require("../images/troll.png"),
     maxHealth: 114,
     primary: {
       name: "Filthy Nails",
@@ -992,7 +992,7 @@ export const fiends = [
   {
     level: 24,
     name: "Giant",
-    img: "/assets/giant.png",
+    img: require("../images/giant.png"),
     maxHealth: 121,
     primary: {
       name: "Stomp",
@@ -1013,7 +1013,7 @@ export const fiends = [
   {
     level: 24,
     name: "Ice Golem",
-    img: "/assets/ice-golem.png",
+    img: require("../images/ice-golem.png"),
     maxHealth: 109,
     primary: {
       name: "Freeze",
@@ -1034,7 +1034,7 @@ export const fiends = [
   {
     level: 25,
     name: "Hydra",
-    img: "/assets/hydra.png",
+    img: require("../images/hydra.png"),
     maxHealth: 124,
     primary: {
       name: "Multi-Bite",
@@ -1055,7 +1055,7 @@ export const fiends = [
   {
     level: 25,
     name: "Greater Dragon",
-    img: "/assets/spiked-dragon-head.png",
+    img: require("../images/spiked-dragon-head.png"),
     maxHealth: 120,
     primary: {
       name: "Spike Teeth",

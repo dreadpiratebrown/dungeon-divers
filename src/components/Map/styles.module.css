@@ -1,0 +1,34 @@
+.main {
+  background: beige;
+  height: 800px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  transition: opacity 300ms ease-out;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(20, 39px);
+  grid-template-rows: repeat(20, 39px);
+  gap: 1px;
+}
+
+.wall {
+  background: transparent;
+  width: 39px;
+  height: 39px;
+}
+
+.tunnel,
+.tunnelVisited {
+  background: darkgray;
+  width: 39px;
+  height: 39px;
+}
+
+.tunnelVisited {
+  background: darkkhaki;
+}

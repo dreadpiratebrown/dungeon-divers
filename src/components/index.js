@@ -13,6 +13,7 @@ export * from "./Inventory/AccessoryStats";
 export * from "./Inventory/ArmorStats";
 export * from "./Inventory/HeroStats";
 export * from "./Inventory/WeaponStats";
+export * from "./Map";
 export * from "./PlayerSummary";
 export * from "./Shop";
 export * from "./StartMenu";
