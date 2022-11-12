@@ -72,6 +72,8 @@ export const heroSlice = createSlice({
       state[action.payload.item] = action.payload;
     },
     resetHero: (state) => {
+      state.name = initialState.name;
+      state.img = initialState.img;
       state.health = initialState.health;
       state.maxHealth = initialState.maxHealth;
       state.exp = initialState.exp;
