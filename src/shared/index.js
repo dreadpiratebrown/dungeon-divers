@@ -5,6 +5,7 @@ export * from "./characters";
 export * from "./helmets";
 export * from "./helpers";
 export * from "./magic";
+export * from "./quests";
 export * from "./travelText";
 export * from "./treasures";
 export * from "./weapons";

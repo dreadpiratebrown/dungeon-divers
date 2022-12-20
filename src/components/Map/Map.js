@@ -194,6 +194,7 @@ export const Map = ({ onEncounter, newGame }) => {
     }
     const encounterRoll = Math.floor(Math.random() * 20) + 1;
     if (encounterRoll >= 18) {
+      document.removeEventListener("keydown", moveHero);
       dispatch(saveGrid(grid));
       dispatch(saveHeroPosition({ left: left, top: top }));
       dispatch(saveExitPosition({ left: exit.left, top: exit.top }));

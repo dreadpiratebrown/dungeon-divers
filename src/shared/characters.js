@@ -102,6 +102,9 @@ export const fiends = [
       attack: 11,
     },
     speed: 3,
+    quest: "ratTails",
+    questItem: "rat tail",
+    questDropRate: 75,
   },
   {
     level: 1,
