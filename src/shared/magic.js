@@ -1,6 +1,6 @@
 export const magic = [
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Lesser Blast",
     item: "weapon",
     type: "magical",
@@ -13,7 +13,7 @@ export const magic = [
     sell: 4,
   },
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Blast",
     item: "weapon",
     type: "magical",
@@ -26,7 +26,7 @@ export const magic = [
     sell: 10,
   },
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Greater Blast",
     item: "weapon",
     type: "magical",
@@ -39,7 +39,7 @@ export const magic = [
     sell: 16,
   },
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Minor Fireball",
     item: "weapon",
     type: "magical",
@@ -52,7 +52,7 @@ export const magic = [
     sell: 22,
   },
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Fireball",
     item: "weapon",
     type: "magical",
@@ -65,7 +65,7 @@ export const magic = [
     sell: 28,
   },
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Major Fireball",
     item: "weapon",
     type: "magical",
@@ -78,7 +78,7 @@ export const magic = [
     sell: 34,
   },
   {
-    //id: "3ef03218-0809-4abc-9524-5cd814843594",
+    id: "3ef03218-0809-4abc-9524-5cd814843594",
     name: "Magic Spear",
     item: "weapon",
     type: "magical",
@@ -94,7 +94,7 @@ export const magic = [
 
 export const scrolls = [
   {
-    //id: "1",
+    id: "1",
     name: "Scroll of Healing I",
     item: "scroll",
     effect: "heal",
@@ -108,7 +108,7 @@ export const scrolls = [
     sell: 8,
   },
   {
-    //id: "1",
+    id: "1",
     name: "Scroll of Healing II",
     item: "scroll",
     effect: "heal",
@@ -122,7 +122,7 @@ export const scrolls = [
     sell: 20,
   },
   {
-    //id: "1",
+    id: "1",
     name: "Scroll of Healing III",
     item: "scroll",
     effect: "heal",
@@ -136,7 +136,7 @@ export const scrolls = [
     sell: 40,
   },
   {
-    //id: "1576e7b7-42ef-4b7c-a807-b012832dd60e",
+    id: "1576e7b7-42ef-4b7c-a807-b012832dd60e",
     name: "Scroll of Return",
     item: "scroll",
     effect: "exit",

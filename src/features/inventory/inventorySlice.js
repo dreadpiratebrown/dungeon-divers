@@ -37,10 +37,29 @@ export const inventorySlice = createSlice({
   initialState,
   reducers: {
     add: (state, action) => {
-      state.items.push(action.payload);
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      console.log(index);
+      if (index >= 0) {
+        state.items[index].quantity
+          ? state.items[index].quantity++
+          : (state.items[index].quantity = 2);
+      } else {
+        state.items.push(action.payload);
+      }
     },
     remove: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (state.items[index].quantity > 1) {
+        state.items[index].quantity--;
+      } else {
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+      }
     },
     resetInventory: () => initialState,
   },

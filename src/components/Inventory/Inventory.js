@@ -165,6 +165,7 @@ export const Inventory = ({ onCloseClick }) => {
             >
               <img src={item.icon} alt={item.name} />
               {item.name}
+              {item.quantity > 1 && <> x {item.quantity}</>}
               {item.item === "weapon" && (
                 <>
                   <button onClick={() => equipPrimary(item)}>

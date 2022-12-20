@@ -1,6 +1,6 @@
 export const helmets = [
   {
-    //id: "074656ae-daa2-41ee-8918-dc83099ccf0f",
+    id: "074656ae-daa2-41ee-8918-dc83099ccf0f",
     name: "Bandana",
     item: "helmet",
     type: "magical",
@@ -12,7 +12,7 @@ export const helmets = [
     sell: 10,
   },
   {
-    //id: "1012b303-9a03-4564-93f9-f1b3842c358d",
+    id: "1012b303-9a03-4564-93f9-f1b3842c358d",
     name: "Feather Cap",
     item: "helmet",
     type: "magical",
@@ -24,7 +24,7 @@ export const helmets = [
     sell: 14,
   },
   {
-    //id: "7ae79d12-bf8b-4dc2-8b9d-8999c6506fb5",
+    id: "7ae79d12-bf8b-4dc2-8b9d-8999c6506fb5",
     name: "Tricorne",
     item: "helmet",
     type: "magical",
@@ -36,7 +36,7 @@ export const helmets = [
     sell: 18,
   },
   {
-    //id: "47486d93-8eb1-4e31-8b21-de8b6aefb128",
+    id: "47486d93-8eb1-4e31-8b21-de8b6aefb128",
     name: "Leather Helmet",
     item: "helmet",
     type: "magical",
@@ -48,7 +48,7 @@ export const helmets = [
     sell: 22,
   },
   {
-    //id: "8b315f7f-d615-4abf-84e9-8a9a0152fe57",
+    id: "8b315f7f-d615-4abf-84e9-8a9a0152fe57",
     name: "Mail Coif",
     item: "helmet",
     type: "magical",
@@ -60,7 +60,7 @@ export const helmets = [
     sell: 26,
   },
   {
-    //id: "98df6556-4ee6-49aa-bfaf-c6dc8e9e8991",
+    id: "98df6556-4ee6-49aa-bfaf-c6dc8e9e8991",
     name: "Hoplite Helmet",
     item: "helmet",
     type: "magical",
@@ -72,7 +72,7 @@ export const helmets = [
     sell: 30,
   },
   {
-    //id: "9553b510-2247-4356-a3e0-128ea8663fc2",
+    id: "9553b510-2247-4356-a3e0-128ea8663fc2",
     name: "Sallet",
     item: "helmet",
     type: "magical",
@@ -84,7 +84,7 @@ export const helmets = [
     sell: 34,
   },
   {
-    //id: "f1583fe8-2e58-48ab-8f38-9547b67e5585",
+    id: "f1583fe8-2e58-48ab-8f38-9547b67e5585",
     name: "Close Helm",
     item: "helmet",
     type: "magical",

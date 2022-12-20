@@ -382,6 +382,7 @@ export const Shop = ({ onCloseClick }) => {
             <Tooltip key={index} item={item}>
               <img src={item.icon} alt={item.name} />
               {item.name}
+              {item.quantity > 1 && <> x {item.quantity}</>}
               <button onClick={() => sellItem(item)}>Sell ({item.sell})</button>
             </Tooltip>
           ))}
