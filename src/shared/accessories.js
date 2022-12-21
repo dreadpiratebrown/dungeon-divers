@@ -1,6 +1,6 @@
 export const boots = [
   {
-    //id: "f101bd3d-ef98-415c-ac8d-dea5e4d058ef",
+    id: "f101bd3d-ef98-415c-ac8d-dea5e4d058ef",
     name: "Sandals",
     item: "accessory",
     type: "speed",
@@ -12,7 +12,7 @@ export const boots = [
     sell: 2,
   },
   {
-    //id: "b7223cb9-348f-42b1-8d24-942d29d69e19",
+    id: "b7223cb9-348f-42b1-8d24-942d29d69e19",
     name: "Leather Boots",
     item: "accessory",
     type: "speed",
@@ -24,7 +24,7 @@ export const boots = [
     sell: 4,
   },
   {
-    //id: "6f42419b-d1aa-44da-b026-a372971930ca",
+    id: "6f42419b-d1aa-44da-b026-a372971930ca",
     name: "Spiked Boots",
     item: "accessory",
     type: "speed",
@@ -36,7 +36,7 @@ export const boots = [
     sell: 6,
   },
   {
-    //id: "8c92ef96-2e4c-4d60-8af4-56af0958882c",
+    id: "8c92ef96-2e4c-4d60-8af4-56af0958882c",
     name: "Fancy Boots",
     item: "accessory",
     type: "speed",
@@ -48,7 +48,7 @@ export const boots = [
     sell: 8,
   },
   {
-    //id: "7e6ec5e4-a5bf-4d9d-9a34-0ac4ab5b2913",
+    id: "7e6ec5e4-a5bf-4d9d-9a34-0ac4ab5b2913",
     name: "Winged Boots",
     item: "accessory",
     type: "speed",
@@ -63,7 +63,7 @@ export const boots = [
 
 export const gloves = [
   {
-    //id: "e4cfb214-0988-45f3-a4ae-f690fcd346f6",
+    id: "e4cfb214-0988-45f3-a4ae-f690fcd346f6",
     name: "Fingerless Gloves",
     item: "accessory",
     type: "physical attack",
@@ -75,7 +75,7 @@ export const gloves = [
     sell: 3,
   },
   {
-    //id: "bfc34b6e-a2a6-4252-b112-c6ae9f97193f",
+    id: "bfc34b6e-a2a6-4252-b112-c6ae9f97193f",
     name: "Leather Gloves",
     item: "accessory",
     type: "physical attack",
@@ -87,7 +87,7 @@ export const gloves = [
     sell: 6,
   },
   {
-    //id: "5bd66341-e039-4cb1-bd5e-ba1e46237774",
+    id: "5bd66341-e039-4cb1-bd5e-ba1e46237774",
     name: "Studded Leather Gloves",
     item: "accessory",
     type: "physical attack",
@@ -99,7 +99,7 @@ export const gloves = [
     sell: 9,
   },
   {
-    //id: "c4fcd1ec-29e2-4aed-a5ff-78d5f4a0cf62",
+    id: "c4fcd1ec-29e2-4aed-a5ff-78d5f4a0cf62",
     name: "Mail Gloves",
     item: "accessory",
     type: "physical attack",
@@ -111,7 +111,7 @@ export const gloves = [
     sell: 12,
   },
   {
-    //id: "99fa1366-aa69-4112-8764-84fa080887c1",
+    id: "99fa1366-aa69-4112-8764-84fa080887c1",
     name: "Plate Gauntlets",
     item: "accessory",
     type: "physical attack",
@@ -126,7 +126,7 @@ export const gloves = [
 
 export const bracelets = [
   {
-    //id: "03523c42-64f6-4044-b2df-84eae29ea51c",
+    id: "03523c42-64f6-4044-b2df-84eae29ea51c",
     name: "Copper Bracelet",
     item: "accessory",
     type: "physical defense",
@@ -138,7 +138,7 @@ export const bracelets = [
     sell: 3,
   },
   {
-    //id: "9b21716c-b5e1-45d5-8064-f3eba6eae09c",
+    id: "9b21716c-b5e1-45d5-8064-f3eba6eae09c",
     name: "Bronze Bracelet",
     item: "accessory",
     type: "physical defense",
@@ -150,7 +150,7 @@ export const bracelets = [
     sell: 6,
   },
   {
-    //id: "a305b5fa-82dc-4a46-beb2-0dfd614c9e61",
+    id: "a305b5fa-82dc-4a46-beb2-0dfd614c9e61",
     name: "Steel Bracelet",
     item: "accessory",
     type: "physical defense",
@@ -162,7 +162,7 @@ export const bracelets = [
     sell: 9,
   },
   {
-    //id: "f73ff105-6a85-4740-805f-94028f1ba33e",
+    id: "f73ff105-6a85-4740-805f-94028f1ba33e",
     name: "Platinum Bracelet",
     item: "accessory",
     type: "physical defense",
@@ -174,7 +174,7 @@ export const bracelets = [
     sell: 12,
   },
   {
-    //id: "69b344cb-70dc-475a-a233-af8d9a8c6d67",
+    id: "69b344cb-70dc-475a-a233-af8d9a8c6d67",
     name: "Mithril Bracelet",
     item: "accessory",
     type: "physical defense",
@@ -189,7 +189,7 @@ export const bracelets = [
 
 export const jewelry = [
   {
-    //id: "387b69f8-f0a9-4027-a122-a8cc82dd29e9",
+    id: "387b69f8-f0a9-4027-a122-a8cc82dd29e9",
     name: "Amber Ring",
     item: "accessory",
     type: "magical defense",
@@ -201,7 +201,7 @@ export const jewelry = [
     sell: 3,
   },
   {
-    //id: "6fa989fb-6c13-4263-b3af-7d9a4f1a95fb",
+    id: "6fa989fb-6c13-4263-b3af-7d9a4f1a95fb",
     name: "Sapphire Bracelet",
     item: "accessory",
     type: "magical defense",
@@ -213,7 +213,7 @@ export const jewelry = [
     sell: 6,
   },
   {
-    //id: "797e2bed-5d94-4204-87df-8d8e47ba2b28",
+    id: "797e2bed-5d94-4204-87df-8d8e47ba2b28",
     name: "Golden Torc",
     item: "accessory",
     type: "magical defense",
@@ -225,7 +225,7 @@ export const jewelry = [
     sell: 9,
   },
   {
-    //id: "a205652c-6585-432b-8d0b-ca91081ab993",
+    id: "a205652c-6585-432b-8d0b-ca91081ab993",
     name: "Ruby Amulet",
     item: "accessory",
     type: "magical defense",
@@ -237,7 +237,7 @@ export const jewelry = [
     sell: 12,
   },
   {
-    //id: "92d63a1c-1def-4ea6-ba8f-d2066421839a",
+    id: "92d63a1c-1def-4ea6-ba8f-d2066421839a",
     name: "Diamond Tiara",
     item: "accessory",
     type: "magical defense",
@@ -252,7 +252,7 @@ export const jewelry = [
 
 export const necklaces = [
   {
-    //id: "164f44fb-0107-4e6b-bf75-1d7a368129d8",
+    id: "164f44fb-0107-4e6b-bf75-1d7a368129d8",
     name: "Bone Necklace",
     item: "accessory",
     type: "magical attack",
@@ -264,7 +264,7 @@ export const necklaces = [
     sell: 3,
   },
   {
-    //id: "56238ec0-81a9-4bf1-8062-461ae41d8d04",
+    id: "56238ec0-81a9-4bf1-8062-461ae41d8d04",
     name: "Tribal Necklace",
     item: "accessory",
     type: "magical attack",
@@ -276,7 +276,7 @@ export const necklaces = [
     sell: 6,
   },
   {
-    //id: "971db5c8-a098-4da7-9835-73c8e32c2213",
+    id: "971db5c8-a098-4da7-9835-73c8e32c2213",
     name: "Feather Necklace",
     item: "accessory",
     type: "magical attack",
@@ -288,7 +288,7 @@ export const necklaces = [
     sell: 9,
   },
   {
-    //id: "f296189d-3b43-48a8-8218-3645cfff6a07",
+    id: "f296189d-3b43-48a8-8218-3645cfff6a07",
     name: "Key Pendant",
     item: "accessory",
     type: "magical attack",
@@ -300,7 +300,7 @@ export const necklaces = [
     sell: 12,
   },
   {
-    //id: "5fe7a606-598e-49e2-907e-9d32c18b96a7",
+    id: "5fe7a606-598e-49e2-907e-9d32c18b96a7",
     name: "Emerald Necklace",
     item: "accessory",
     type: "magical attack",

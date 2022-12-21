@@ -1,6 +1,6 @@
 export const armor = [
   {
-    //id: "2ac57c80-a9fd-48b9-963e-272a91232284",
+    id: "2ac57c80-a9fd-48b9-963e-272a91232284",
     name: "Leather Armor",
     item: "armor",
     type: "physical",
@@ -12,7 +12,7 @@ export const armor = [
     sell: 10,
   },
   {
-    //id: "00ed6b38-9fcf-4dc6-ae48-00382221d35b",
+    id: "00ed6b38-9fcf-4dc6-ae48-00382221d35b",
     name: "Studded Leather Armor",
     item: "armor",
     type: "physical",
@@ -24,7 +24,7 @@ export const armor = [
     sell: 14,
   },
   {
-    //id: "2000a8e5-020b-4313-9035-651a439b88a9",
+    id: "2000a8e5-020b-4313-9035-651a439b88a9",
     name: "Brigandine",
     item: "armor",
     type: "physical",
@@ -36,7 +36,7 @@ export const armor = [
     sell: 18,
   },
   {
-    //id: "296f1466-6396-4a21-8c66-b365b6e8ad76",
+    id: "296f1466-6396-4a21-8c66-b365b6e8ad76",
     name: "Ringmail Armor",
     item: "armor",
     type: "physical",
@@ -48,7 +48,7 @@ export const armor = [
     sell: 22,
   },
   {
-    //id: "152e09e0-a443-47d1-87d2-829044519a23",
+    id: "152e09e0-a443-47d1-87d2-829044519a23",
     name: "Scalemail Armor",
     item: "armor",
     type: "physical",
@@ -60,7 +60,7 @@ export const armor = [
     sell: 26,
   },
   {
-    //id: "4d92fbfa-6ca8-4cd5-b578-621fc56ffb8d",
+    id: "4d92fbfa-6ca8-4cd5-b578-621fc56ffb8d",
     name: "Banded Mail Armor",
     item: "armor",
     type: "physical",
@@ -72,7 +72,7 @@ export const armor = [
     sell: 30,
   },
   {
-    //id: "ca69b28f-7be8-41c5-9e4a-a5fbdf41c6d3",
+    id: "ca69b28f-7be8-41c5-9e4a-a5fbdf41c6d3",
     name: "Platemail Armor",
     item: "armor",
     type: "physical",
@@ -84,7 +84,7 @@ export const armor = [
     sell: 34,
   },
   {
-    //id: "a2c6089b-e068-471e-9bfe-1a8f5f029c3b",
+    id: "a2c6089b-e068-471e-9bfe-1a8f5f029c3b",
     name: "Full Plate Armor",
     item: "armor",
     type: "physical",
