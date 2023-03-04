@@ -4,7 +4,6 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 
 # TO DO
 
-- Fix character creation
 - Readjust weapon stats to creature levels
 - Readjust creature stats
 - Different leveling algorithm
@@ -27,6 +26,7 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Inventory limit?
 - Critical hits?
 - Multiple map levels?
+- Write tests
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 
