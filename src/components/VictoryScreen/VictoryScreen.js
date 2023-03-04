@@ -30,7 +30,7 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
 
   const exp = useSelector((state) => state.hero.exp);
   const level = useSelector((state) => state.hero.level);
-  const nextLevel = Math.round(Math.pow(level / 0.3, 2));
+  const nextLevel = Math.round(Math.pow(level / 0.2, 2));
   const maxHealth = useSelector((state) => state.hero.maxHealth);
 
   useEffect(() => {
