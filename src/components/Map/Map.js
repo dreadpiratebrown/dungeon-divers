@@ -5,12 +5,8 @@ import {
   saveExitPosition,
   saveGrid,
   saveHeroPosition,
-  resetMap,
 } from "features/map/mapSlice";
-import { exitDungeon, resetApp } from "features/app/appSlice";
-import { resetHero } from "features/hero/heroSlice";
-import { resetInventory } from "features/inventory/inventorySlice";
-import { resetQuests } from "features/quest/questSlice";
+import { exitDungeon } from "features/app/appSlice";
 import gate from "../../images/dungeon-gate.png";
 
 export const Map = ({ onEncounter, newGame }) => {
@@ -25,16 +21,6 @@ export const Map = ({ onEncounter, newGame }) => {
   let dimensions = 20;
   let maxTunnels = 50;
   let maxLength = 8;
-
-  useEffect(() => {
-    if (newGame) {
-      dispatch(resetApp());
-      dispatch(resetHero());
-      dispatch(resetInventory());
-      dispatch(resetMap());
-      dispatch(resetQuests());
-    }
-  }, [newGame]);
 
   const avatar = useSelector((state) => state.hero.img);
   const savedGrid = useSelector((state) => state.map.grid);

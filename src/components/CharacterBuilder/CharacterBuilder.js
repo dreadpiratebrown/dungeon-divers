@@ -1,14 +1,28 @@
 import styles from "./styles.module.css";
 import { avatars } from "shared";
 import { useDispatch } from "react-redux";
-import { setName, setImage } from "features/hero/heroSlice";
-import { useState } from "react";
+import { resetMap } from "features/map/mapSlice";
+import { resetApp } from "features/app/appSlice";
+import { resetInventory } from "features/inventory/inventorySlice";
+import { resetQuests } from "features/quest/questSlice";
+import { setName, setImage, resetHero } from "features/hero/heroSlice";
+import { useState, useEffect } from "react";
 
-export const CharacterBuilder = ({ onStartClick }) => {
+export const CharacterBuilder = ({ onStartClick, newGame }) => {
   const [charName, setCharName] = useState("");
   const [charImg, setCharImg] = useState("");
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (newGame) {
+      dispatch(resetApp());
+      dispatch(resetHero());
+      dispatch(resetInventory());
+      dispatch(resetMap());
+      dispatch(resetQuests());
+    }
+  }, [newGame]);
 
   const handleSetImage = (path) => {
     setCharImg(path);

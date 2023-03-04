@@ -63,6 +63,7 @@ export const App = () => {
           onStartClick={() => {
             setMode("map");
           }}
+          newGame={newGame}
         />
       )}
 
