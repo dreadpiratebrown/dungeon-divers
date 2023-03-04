@@ -383,7 +383,11 @@ export const Shop = ({ onCloseClick }) => {
               <img src={item.icon} alt={item.name} />
               {item.name}
               {item.quantity > 1 && <> x {item.quantity}</>}
-              <button onClick={() => sellItem(item)}>Sell ({item.sell})</button>
+              {item.sell && (
+                <button onClick={() => sellItem(item)}>
+                  Sell ({item.sell})
+                </button>
+              )}
             </Tooltip>
           ))}
         </ul>

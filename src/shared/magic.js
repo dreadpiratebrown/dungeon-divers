@@ -94,7 +94,7 @@ export const magic = [
 
 export const scrolls = [
   {
-    id: "1",
+    id: "a0ebfd8f-26aa-4e80-832c-696fca408780",
     name: "Scroll of Healing I",
     item: "scroll",
     effect: "heal",
@@ -108,7 +108,7 @@ export const scrolls = [
     sell: 8,
   },
   {
-    id: "1",
+    id: "47b27620-1bd8-45c7-be26-ce7fe6319b4b",
     name: "Scroll of Healing II",
     item: "scroll",
     effect: "heal",
@@ -122,7 +122,7 @@ export const scrolls = [
     sell: 20,
   },
   {
-    id: "1",
+    id: "c1ec51fd-f7bc-4386-a1b6-c46b7ac5cfab",
     name: "Scroll of Healing III",
     item: "scroll",
     effect: "heal",

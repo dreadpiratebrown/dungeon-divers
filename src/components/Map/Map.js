@@ -10,6 +10,7 @@ import {
 import { exitDungeon, resetApp } from "features/app/appSlice";
 import { resetHero } from "features/hero/heroSlice";
 import { resetInventory } from "features/inventory/inventorySlice";
+import { resetQuests } from "features/quest/questSlice";
 import gate from "../../images/dungeon-gate.png";
 
 export const Map = ({ onEncounter, newGame }) => {
@@ -31,6 +32,7 @@ export const Map = ({ onEncounter, newGame }) => {
       dispatch(resetHero());
       dispatch(resetInventory());
       dispatch(resetMap());
+      dispatch(resetQuests());
     }
   }, [newGame]);
 

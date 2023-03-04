@@ -5,7 +5,9 @@ import {
   increaseGold,
   increaseLevel,
 } from "features/hero/heroSlice";
+import { add } from "features/inventory/inventorySlice";
 import { decrementRecharge } from "features/app/appSlice";
+import { useQuest } from "hooks";
 import { useEffect, useState } from "react";
 
 export const VictoryScreen = ({ fiend, onStartClick }) => {
@@ -13,14 +15,18 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
 
   const dispatch = useDispatch();
   const recharging = useSelector((state) => state.app.teleportRecharging);
+  const { item: questItem, haveNum, needNum } = useQuest(fiend);
 
   useEffect(() => {
     dispatch(increaseExp(fiend.exp));
     dispatch(increaseGold(fiend.gold));
+    if (questItem) {
+      dispatch(add(questItem));
+    }
     if (recharging) {
       dispatch(decrementRecharge());
     }
-  }, [fiend]);
+  }, [fiend, questItem, recharging]);
 
   const exp = useSelector((state) => state.hero.exp);
   const level = useSelector((state) => state.hero.level);
@@ -41,6 +47,11 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
       <p>
         You gained {fiend.exp} XP and {fiend.gold} gold!
       </p>
+      {questItem && (
+        <p>
+          You gained 1 {questItem.name}. {haveNum}/{needNum} collected.
+        </p>
+      )}
       {levelUp && (
         <>
           <h2>Level up!</h2>

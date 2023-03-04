@@ -193,13 +193,15 @@ export const Inventory = ({ onCloseClick }) => {
               {(showItem.item === "armor" || showItem.item === "helmet") && (
                 <li>Defense: {showItem.defense}</li>
               )}
-              {showItem.item !== "accessory" && !showItem.usable && (
-                <li>
-                  Type:{" "}
-                  {showItem.type.charAt(0).toUpperCase() +
-                    showItem.type.slice(1)}
-                </li>
-              )}
+              {showItem.item !== "accessory" &&
+                showItem.item !== "misc" &&
+                !showItem.usable && (
+                  <li>
+                    Type:{" "}
+                    {showItem.type.charAt(0).toUpperCase() +
+                      showItem.type.slice(1)}
+                  </li>
+                )}
               {showItem.item === "accessory" && (
                 <li>
                   {showItem.type.charAt(0).toUpperCase() +
@@ -210,7 +212,9 @@ export const Inventory = ({ onCloseClick }) => {
               {showItem.item === "weapon" && (
                 <li>Range: {showItem.ranged === true ? "Ranged" : "Melee"}</li>
               )}
-              {showItem.usable && <li>{showItem.description}</li>}
+              {(showItem.usable || showItem.item === "misc") && (
+                <li>{showItem.description}</li>
+              )}
             </ul>
           </div>
         )}

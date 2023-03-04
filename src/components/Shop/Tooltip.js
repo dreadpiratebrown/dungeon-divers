@@ -24,11 +24,13 @@ export const Tooltip = ({ item, children }) => {
             {(item.item === "armor" || item.item === "helmet") && (
               <li>Defense: {item.defense}</li>
             )}
-            {item.item !== "accessory" && !item.usable && (
-              <li>
-                Type: {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-              </li>
-            )}
+            {item.item !== "accessory" &&
+              item.item !== "misc" &&
+              !item.usable && (
+                <li>
+                  Type: {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+                </li>
+              )}
             {item.item === "accessory" && (
               <li>
                 {item.type.charAt(0).toUpperCase() + item.type.slice(1)}:{" "}
@@ -38,7 +40,9 @@ export const Tooltip = ({ item, children }) => {
             {item.item === "weapon" && (
               <li>Range: {item.ranged === true ? "Ranged" : "Melee"}</li>
             )}
-            {item.usable && <li>{item.description}</li>}
+            {(item.usable || item.item === "misc") && (
+              <li>{item.description}</li>
+            )}
           </ul>
         </div>
       )}

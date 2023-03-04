@@ -29,6 +29,14 @@ const initialState = {
       buy: 40,
       sell: 8,
     },
+    {
+      id: "2367e851-7e10-47ab-baa3-88a90ad86399",
+      item: "misc",
+      name: "Rat Tail",
+      description: "A pink, hairless rodent tail",
+      icon: require("../../images/rat.png"),
+      quantity: 10,
+    },
   ],
 };
 
@@ -40,7 +48,6 @@ export const inventorySlice = createSlice({
       const index = state.items.findIndex(
         (item) => item.id === action.payload.id
       );
-      console.log(index);
       if (index >= 0) {
         state.items[index].quantity
           ? state.items[index].quantity++
@@ -61,10 +68,23 @@ export const inventorySlice = createSlice({
         );
       }
     },
+    removeBulk: (state, action) => {
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (state.items[index].quantity > action.payload.quantity) {
+        state.items[index].quantity -= action.payload.quantity;
+      } else {
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+      }
+    },
     resetInventory: () => initialState,
   },
 });
 
-export const { add, remove, resetInventory } = inventorySlice.actions;
+export const { add, remove, removeBulk, resetInventory } =
+  inventorySlice.actions;
 
 export default inventorySlice.reducer;

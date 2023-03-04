@@ -11,6 +11,7 @@ import {
   FleeScreen,
   Generator,
   Map,
+  Quests,
   Shop,
   StartMenu,
   TravelScreen,
@@ -131,11 +132,22 @@ export const App = () => {
           onShopClick={() => {
             setMode("shop");
           }}
+          onQuestsClick={() => {
+            setMode("quests");
+          }}
         />
       )}
 
       {mode === "shop" && (
         <Shop
+          onCloseClick={() => {
+            setMode("exit");
+          }}
+        />
+      )}
+
+      {mode === "quests" && (
+        <Quests
           onCloseClick={() => {
             setMode("exit");
           }}
