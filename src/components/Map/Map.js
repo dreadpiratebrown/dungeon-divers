@@ -2,19 +2,25 @@ import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  saveExitPosition,
-  saveGrid,
-  saveHeroPosition,
+  decrementLevel,
+  incrementLevel,
+  saveFloor,
 } from "features/map/mapSlice";
 import { exitDungeon } from "features/app/appSlice";
 import gate from "../../images/dungeon-gate.png";
+import stepsDown from "../../images/stairs-down.png";
+import stepsUp from "../../images/stairs-up.png";
 
 export const Map = ({ onEncounter, newGame }) => {
   const [left, setLeft] = useState(0);
   const [top, setTop] = useState(0);
   const [grid, setGrid] = useState([]);
   const [exit, setExit] = useState({ left: 0, top: 0 });
+  const [stairsDown, setStairsDown] = useState({ left: 0, top: 0 });
+  const [stairsUp, setStairsUp] = useState({ left: 0, top: 0 });
   const [opacity, setOpacity] = useState(100);
+  const [showPrompt, setShowPrompt] = useState(false);
+  const [going, setGoing] = useState();
 
   const dispatch = useDispatch();
 
@@ -23,9 +29,8 @@ export const Map = ({ onEncounter, newGame }) => {
   let maxLength = 8;
 
   const avatar = useSelector((state) => state.hero.img);
-  const savedGrid = useSelector((state) => state.map.grid);
-  const savedHeroPosition = useSelector((state) => state.map.heroPosition);
-  const savedExitPosition = useSelector((state) => state.map.exitPosition);
+  const level = useSelector((state) => state.map.currentLevel);
+  const floors = useSelector((state) => state.map.floors);
 
   const createArray = (num, dimensions) => {
     var array = [];
@@ -49,18 +54,8 @@ export const Map = ({ onEncounter, newGame }) => {
         [0, 1],
       ],
       lastDirection = [],
-      randomDirection;
-
-    setLeft(
-      savedHeroPosition.left ? savedHeroPosition.left : currentColumn * 40
-    );
-    setTop(savedHeroPosition.top ? savedHeroPosition.top : currentRow * 40);
-    setExit({
-      left: savedExitPosition.left
-        ? savedExitPosition.left
-        : currentColumn * 40,
-      top: savedExitPosition.top ? savedExitPosition.top : currentRow * 40,
-    });
+      randomDirection,
+      stairsSet = false;
 
     while (maxTunnels && dimensions && maxLength) {
       do {
@@ -83,8 +78,10 @@ export const Map = ({ onEncounter, newGame }) => {
           (currentRow === dimensions - 1 && randomDirection[0] === 1) ||
           (currentColumn === dimensions - 1 && randomDirection[1] === 1)
         ) {
+          // leave as 1 = wall
           break;
         } else {
+          // set to 0 = tunnel
           map[currentRow][currentColumn] = 0;
           currentRow += randomDirection[0];
           currentColumn += randomDirection[1];
@@ -97,12 +94,120 @@ export const Map = ({ onEncounter, newGame }) => {
         maxTunnels--;
       }
     }
+
+    if (level === 0) {
+      // floor 1 - exit, stairs down, hero
+      setLeft(currentColumn * 40);
+      setTop(currentRow * 40);
+      setExit({
+        left: currentColumn * 40,
+        top: currentRow * 40,
+      });
+      setStairsUp({
+        left: -9999,
+        top: -9999,
+      });
+
+      while (!stairsSet) {
+        let downLeft = Math.floor(Math.random() * dimensions),
+          downTop = Math.floor(Math.random() * dimensions);
+        if (
+          downLeft !== exit.left &&
+          downTop !== exit.top &&
+          map[downTop][downLeft] === 0
+        ) {
+          setStairsDown({
+            left: downLeft * 40,
+            top: downTop * 40,
+          });
+          stairsSet = true;
+        }
+      }
+    } else {
+      setExit({
+        left: -9999,
+        top: -9999,
+      });
+
+      while (!stairsSet) {
+        let downLeft = Math.floor(Math.random() * dimensions),
+          downTop = Math.floor(Math.random() * dimensions),
+          upLeft = Math.floor(Math.random() * dimensions),
+          upTop = Math.floor(Math.random() * dimensions);
+        if (
+          downLeft !== exit.left &&
+          downTop !== exit.top &&
+          map[downTop][downLeft] === 0 &&
+          upLeft !== exit.left &&
+          upTop !== exit.top &&
+          upLeft !== downLeft &&
+          upTop !== downTop &&
+          map[upTop][upLeft] === 0
+        ) {
+          setStairsDown({
+            left: downLeft * 40,
+            top: downTop * 40,
+          });
+          setStairsUp({
+            left: upLeft * 40,
+            top: upTop * 40,
+          });
+          setLeft(upLeft * 40);
+          setTop(upTop * 40);
+          stairsSet = true;
+        }
+      }
+    }
+
     return map;
   };
 
   const handleExit = () => {
-    dispatch(saveHeroPosition({ left: exit.left, top: exit.top }));
+    dispatch(
+      saveFloor({
+        level: level,
+        grid: grid,
+        hero: { left: left, top: top },
+        exit: { left: exit.left, top: exit.top },
+        stairsDown: { left: stairsDown.left, top: stairsDown.top },
+        stairsUp: { left: stairsUp.left, top: stairsUp.top },
+      })
+    );
     dispatch(exitDungeon(true));
+  };
+
+  const handleStairs = (direction) => {
+    if (direction === "down") {
+      setShowPrompt(false);
+      dispatch(
+        saveFloor({
+          level: level,
+          grid: grid,
+          hero: { left: left, top: top },
+          exit: { left: exit.left, top: exit.top },
+          stairsDown: { left: stairsDown.left, top: stairsDown.top },
+          stairsUp: { left: stairsUp.left, top: stairsUp.top },
+        })
+      );
+      dispatch(incrementLevel());
+      setGrid(createMap());
+    } else {
+      setShowPrompt(false);
+      dispatch(decrementLevel());
+      const prevLevel = level - 1;
+      const floor = floors[prevLevel];
+      if (floor) {
+        setGrid(floor.grid);
+        setLeft(floor.hero.left);
+        setTop(floor.hero.top);
+        setExit({ left: floor.exit.left, top: floor.exit.top });
+        setStairsDown({
+          left: floor.stairsDown.left,
+          top: floor.stairsDown.top,
+        });
+        setStairsUp({ left: floor.stairsUp.left, top: floor.stairsUp.top });
+      }
+    }
   };
 
   const moveHero = (event) => {
@@ -123,6 +228,16 @@ export const Map = ({ onEncounter, newGame }) => {
         if (left - 40 === exit.left && top === exit.top) {
           handleExit();
         }
+        // check if hero is at stairs down
+        if (left - 40 === stairsDown.left && top === stairsDown.top) {
+          setShowPrompt(true);
+          setGoing("down");
+        }
+        // check if hero is at stairs up
+        if (left - 40 === stairsUp.left && top === stairsUp.top) {
+          setShowPrompt(true);
+          setGoing("up");
+        }
         event.stopImmediatePropagation();
         break;
       }
@@ -139,6 +254,16 @@ export const Map = ({ onEncounter, newGame }) => {
         // check if hero is at exit
         if (top - 40 === exit.top && left === exit.left) {
           handleExit();
+        }
+        // check if hero is at stairs down
+        if (top - 40 === stairsDown.top && left === stairsDown.left) {
+          setShowPrompt(true);
+          setGoing("down");
+        }
+        // check if hero is at stairs up
+        if (top - 40 === stairsUp.top && left === stairsUp.left) {
+          setShowPrompt(true);
+          setGoing("up");
         }
         event.stopImmediatePropagation();
         break;
@@ -157,6 +282,16 @@ export const Map = ({ onEncounter, newGame }) => {
         if (left + 40 === exit.left && top === exit.top) {
           handleExit();
         }
+        // check if hero is at stairs down
+        if (left + 40 === stairsDown.left && top === stairsDown.top) {
+          setShowPrompt(true);
+          setGoing("down");
+        }
+        // check if hero is at stairs up
+        if (left + 40 === stairsUp.left && top === stairsUp.top) {
+          setShowPrompt(true);
+          setGoing("up");
+        }
         event.stopImmediatePropagation();
         break;
       }
@@ -174,6 +309,16 @@ export const Map = ({ onEncounter, newGame }) => {
         if (top + 40 === exit.top && left === exit.left) {
           handleExit();
         }
+        // check if hero is at stairs down
+        if (top + 40 === stairsDown.top && left === stairsDown.left) {
+          setShowPrompt(true);
+          setGoing("down");
+        }
+        // check if hero is at stairs up
+        if (top + 40 === stairsUp.top && left === stairsUp.left) {
+          setShowPrompt(true);
+          setGoing("up");
+        }
         event.stopImmediatePropagation();
         break;
       }
@@ -183,29 +328,40 @@ export const Map = ({ onEncounter, newGame }) => {
     const encounterRoll = Math.floor(Math.random() * 20) + 1;
     if (encounterRoll >= 18) {
       document.removeEventListener("keydown", moveHero);
-      dispatch(saveGrid(grid));
-      dispatch(saveHeroPosition({ left: left, top: top }));
-      dispatch(saveExitPosition({ left: exit.left, top: exit.top }));
+      dispatch(
+        saveFloor({
+          level: level,
+          grid: grid,
+          hero: { left: left, top: top },
+          exit: { left: exit.left, top: exit.top },
+          stairsDown: { left: stairsDown.left, top: stairsDown.top },
+          stairsUp: { left: stairsUp.left, top: stairsUp.top },
+        })
+      );
       setOpacity(0);
       setTimeout(onEncounter, 500);
     }
   };
 
   useEffect(() => {
-    setGrid(savedGrid.length > 0 ? savedGrid : createMap());
-    if (savedHeroPosition.left) {
-      setLeft(savedHeroPosition.left);
+    const floor = floors[level];
+    if (floor) {
+      setGrid(floor.grid);
+      setLeft(floor.hero.left);
+      setTop(floor.hero.top);
+      setExit({ left: floor.exit.left, top: floor.exit.top });
+      setStairsDown({ left: floor.stairsDown.left, top: floor.stairsDown.top });
+      setStairsUp({ left: floor.stairsUp.left, top: floor.stairsUp.top });
+    } else {
+      setGrid(createMap());
     }
-    if (savedHeroPosition.top) {
-      setTop(savedHeroPosition.top);
-    }
-    if (savedExitPosition.left) {
-      setExit({ left: savedExitPosition.left, top: savedExitPosition.top });
-    }
-  }, [savedGrid, savedHeroPosition, saveExitPosition]);
+  }, [floors]);
 
   useEffect(() => {
     document.addEventListener("keydown", moveHero);
+    if (showPrompt) {
+      document.removeEventListener("keydown", moveHero);
+    }
     return () => {
       document.removeEventListener("keydown", moveHero);
     };
@@ -250,6 +406,34 @@ export const Map = ({ onEncounter, newGame }) => {
           top: exit.top,
         }}
       />
+      <img
+        src={stepsDown}
+        style={{
+          position: "absolute",
+          width: "39px",
+          left: stairsDown.left,
+          top: stairsDown.top,
+        }}
+      />
+      <img
+        src={stepsUp}
+        style={{
+          position: "absolute",
+          width: "39px",
+          left: stairsUp.left,
+          top: stairsUp.top,
+        }}
+      />
+      {showPrompt && (
+        <div className={styles.stairsPrompt}>
+          Do you wish to{" "}
+          {going === "down"
+            ? "descend further into the dungeon"
+            : "ascend towards the light"}
+          ? <button onClick={() => handleStairs(going)}>Yes</button>
+          <button onClick={() => setShowPrompt(false)}>No</button>
+        </div>
+      )}
     </div>
   );
 };
