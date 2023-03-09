@@ -21,12 +21,14 @@ export const Map = ({ onEncounter, newGame }) => {
   const [opacity, setOpacity] = useState(100);
   const [showPrompt, setShowPrompt] = useState(false);
   const [going, setGoing] = useState();
+  const [numSteps, setNumSteps] = useState(0);
 
   const dispatch = useDispatch();
 
   let dimensions = 20;
   let maxTunnels = 50;
   let maxLength = 8;
+  const maxSteps = 50;
 
   const avatar = useSelector((state) => state.hero.img);
   const level = useSelector((state) => state.map.currentLevel);
@@ -158,6 +160,8 @@ export const Map = ({ onEncounter, newGame }) => {
         }
       }
     }
+
+    setNumSteps(Math.floor(Math.random() * maxSteps));
 
     return map;
   };
@@ -335,8 +339,9 @@ export const Map = ({ onEncounter, newGame }) => {
       default:
         break;
     }
-    const encounterRoll = Math.floor(Math.random() * 20) + 1;
-    if (encounterRoll >= 18) {
+    // const encounterRoll = Math.floor(Math.random() * 20) + 1;
+    setNumSteps(numSteps - 1);
+    if (numSteps === 0) {
       document.removeEventListener("keydown", moveHero);
       dispatch(
         saveFloor({
@@ -362,6 +367,7 @@ export const Map = ({ onEncounter, newGame }) => {
       setExit({ left: floor.exit.left, top: floor.exit.top });
       setStairsDown({ left: floor.stairsDown.left, top: floor.stairsDown.top });
       setStairsUp({ left: floor.stairsUp.left, top: floor.stairsUp.top });
+      setNumSteps(Math.floor(Math.random() * maxSteps));
     } else {
       setGrid(createMap());
     }
