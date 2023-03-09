@@ -28,6 +28,8 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Goblin is too powerful
 - Lower chance of encounter directly after a previous encounter / better encounter roll algo
 - Create a debugger/testing room/commands
+- Loading a saved game always triggers a battle
+- Autosave - periodic? on navigate away?
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 

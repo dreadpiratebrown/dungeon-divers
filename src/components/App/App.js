@@ -48,7 +48,7 @@ export const App = () => {
             setNewGame(true);
           }}
           onLoadClick={() => {
-            setMode("travel");
+            setMode("map");
           }}
           onGenClick={() => {
             setMode("generator");
