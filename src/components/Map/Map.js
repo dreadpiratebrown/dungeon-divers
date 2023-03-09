@@ -193,6 +193,16 @@ export const Map = ({ onEncounter, newGame }) => {
       setGrid(createMap());
     } else {
       setShowPrompt(false);
+      dispatch(
+        saveFloor({
+          level: level,
+          grid: grid,
+          hero: { left: left, top: top },
+          exit: { left: exit.left, top: exit.top },
+          stairsDown: { left: stairsDown.left, top: stairsDown.top },
+          stairsUp: { left: stairsUp.left, top: stairsUp.top },
+        })
+      );
       dispatch(decrementLevel());
       const prevLevel = level - 1;
       const floor = floors[prevLevel];
@@ -368,72 +378,77 @@ export const Map = ({ onEncounter, newGame }) => {
   });
 
   return (
-    <div className={styles.main} style={{ opacity: `${opacity}` }}>
-      <div className={styles.grid}>
-        {grid.map((obj, row) => (
-          <>
-            {obj.map((obj2, col) => (
-              <div
-                className={
-                  obj2 === 1
-                    ? styles.wall
-                    : obj2 === 2
-                    ? styles.tunnelVisited
-                    : styles.tunnel
-                }
-                key={col}
-              ></div>
-            ))}
-          </>
-        ))}
-      </div>
-      <img
-        src={avatar}
-        style={{
-          position: "absolute",
-          width: "39px",
-          left: left,
-          top: top,
-          zIndex: 1,
-        }}
-      />
-      <img
-        src={gate}
-        style={{
-          position: "absolute",
-          width: "39px",
-          left: exit.left,
-          top: exit.top,
-        }}
-      />
-      <img
-        src={stepsDown}
-        style={{
-          position: "absolute",
-          width: "39px",
-          left: stairsDown.left,
-          top: stairsDown.top,
-        }}
-      />
-      <img
-        src={stepsUp}
-        style={{
-          position: "absolute",
-          width: "39px",
-          left: stairsUp.left,
-          top: stairsUp.top,
-        }}
-      />
-      {showPrompt && (
-        <div className={styles.stairsPrompt}>
-          Do you wish to{" "}
-          {going === "down"
-            ? "descend further into the dungeon"
-            : "ascend towards the light"}
-          ? <button onClick={() => handleStairs(going)}>Yes</button>
-          <button onClick={() => setShowPrompt(false)}>No</button>
+    <>
+      <h1 className={styles.floorName}>Floor {level + 1}</h1>
+      <div className={styles.main} style={{ opacity: `${opacity}` }}>
+        <div className={styles.grid}>
+          {grid.map((obj, row) => (
+            <>
+              {obj.map((obj2, col) => (
+                <div
+                  className={
+                    obj2 === 1
+                      ? styles.wall
+                      : obj2 === 2
+                      ? styles.tunnelVisited
+                      : styles.tunnel
+                  }
+                  key={col}
+                ></div>
+              ))}
+            </>
+          ))}
         </div>
-      )}
-    </div>
+        <img
+          src={avatar}
+          style={{
+            position: "absolute",
+            width: "39px",
+            left: left,
+            top: top,
+            zIndex: 1,
+          }}
+        />
+        <img
+          src={gate}
+          style={{
+            position: "absolute",
+            width: "39px",
+            left: exit.left,
+            top: exit.top,
+          }}
+        />
+        <img
+          src={stepsDown}
+          style={{
+            position: "absolute",
+            width: "39px",
+            left: stairsDown.left,
+            top: stairsDown.top,
+          }}
+        />
+        <img
+          src={stepsUp}
+          style={{
+            position: "absolute",
+            width: "39px",
+            left: stairsUp.left,
+            top: stairsUp.top,
+          }}
+        />
+        {showPrompt && (
+          <div className={styles.stairsPrompt}>
+            Do you wish to{" "}
+            {going === "down"
+              ? "descend further into the dungeon"
+              : "ascend towards the light"}
+            ? <br />
+            <br />
+            <button onClick={() => handleStairs(going)}>Yes</button>
+            <button onClick={() => setShowPrompt(false)}>No</button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
