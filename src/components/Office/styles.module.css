@@ -8,13 +8,9 @@
   width: 500px;
 }
 
-.main img {
-  display: block;
-  margin: 0 auto;
+.logo {
+  float: left;
+  height: auto;
+  margin-right: 1rem;
   max-width: 100px;
-}
-
-.startButton {
-  padding: 4px 32px;
-  font-size: 1.5rem;
 }

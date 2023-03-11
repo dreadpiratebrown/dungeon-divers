@@ -9,7 +9,7 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Treasures - fix articles; reduce encounters
 - Add scroll of return to possible treasures or create traveling merchant encounter?
 - More traveling text
-- Is there a story? What else to do besides fight monsters? Quests?
+- Is there a story? What else to do besides fight monsters? Quests? SEE GAMEPLAY REVISION BELOW
 - Player customization - validation
 - Bestiary
 - Treasure maps
@@ -28,77 +28,27 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Goblin is too powerful
 - Create a debugger/testing room/commands
 - Autosave - periodic? on navigate away?
+- UI updates/better design
+- Tutorial guides
+- Might need to put a prompt on the exit tile in case it blocks a tunnel
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 
-## Quests
+## Gameplay Revision
 
-- quests table
-  - UUID
-  - types: fetch (monster drops), fetch (treasure), kill monster(s)
-  - name
-  - description
-  - UUID of item to fetch or fiend to kill
-  - goal
-  - reward (just gold? XP also?)
-- quest items table (monster drops)
-  - UUID
-  - name
-  - description?
-  - image
-  - item type
-  - equippable (might not need this)
-  - usable (might not need this)
-  - value (for selling)?
-- quest journal (active quests)
-
-  - UUID
-  - name
-  - description
-  - progress
-  - complete?
-
-## Multi-Level Dungeon
-
-Floor object
-
-- grid
-- exit position (if floor 1)
-- hero position
-- stairs down
-- stairs up (if floor > 1)
-
-Floor creation
-
-- get current level from mapSlice
-- if floors[current level] exists (going up)
-  - get floors[current level] from state
-  - floors.pop from mapSlice
-  - load grid and all icon positions
-- else (going down)
-  - create grid
-  - set exit if current level === 1
-  - set hero at exit if current level === 1, otherwise at stairs up
-  - set stairs down (make sure they don't collide with exit)
-  - set stairs up if current level > 1 (make sure they don't collide with exit or stairs down)
-
-On hero move
-
-- check for collisions
-- move hero and set previous square to 2
-- check if hero is on exit (if exit exists)
-  - handle exit
-- check if hero is on stairs down
-  - stop keyboard listener
-  - ask if player wants to go down; if yes
-    - assemble floor object and save to mapSlice (floors.push)
-    - increment current level in mapSlice
-    - make a new floor
-- check if hero is on stairs up
-  - stop keyboard listener
-  - ask if player wants to go up; if yes
-    - decrement current level in mapSlice
-    - run floor creation
-- roll for encounter
-  - assemble floor object and save to mapSlice (floors.push)
-  - run onEncounter
+- Gameplay similar to Void Tyrant
+- Start game in offices of "Dungeon Delvers Inc."
+- Need an overarching goal to aim for, something big and difficult
+  - Defeat a big bad?
+  - Destroy a cult?
+  - Find a legendary treasure?
+  - No matter what, should be very deep in the dungeon
+- When starting, it's a new business, no amenities
+  - As money is earned, can buy things like starting equipment & magic
+  - Take on small quests to earn more money & fame
+- Choose a hero to go through the dungeon
+  - Go as deep as you can, fight as many fiends as you can
+  - Need to make fiends stronger so there's more risk
+  - If hero dies, back to office, player gets the money
+    - Recovery team? Magic? Why not equipment?
+- Shop does not have all inventory at once, should get more as game goes on

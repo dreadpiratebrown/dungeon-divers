@@ -11,6 +11,7 @@ import {
   FleeScreen,
   Generator,
   Map,
+  Office,
   Quests,
   Shop,
   StartMenu,
@@ -44,7 +45,7 @@ export const App = () => {
       {mode === "start" && (
         <StartMenu
           onStartClick={() => {
-            setMode("build");
+            setMode("office");
             setNewGame(true);
           }}
           onLoadClick={() => {
@@ -58,12 +59,20 @@ export const App = () => {
 
       {mode === "generator" && <Generator />}
 
+      {mode === "office" && (
+        <Office
+          onStartClick={() => {
+            setMode("build");
+          }}
+          newGame={newGame}
+        />
+      )}
+
       {mode === "build" && (
         <CharacterBuilder
           onStartClick={() => {
             setMode("map");
           }}
-          newGame={newGame}
         />
       )}
 

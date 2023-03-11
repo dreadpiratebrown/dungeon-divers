@@ -4,6 +4,7 @@ const initialState = {
   exit: false,
   teleportRecharging: false,
   battlesToRecharge: 0,
+  introTextViewed: false,
 };
 
 export const appSlice = createSlice({
@@ -25,6 +26,9 @@ export const appSlice = createSlice({
         state.teleportRecharging = false;
       }
     },
+    viewIntroText: (state) => {
+      state.introTextViewed = true;
+    },
     resetApp: () => initialState,
   },
 });
@@ -34,6 +38,7 @@ export const {
   rechargeTeleport,
   setRecharge,
   decrementRecharge,
+  viewIntroText,
   resetApp,
 } = appSlice.actions;
 
