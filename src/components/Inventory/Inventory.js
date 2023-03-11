@@ -20,7 +20,7 @@ export const Inventory = ({ onCloseClick }) => {
   const [itemUsed, setItemUsed] = useState();
   const dispatch = useDispatch();
   const hero = useSelector((state) => state.hero);
-  const nextLevel = Math.round(Math.pow(hero.level / 0.3, 2));
+  const nextLevel = Math.round(Math.pow(hero.level / 0.2, 2));
   const inventory = useSelector((state) => state.inventory.items);
 
   const removePrimary = () => {
