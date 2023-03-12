@@ -17,6 +17,8 @@ const initialState = {
   physicalDef: playerStats.physicalDef,
   magicalDef: playerStats.magicalDef,
   speed: playerStats.speed,
+  stepsTaken: 0,
+  fiendsKilled: 0,
 };
 
 export const heroSlice = createSlice({
@@ -71,23 +73,30 @@ export const heroSlice = createSlice({
     changeItem: (state, action) => {
       state[action.payload.item] = action.payload;
     },
-    resetHero: (state) => {
-      state.name = initialState.name;
-      state.img = initialState.img;
-      state.health = initialState.health;
-      state.maxHealth = initialState.maxHealth;
-      state.exp = initialState.exp;
-      state.gold = initialState.gold;
-      state.level = initialState.level;
-      state.primary = initialState.primary;
-      state.secondary = initialState.secondary;
-      state.armor = initialState.armor;
-      state.helmet = initialState.helmet;
-      state.accessory = initialState.accessory;
-      state.physicalDef = initialState.physicalDef;
-      state.magicalDef = initialState.magicalDef;
-      state.speed = initialState.speed;
+    increaseSteps: (state) => {
+      state.stepsTaken++;
     },
+    increaseFiends: (state) => {
+      state.fiendsKilled++;
+    },
+    // resetHero: (state) => {
+    //   state.name = initialState.name;
+    //   state.img = initialState.img;
+    //   state.health = initialState.health;
+    //   state.maxHealth = initialState.maxHealth;
+    //   state.exp = initialState.exp;
+    //   state.gold = initialState.gold;
+    //   state.level = initialState.level;
+    //   state.primary = initialState.primary;
+    //   state.secondary = initialState.secondary;
+    //   state.armor = initialState.armor;
+    //   state.helmet = initialState.helmet;
+    //   state.accessory = initialState.accessory;
+    //   state.physicalDef = initialState.physicalDef;
+    //   state.magicalDef = initialState.magicalDef;
+    //   state.speed = initialState.speed;
+    // },
+    resetHero: () => initialState,
   },
 });
 
@@ -107,6 +116,8 @@ export const {
   changeHelmet,
   changeAccessory,
   changeItem,
+  increaseSteps,
+  increaseFiends,
   resetHero,
 } = heroSlice.actions;
 

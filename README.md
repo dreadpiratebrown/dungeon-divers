@@ -16,7 +16,7 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Sound?
 - More than one fighter
 - More than one fiend
-- Meta stats - fiends killed, “steps” taken, etc
+- Meta stats - fiends killed, “steps” taken, etc - SHOW ON DEATH SCREEN, INCLUDE GOLD & FAME
 - Monster drops
 - Puzzles?
 - Traps?
@@ -31,6 +31,11 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - UI updates/better design
 - Tutorial guides
 - Might need to put a prompt on the exit tile in case it blocks a tunnel
+- Fame
+  - Reach certain levels of dungeon (10s)
+  - Defeat certain creatures / defeat first of each type of creature
+  - Reach certain number of steps (1000s)
+  - Find certain treasures
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 

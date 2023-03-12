@@ -5,6 +5,8 @@ const initialState = {
   teleportRecharging: false,
   battlesToRecharge: 0,
   introTextViewed: false,
+  goldEarned: 0,
+  fameEarned: 0,
 };
 
 export const appSlice = createSlice({
@@ -29,6 +31,17 @@ export const appSlice = createSlice({
     viewIntroText: (state) => {
       state.introTextViewed = true;
     },
+    addGold: (state, action) => {
+      state.goldEarned += action.payload;
+    },
+    addFame: (state, action) => {
+      state.fameEarned += action.payload;
+    },
+    playAgain: (state) => {
+      state.exit = initialState.exit;
+      state.teleportRecharging = initialState.teleportRecharging;
+      state.battlesToRecharge = initialState.battlesToRecharge;
+    },
     resetApp: () => initialState,
   },
 });
@@ -39,6 +52,9 @@ export const {
   setRecharge,
   decrementRecharge,
   viewIntroText,
+  addGold,
+  addFame,
+  playAgain,
   resetApp,
 } = appSlice.actions;
 

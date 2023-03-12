@@ -11,6 +11,7 @@ import Logo from "../../images/logo.png";
 
 export const Office = ({ onStartClick, newGame }) => {
   const introViewed = useSelector((state) => state.app.introTextViewed);
+  const gold = useSelector((state) => state.app.goldEarned);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,7 +46,8 @@ export const Office = ({ onStartClick, newGame }) => {
       )}
       {introViewed && (
         <>
-          Gold: 0 Fame: 0 <button onClick={onStartClick}>Start Game</button>
+          Gold: {gold} Fame: 0{" "}
+          <button onClick={onStartClick}>Start Game</button>
         </>
       )}
     </div>

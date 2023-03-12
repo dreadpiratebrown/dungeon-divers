@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import { exitDungeon } from "features/app/appSlice";
+import { increaseSteps } from "features/hero/heroSlice";
 import {
   decrementLevel,
   incrementLevel,
   saveFloor,
 } from "features/map/mapSlice";
-import { exitDungeon } from "features/app/appSlice";
 import gate from "../../images/dungeon-gate.png";
 import stepsDown from "../../images/stairs-down.png";
 import stepsUp from "../../images/stairs-up.png";
@@ -339,7 +340,9 @@ export const Map = ({ onEncounter, newGame }) => {
       default:
         break;
     }
-    // const encounterRoll = Math.floor(Math.random() * 20) + 1;
+    // increase total steps taken
+    dispatch(increaseSteps());
+    // decrease number of steps until next encounter
     setNumSteps(numSteps - 1);
     if (numSteps === 0) {
       document.removeEventListener("keydown", moveHero);

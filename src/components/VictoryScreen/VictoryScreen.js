@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   increaseExp,
+  increaseFiends,
   increaseGold,
   increaseLevel,
 } from "features/hero/heroSlice";
@@ -20,6 +21,7 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
   useEffect(() => {
     dispatch(increaseExp(fiend.exp));
     dispatch(increaseGold(fiend.gold));
+    dispatch(increaseFiends());
     if (questItem) {
       dispatch(add(questItem));
     }
