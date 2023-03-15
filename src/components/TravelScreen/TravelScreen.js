@@ -31,7 +31,7 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
     }
   }, [newGame]);
 
-  const level = useSelector((state) => state.hero.level);
+  const level = useSelector((state) => state.map.currentLevel) + 1;
   const recharging = useSelector((state) => state.app.teleportRecharging);
   const travel = Math.floor(Math.random() * travelText.length);
 

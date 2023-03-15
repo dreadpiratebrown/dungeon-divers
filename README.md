@@ -36,6 +36,7 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
   - Defeat certain creatures / defeat first of each type of creature
   - Reach certain number of steps (1000s)
   - Find certain treasures
+- Access inventory at any time?
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 

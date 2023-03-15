@@ -362,6 +362,14 @@ export const Map = ({ onEncounter, newGame }) => {
   };
 
   useEffect(() => {
+    if (grid.flat().includes(0)) {
+      console.log("still has unvisited tiles");
+    } else {
+      console.log("all visited");
+    }
+  }, [grid]);
+
+  useEffect(() => {
     const floor = floors[level];
     if (floor) {
       setGrid(floor.grid);

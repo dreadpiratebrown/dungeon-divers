@@ -35,3 +35,9 @@ button {
   outline: none;
   padding: 2px 16px;
 }
+
+button[disabled] {
+  border-color: #999;
+  background-image: radial-gradient(#5e5c5c, #9dc5c3);
+  cursor: not-allowed;
+}
