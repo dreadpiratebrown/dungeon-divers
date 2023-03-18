@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { exitDungeon } from "features/app/appSlice";
+import { addFame, exitDungeon } from "features/app/appSlice";
 import { increaseSteps } from "features/hero/heroSlice";
 import {
+  addTenFloors,
   decrementLevel,
   incrementLevel,
+  mapFloor,
   saveFloor,
 } from "features/map/mapSlice";
 import gate from "../../images/dungeon-gate.png";
@@ -23,6 +25,8 @@ export const Map = ({ onEncounter, newGame }) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [going, setGoing] = useState();
   const [numSteps, setNumSteps] = useState(0);
+  const [floorMapped, setFloorMapped] = useState(false);
+  const [reachedTenFloors, setReachedTenFloors] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -33,7 +37,10 @@ export const Map = ({ onEncounter, newGame }) => {
 
   const avatar = useSelector((state) => state.hero.img);
   const level = useSelector((state) => state.map.currentLevel);
+  const levelPlusOne = level + 1;
   const floors = useSelector((state) => state.map.floors);
+  const floorsMapped = useSelector((state) => state.map.floorsMapped);
+  const tenFloors = useSelector((state) => state.map.tenFloors);
 
   const createArray = (num, dimensions) => {
     var array = [];
@@ -230,7 +237,7 @@ export const Map = ({ onEncounter, newGame }) => {
     const row = top / 40;
     switch (event.keyCode) {
       case 37: {
-        // if mvoe would hit a wall exit, otherwise move
+        // if move would hit a wall exit, otherwise move
         if (grid[row][col - 1] === 1 || col - 1 < 0) {
           return false;
         } else {
@@ -257,7 +264,7 @@ export const Map = ({ onEncounter, newGame }) => {
         break;
       }
       case 38: {
-        // if mvoe would hit a wall exit, otherwise move
+        // if move would hit a wall exit, otherwise move
         if (grid[row - 1][col] === 1) {
           return false;
         } else {
@@ -284,7 +291,7 @@ export const Map = ({ onEncounter, newGame }) => {
         break;
       }
       case 39: {
-        // if mvoe would hit a wall exit, otherwise move
+        // if move would hit a wall exit, otherwise move
         if (grid[row][col + 1] === 1 || col + 1 > dimensions - 1) {
           return false;
         } else {
@@ -311,7 +318,7 @@ export const Map = ({ onEncounter, newGame }) => {
         break;
       }
       case 40: {
-        // if mvoe would hit a wall exit, otherwise move
+        // if move would hit a wall exit, otherwise move
         if (grid[row + 1][col] === 1) {
           return false;
         } else {
@@ -362,12 +369,22 @@ export const Map = ({ onEncounter, newGame }) => {
   };
 
   useEffect(() => {
-    if (grid.flat().includes(0)) {
-      console.log("still has unvisited tiles");
-    } else {
-      console.log("all visited");
+    if (
+      grid.length &&
+      !grid.flat().includes(0) &&
+      !floorsMapped.includes(level)
+    ) {
+      setFloorMapped(true);
+      dispatch(mapFloor(level));
+      dispatch(addFame(5));
     }
-  }, [grid]);
+
+    if ((level + 1) % 10 === 0 && !tenFloors.includes(level)) {
+      setReachedTenFloors(true);
+      dispatch(addTenFloors(level));
+      dispatch(addFame(10));
+    }
+  }, [grid, level]);
 
   useEffect(() => {
     const floor = floors[level];
@@ -400,7 +417,7 @@ export const Map = ({ onEncounter, newGame }) => {
       <div className={styles.main} style={{ opacity: `${opacity}` }}>
         <div className={styles.grid}>
           {grid.map((obj, row) => (
-            <>
+            <React.Fragment key={row}>
               {obj.map((obj2, col) => (
                 <div
                   className={
@@ -413,7 +430,7 @@ export const Map = ({ onEncounter, newGame }) => {
                   key={col}
                 ></div>
               ))}
-            </>
+            </React.Fragment>
           ))}
         </div>
         <img
@@ -463,6 +480,24 @@ export const Map = ({ onEncounter, newGame }) => {
             <br />
             <button onClick={() => handleStairs(going)}>Yes</button>
             <button onClick={() => setShowPrompt(false)}>No</button>
+          </div>
+        )}
+        {floorMapped && (
+          <div className={styles.stairsPrompt}>
+            <h3>
+              Congratulations, you have completely mapped this floor! Your fame
+              increases by 5.
+            </h3>
+            <button onClick={() => setFloorMapped(false)}>Dismiss</button>
+          </div>
+        )}
+        {reachedTenFloors && (
+          <div className={styles.stairsPrompt}>
+            <h3>
+              Congratulations, you have reached floor {levelPlusOne}! Your fame
+              increases by 10.
+            </h3>
+            <button onClick={() => setReachedTenFloors(false)}>Dismiss</button>
           </div>
         )}
       </div>

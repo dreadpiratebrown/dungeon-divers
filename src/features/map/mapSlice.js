@@ -6,6 +6,8 @@ const initialState = {
   heroPosition: {},
   currentLevel: 0,
   floors: [],
+  floorsMapped: [],
+  tenFloors: [],
 };
 
 export const mapSlice = createSlice({
@@ -35,6 +37,12 @@ export const mapSlice = createSlice({
     removeFloor: (state, action) => {
       state.floors.pop();
     },
+    mapFloor: (state, action) => {
+      state.floorsMapped.push(action.payload);
+    },
+    addTenFloors: (state, action) => {
+      state.tenFloors.push(action.payload);
+    },
     resetMap: () => initialState,
   },
 });
@@ -47,6 +55,8 @@ export const {
   saveHeroPosition,
   saveFloor,
   removeFloor,
+  mapFloor,
+  addTenFloors,
   resetMap,
 } = mapSlice.actions;
 

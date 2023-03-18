@@ -29,14 +29,6 @@ const initialState = {
       buy: 40,
       sell: 8,
     },
-    {
-      id: "2367e851-7e10-47ab-baa3-88a90ad86399",
-      item: "misc",
-      name: "Rat Tail",
-      description: "A pink, hairless rodent tail",
-      icon: require("../../images/rat.png"),
-      quantity: 10,
-    },
   ],
 };
 

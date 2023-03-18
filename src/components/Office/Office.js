@@ -12,6 +12,7 @@ import Logo from "../../images/logo.png";
 export const Office = ({ onStartClick, newGame }) => {
   const introViewed = useSelector((state) => state.app.introTextViewed);
   const gold = useSelector((state) => state.app.goldEarned);
+  const fame = useSelector((state) => state.app.fameEarned);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export const Office = ({ onStartClick, newGame }) => {
   }, [newGame]);
 
   return (
-    <div className={styles.main}>
+    <div className={styles.main} data-testid="office">
       <img src={Logo} alt="Dungeon Divers" className={styles.logo} />
       {!introViewed && (
         <>
@@ -41,13 +42,20 @@ export const Office = ({ onStartClick, newGame }) => {
             Earn gold, find treasure, increase your fame, and make Dungeon
             Divers the best adventuring firm in town!
           </p>
-          <button onClick={() => dispatch(viewIntroText())}>Got It</button>
+          <button
+            onClick={() => dispatch(viewIntroText())}
+            data-testid="gotitBtn"
+          >
+            Got It
+          </button>
         </>
       )}
       {introViewed && (
         <>
-          Gold: {gold} Fame: 0{" "}
-          <button onClick={onStartClick}>Start Game</button>
+          Gold: {gold} Fame: {fame}{" "}
+          <button onClick={onStartClick} data-testid="startBtn">
+            Start Game
+          </button>
         </>
       )}
     </div>

@@ -18,6 +18,7 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
   const [encounterType, setEncounterType] = useState();
   const [treasure, setTreasure] = useState();
   const [percentile, setPercentile] = useState();
+  const [travel, setTravel] = useState();
   const [showInventory, setShowInventory] = useState(false);
   const [confirmTeleport, setConfirmTeleport] = useState(false);
 
@@ -33,10 +34,10 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
 
   const level = useSelector((state) => state.map.currentLevel) + 1;
   const recharging = useSelector((state) => state.app.teleportRecharging);
-  const travel = Math.floor(Math.random() * travelText.length);
 
   useEffect(() => {
     setPercentile(Math.floor(Math.random() * 100) + 1);
+    setTravel(Math.floor(Math.random() * travelText.length));
   }, []);
 
   useEffect(() => {
