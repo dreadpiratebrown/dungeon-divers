@@ -1,12 +1,13 @@
 import styles from "./styles.module.css";
 import { quests } from "shared";
 import { useDispatch, useSelector } from "react-redux";
-import { addQuest, removeQuest } from "features/quest/questSlice";
+import { addQuest, completeQuest } from "features/quest/questSlice";
 import { increaseGold } from "features/hero/heroSlice";
 import { removeBulk } from "features/inventory/inventorySlice";
 
 export const Quests = ({ onCloseClick }) => {
   const acceptedQuests = useSelector((state) => state.quest.quests);
+  const completedQuests = useSelector((state) => state.quest.completedQuests);
   const inventory = useSelector((state) => state.inventory.items);
   const level = useSelector((state) => state.hero.level);
   const dispatch = useDispatch();
@@ -15,13 +16,13 @@ export const Quests = ({ onCloseClick }) => {
   };
   const resolve = (uuid, reward, item, quantity) => {
     dispatch(increaseGold(reward));
-    dispatch(removeQuest(uuid));
+    dispatch(completeQuest(uuid));
     dispatch(removeBulk({ id: item, quantity }));
   };
   const range = { low: level - 1, high: level + 1 };
-  const questPool = quests.filter(
-    (q) => q.level >= range.low && q.level <= range.high
-  );
+  const questPool = quests
+    .filter((quest) => !completedQuests.includes(quest.id))
+    .slice(0, 5);
   return (
     <div className={styles.main}>
       <button className={styles.closeBtn} onClick={onCloseClick}>

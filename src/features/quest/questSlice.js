@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   quests: [],
+  completedQuests: []
 };
 
 export const questSlice = createSlice({
@@ -11,13 +12,14 @@ export const questSlice = createSlice({
     addQuest: (state, action) => {
       state.quests.push(action.payload);
     },
-    removeQuest: (state, action) => {
+    completeQuest: (state, action) => {
       state.quests = state.quests.filter((quest) => quest != action.payload);
+      state.completedQuests.push(action.payload);
     },
     resetQuests: () => initialState,
   },
 });
 
-export const { addQuest, removeQuest, resetQuests } = questSlice.actions;
+export const { addQuest, completeQuest, resetQuests } = questSlice.actions;
 
 export default questSlice.reducer;
