@@ -126,7 +126,7 @@ export const App = () => {
       {mode === "flee" && (
         <FleeScreen
           onStartClick={() => {
-            setMode("travel");
+            setMode("map");
             setNewGame(false);
           }}
         />
