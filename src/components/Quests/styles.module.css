@@ -47,3 +47,19 @@ h1 {
 .closeBtn:hover {
   outline: 1px solid #000;
 }
+
+.quest [class*="styles_main"] {
+  position: relative;
+}
+
+.quest [class*="styles_main"] > div:first-child {
+  font-weight: 700;
+  left: 50%;
+  padding-left: 5px;
+  position: absolute;
+  transform: translateX(-50%);
+}
+.quest [class*="styles_max"] {
+  height: 25px;
+  width: 110px;
+}

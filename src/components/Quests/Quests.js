@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addQuest, completeQuest } from "features/quest/questSlice";
 import { increaseGold } from "features/hero/heroSlice";
 import { removeBulk } from "features/inventory/inventorySlice";
+import { Bar } from "components/Bar";
 
 export const Quests = ({ onCloseClick }) => {
   const acceptedQuests = useSelector((state) => state.quest.quests);
   const completedQuests = useSelector((state) => state.quest.completedQuests);
   const inventory = useSelector((state) => state.inventory.items);
-  const level = useSelector((state) => state.hero.level);
   const dispatch = useDispatch();
   const accept = (uuid) => {
     dispatch(addQuest(uuid));
@@ -19,7 +19,6 @@ export const Quests = ({ onCloseClick }) => {
     dispatch(completeQuest(uuid));
     dispatch(removeBulk({ id: item, quantity }));
   };
-  const range = { low: level - 1, high: level + 1 };
   const questPool = quests
     .filter((quest) => !completedQuests.includes(quest.id))
     .slice(0, 5);
@@ -53,7 +52,7 @@ export const Quests = ({ onCloseClick }) => {
                 >
                   Accept
                 </button>
-              ) : (
+              ) : hasEnough ? (
                 <button
                   className={styles.actionBtn}
                   disabled={hasEnough ? "" : "disabled"}
@@ -63,6 +62,25 @@ export const Quests = ({ onCloseClick }) => {
                 >
                   {hasEnough ? "Turn In" : "In Progress"}
                 </button>
+              ) : (
+                <Bar
+                  label={`${
+                    hasItem >= 0
+                      ? inventory[hasItem].quantity
+                        ? inventory[hasItem].quantity
+                        : 1
+                      : 0
+                  }/${quest.goal}`}
+                  value={
+                    hasItem >= 0
+                      ? inventory[hasItem].quantity
+                        ? inventory[hasItem].quantity
+                        : 1
+                      : 0
+                  }
+                  maxValue={quest.goal}
+                  showValueLabel={false}
+                />
               )}
             </div>
           </div>

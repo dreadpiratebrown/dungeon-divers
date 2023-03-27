@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Joan&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: "Joan", serif;
+  font-family: "Cabin", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -14,7 +14,7 @@ body {
 input,
 select,
 button {
-  font-family: "Joan", serif;
+  font-family: "Cabin", serif;
 }
 
 code {

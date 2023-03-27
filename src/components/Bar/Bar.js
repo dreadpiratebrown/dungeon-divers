@@ -1,9 +1,9 @@
 import styles from "./styles.module.css";
 
-export const Bar = ({ value, maxValue, label }) => (
+export const Bar = ({ value, maxValue, label, showValueLabel = true }) => (
   <div className={styles.main}>
     <div>
-      {label} {value}
+      {label} {showValueLabel ? value : null}
     </div>
     <div className={styles.max}>
       <div
