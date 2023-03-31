@@ -14,6 +14,7 @@ export * from "./Inventory/ArmorStats";
 export * from "./Inventory/HeroStats";
 export * from "./Inventory/WeaponStats";
 export * from "./Map";
+export * from "./MiniProfile";
 export * from "./Office";
 export * from "./PlayerSummary";
 export * from "./Quests";

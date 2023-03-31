@@ -23,21 +23,43 @@ code {
 }
 
 button {
-  background-color: initial;
-  background-image: radial-gradient(#009ffd, #2a2a72);
-  border: 2px solid gold;
-  border-radius: 2px;
-  box-shadow: 0px 0px 3px gray;
+  background-color: #0054a6;
+  background-image: linear-gradient(
+    128deg,
+    #0054a6 0%,
+    #0054a6 50%,
+    #012e5a 50%,
+    #012e5a 100%
+  );
+  background-position: -10% 0;
+  background-repeat: no-repeat;
+  background-size: 210% 100%;
+  border: none;
+  border-radius: 8px;
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: 700;
+  line-height: 2;
   margin-left: auto;
   outline: none;
-  padding: 2px 16px;
+  overflow: hidden;
+  padding: 0 16px;
+  position: relative;
+  transition: background-position 300ms ease-out;
+}
+
+button:hover {
+  background-position: 50% 0;
+}
+
+button:active,
+button:focus {
+  background-position: 100% 0;
 }
 
 button[disabled] {
-  border-color: #999;
-  background-image: radial-gradient(#5e5c5c, #9dc5c3);
+  background-color: #999;
+  background-image: none;
   cursor: not-allowed;
 }

@@ -10,9 +10,11 @@ import {
   mapFloor,
   saveFloor,
 } from "features/map/mapSlice";
+import { Inventory } from "components/Inventory";
 import gate from "../../images/dungeon-gate.png";
 import stepsDown from "../../images/stairs-down.png";
 import stepsUp from "../../images/stairs-up.png";
+import { MiniProfile } from "components/MiniProfile";
 
 export const Map = ({ onEncounter, newGame }) => {
   const [left, setLeft] = useState(0);
@@ -27,6 +29,7 @@ export const Map = ({ onEncounter, newGame }) => {
   const [numSteps, setNumSteps] = useState(0);
   const [floorMapped, setFloorMapped] = useState(false);
   const [reachedTenFloors, setReachedTenFloors] = useState(false);
+  const [showInventory, setShowInventory] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -411,9 +414,15 @@ export const Map = ({ onEncounter, newGame }) => {
     };
   });
 
+  const inventoryClick = () => {
+    opacity === 0 ? setOpacity(100) : setOpacity(0);
+    setShowInventory(!showInventory);
+  };
+
   return (
     <>
       <h1 className={styles.floorName}>Floor {level + 1}</h1>
+      <MiniProfile onBtnClick={inventoryClick} opacity={opacity} />
       <div className={styles.main} style={{ opacity: `${opacity}` }}>
         <div className={styles.grid}>
           {grid.map((obj, row) => (
@@ -501,6 +510,7 @@ export const Map = ({ onEncounter, newGame }) => {
           </div>
         )}
       </div>
+      {showInventory && <Inventory onCloseClick={inventoryClick} />}
     </>
   );
 };

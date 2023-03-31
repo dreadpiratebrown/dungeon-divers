@@ -1,28 +1,42 @@
 .main {
+  align-items: center;
   background: beige;
+  border-radius: 8px;
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  justify-content: center;
   left: 50%;
-  padding: 1rem;
+  overflow: hidden;
   position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
+  top: 60px;
+  transform: translate(-50%, 0);
+  width: 800px;
+  transition: opacity 300ms ease-out;
+}
+
+.p {
+  width: 50%;
+}
+
+.p + .p {
+  margin-top: 0;
 }
 
 .fightBtn {
-  border: 2px solid gold;
-  outline: none;
+  margin-left: 0;
   padding: 4px 32px;
   font-size: 1.5rem;
-  cursor: pointer;
-  background-color: initial;
-  background-image: radial-gradient(#009ffd, #2a2a72);
-  border-radius: 2px;
-  color: #fff;
-  box-shadow: 0px 0px 3px gray;
+  width: 40%;
 }
 
 .fightBtn[disabled] {
   border-color: #999;
   background-image: radial-gradient(#5e5c5c, #9dc5c3);
   cursor: not-allowed;
+}
+
+.fightBtn + .fightBtn {
+  margin-top: 10px;
 }

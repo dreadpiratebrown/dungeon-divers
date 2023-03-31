@@ -1,5 +1,6 @@
-import styles from "./styles.module.css";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useQuest } from "hooks";
 import {
   increaseExp,
   increaseFiends,
@@ -8,8 +9,8 @@ import {
 } from "features/hero/heroSlice";
 import { add } from "features/inventory/inventorySlice";
 import { decrementRecharge } from "features/app/appSlice";
-import { useQuest } from "hooks";
-import { useEffect, useState } from "react";
+import { MiniProfile } from "components";
+import styles from "./styles.module.css";
 
 export const VictoryScreen = ({ fiend, onStartClick }) => {
   const [levelUp, setLevelUp] = useState(false);
@@ -44,26 +45,29 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
   }, [exp]);
 
   return (
-    <div className={styles.main}>
-      <h1>Victory!</h1>
-      <p>
-        You gained {fiend.exp} XP and {fiend.gold} gold!
-      </p>
-      {questItem && (
+    <>
+      <MiniProfile />
+      <div className={styles.main}>
+        <h1>Victory!</h1>
         <p>
-          You gained 1 {questItem.name}. {haveNum}/{needNum} collected.
+          You gained {fiend.exp} XP and {fiend.gold} gold!
         </p>
-      )}
-      {levelUp && (
-        <>
-          <h2>Level up!</h2>
-          <p>Your level is now {level}.</p>
-          <p>Your max health is now {maxHealth}.</p>
-        </>
-      )}
-      <button className={styles.startButton} onClick={onStartClick}>
-        Continue
-      </button>
-    </div>
+        {questItem && (
+          <p>
+            You gained 1 {questItem.name}. {haveNum}/{needNum} collected.
+          </p>
+        )}
+        {levelUp && (
+          <>
+            <h2>Level up!</h2>
+            <p>Your level is now {level}.</p>
+            <p>Your max health is now {maxHealth}.</p>
+          </>
+        )}
+        <button className={styles.startButton} onClick={onStartClick}>
+          Continue
+        </button>
+      </div>
+    </>
   );
 };

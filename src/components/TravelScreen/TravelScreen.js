@@ -11,7 +11,7 @@ import {
 import { setFiend } from "features/fiend/fiendSlice";
 import { resetHero } from "features/hero/heroSlice";
 import { add, resetInventory } from "features/inventory/inventorySlice";
-import { Inventory } from "components";
+import { Inventory, MiniProfile } from "components";
 import uuid from "react-uuid";
 
 export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
@@ -21,6 +21,7 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
   const [travel, setTravel] = useState();
   const [showInventory, setShowInventory] = useState(false);
   const [confirmTeleport, setConfirmTeleport] = useState(false);
+  const [opacity, setOpacity] = useState(100);
 
   const dispatch = useDispatch();
 
@@ -70,23 +71,29 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
     dispatch(exitDungeon(true));
   };
 
+  const inventoryClick = () => {
+    opacity === 0 ? setOpacity(100) : setOpacity(0);
+    setShowInventory(!showInventory);
+  };
+
   return (
     <>
+      <MiniProfile onBtnClick={inventoryClick} opacity={opacity} />
       {!confirmTeleport && (
-        <div className={styles.main}>
-          <p>{travelText[travel]}</p>
+        <div className={styles.main} style={{ opacity: `${opacity}` }}>
+          <p className={styles.p}>{travelText[travel]}</p>
           {encounterType === "fiend" && (
             <>
-              <p>You encounter a fiend! </p>
+              <p className={styles.p}>You encounter a fiend! </p>
               <button onClick={onFightClick} className={styles.fightBtn}>
                 Fight!
               </button>
-              <button
+              {/* <button
                 className={styles.fightBtn}
                 onClick={() => setShowInventory(true)}
               >
                 Inventory
-              </button>
+              </button> */}
               <button
                 className={styles.fightBtn}
                 onClick={() => setConfirmTeleport(true)}
@@ -98,8 +105,8 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
           )}
           {encounterType === "treasure" && (
             <>
-              <p>You find treasure!</p>
-              <p>You have found a {treasure.name}.</p>
+              <p className={styles.p}>You find treasure!</p>
+              <p className={styles.p}>You have found a {treasure.name}.</p>
               <button
                 className={styles.fightBtn}
                 onClick={() => setShowInventory(true)}
@@ -113,11 +120,9 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
           )}
         </div>
       )}
-      {showInventory && (
-        <Inventory onCloseClick={() => setShowInventory(false)} />
-      )}
+      {showInventory && <Inventory onCloseClick={inventoryClick} />}
       {confirmTeleport && (
-        <div className={styles.main}>
+        <div className={styles.main} style={{ opacity: `${opacity}` }}>
           <p>
             Are you sure you want to teleport out? Your teleport skill will take
             some time to recharge.

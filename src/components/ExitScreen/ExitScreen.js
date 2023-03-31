@@ -15,13 +15,15 @@ export const ExitScreen = ({ onDungeonClick, onShopClick, onQuestsClick }) => {
 
   return (
     <div className={styles.main}>
-      <h1>You have made your way out safely.</h1>
-      <p>
+      <h1 className={styles.text}>You have made your way out safely.</h1>
+      <p className={styles.text}>
         You have a chance to rest up at the inn, buy some new equipment, or you
         can simply re-enter the dungeon... <em>at your own peril.</em>
       </p>
       {innText && (
-        <h2>You feel refreshed and ready to tempt fate once more.</h2>
+        <h2 classname={styles.text}>
+          You feel refreshed and ready to tempt fate once more.
+        </h2>
       )}
       <button className={styles.actionBtn} onClick={inn}>
         Inn

@@ -1,0 +1,55 @@
+.miniProfile {
+  background: beige;
+  border-radius: 8px;
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.6);
+  left: calc(50% - 760px);
+  padding: 20px;
+  position: absolute;
+  top: 60px;
+  width: 300px;
+}
+
+.profileTop {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+}
+
+.profileIcons {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.equipment {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: 10px;
+}
+
+.bar {
+  margin: 10px 0;
+}
+
+.barLabels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.max {
+  background: #000;
+  height: 10px;
+  position: relative;
+}
+
+.value {
+  background: #20b510;
+  height: 10px;
+  left: 0;
+}
+
+.inventoryBtn {
+  width: 100%;
+}
