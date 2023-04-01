@@ -110,6 +110,7 @@ export const Map = ({ onEncounter, newGame }) => {
 
     if (level === 0) {
       // floor 1 - exit, stairs down, hero
+      map[currentRow][currentColumn] = 2; // entrance/exit is visited automatically
       setLeft(currentColumn * 40);
       setTop(currentRow * 40);
       setExit({
@@ -167,6 +168,7 @@ export const Map = ({ onEncounter, newGame }) => {
           });
           setLeft(upLeft * 40);
           setTop(upTop * 40);
+          map[upTop][upLeft] = 2;
           stairsSet = true;
         }
       }

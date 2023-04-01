@@ -16,6 +16,10 @@
   transition: opacity 300ms ease-out;
 }
 
+.main * + * {
+  margin-top: 0;
+}
+
 .startButton {
   margin: 0;
   padding: 4px 32px;
