@@ -36,13 +36,13 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
   - Defeat certain creatures / defeat first of each type of creature
   - Reach certain number of steps (1000s)
   - Find certain treasures
-- Access inventory at any time?
 - Mimics when finding treasure?
 - "Equip now?" when buying equipment
 - Monster drops for quests need some sort of animation
 - 10 is too many for quests?
 - Can't show quests by level range, you might level out of quests that are in progress
 - When you teleport out and then re-enter the dungeon, where should you start?
+- Change teleport from a recharge skill to requiring a scroll in inventory
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 

@@ -246,7 +246,7 @@ export const Map = ({ onEncounter, newGame }) => {
         } else {
           setLeft((state) => state - 40);
           const newGrid = JSON.parse(JSON.stringify(grid));
-          newGrid[row][col] = 2;
+          newGrid[row][col - 1] = 2;
           setGrid(newGrid);
         }
         // check if hero is at exit
@@ -273,7 +273,7 @@ export const Map = ({ onEncounter, newGame }) => {
         } else {
           setTop((state) => state - 40);
           const newGrid = JSON.parse(JSON.stringify(grid));
-          newGrid[row][col] = 2;
+          newGrid[row - 1][col] = 2;
           setGrid(newGrid);
         }
         // check if hero is at exit
@@ -300,7 +300,7 @@ export const Map = ({ onEncounter, newGame }) => {
         } else {
           setLeft((state) => state + 40);
           const newGrid = JSON.parse(JSON.stringify(grid));
-          newGrid[row][col] = 2;
+          newGrid[row][col + 1] = 2;
           setGrid(newGrid);
         }
         // check if hero is at exit
@@ -327,7 +327,7 @@ export const Map = ({ onEncounter, newGame }) => {
         } else {
           setTop((state) => state + 40);
           const newGrid = JSON.parse(JSON.stringify(grid));
-          newGrid[row][col] = 2;
+          newGrid[row + 1][col] = 2;
           setGrid(newGrid);
         }
         // check if hero is at exit
