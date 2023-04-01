@@ -107,10 +107,7 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
             <>
               <p className={styles.p}>You find treasure!</p>
               <p className={styles.p}>You have found a {treasure.name}.</p>
-              <button
-                className={styles.fightBtn}
-                onClick={() => setShowInventory(true)}
-              >
+              <button className={styles.fightBtn} onClick={inventoryClick}>
                 Inventory
               </button>
               <button onClick={onCarryOn} className={styles.fightBtn}>
