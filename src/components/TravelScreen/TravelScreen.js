@@ -2,15 +2,10 @@ import styles from "./styles.module.css";
 import { fiends, travelText, treasures } from "shared";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  exitDungeon,
-  rechargeTeleport,
-  setRecharge,
-  resetApp,
-} from "features/app/appSlice";
+import { exitDungeon, resetApp } from "features/app/appSlice";
 import { setFiend } from "features/fiend/fiendSlice";
 import { resetHero } from "features/hero/heroSlice";
-import { add, resetInventory } from "features/inventory/inventorySlice";
+import { add, remove, resetInventory } from "features/inventory/inventorySlice";
 import { Inventory, MiniProfile } from "components";
 import uuid from "react-uuid";
 
@@ -34,7 +29,10 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
   }, [newGame]);
 
   const level = useSelector((state) => state.map.currentLevel) + 1;
-  const recharging = useSelector((state) => state.app.teleportRecharging);
+  const inventory = useSelector((state) => state.inventory.items);
+  const scroll = inventory.filter(
+    (item) => item.id === "1576e7b7-42ef-4b7c-a807-b012832dd60e"
+  );
 
   useEffect(() => {
     setPercentile(Math.floor(Math.random() * 100) + 1);
@@ -66,8 +64,7 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
   }, [percentile]);
 
   const teleportOut = () => {
-    dispatch(rechargeTeleport(true));
-    dispatch(setRecharge(Math.floor(Math.random() * 4) + 3));
+    dispatch(remove(scroll[0]));
     dispatch(exitDungeon(true));
   };
 
@@ -88,19 +85,18 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
               <button onClick={onFightClick} className={styles.fightBtn}>
                 Fight!
               </button>
-              {/* <button
-                className={styles.fightBtn}
-                onClick={() => setShowInventory(true)}
-              >
-                Inventory
-              </button> */}
               <button
                 className={styles.fightBtn}
                 onClick={() => setConfirmTeleport(true)}
-                disabled={recharging ? "disabled" : ""}
+                disabled={scroll.length ? "" : "disabled"}
               >
-                Teleport Out {recharging ? "(Recharging)" : ""}
+                Teleport Out
               </button>
+              {scroll.length ? (
+                ""
+              ) : (
+                <span>You must have a Scroll of Return to teleport out</span>
+              )}
             </>
           )}
           {encounterType === "treasure" && (

@@ -8,7 +8,6 @@ import {
   increaseLevel,
 } from "features/hero/heroSlice";
 import { add } from "features/inventory/inventorySlice";
-import { decrementRecharge } from "features/app/appSlice";
 import { MiniProfile } from "components";
 import styles from "./styles.module.css";
 
@@ -16,7 +15,6 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
   const [levelUp, setLevelUp] = useState(false);
 
   const dispatch = useDispatch();
-  const recharging = useSelector((state) => state.app.teleportRecharging);
   const { item: questItem, haveNum, needNum } = useQuest(fiend);
 
   useEffect(() => {
@@ -26,10 +24,7 @@ export const VictoryScreen = ({ fiend, onStartClick }) => {
     if (questItem) {
       dispatch(add(questItem));
     }
-    if (recharging) {
-      dispatch(decrementRecharge());
-    }
-  }, [fiend, questItem, recharging]);
+  }, [fiend, questItem]);
 
   const exp = useSelector((state) => state.hero.exp);
   const level = useSelector((state) => state.hero.level);

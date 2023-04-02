@@ -41,7 +41,7 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Monster drops for quests need some sort of animation
 - Can't show quests by level range, you might level out of quests that are in progress
 - When you teleport out and then re-enter the dungeon, where should you start?
-- Change teleport from a recharge skill to requiring a scroll in inventory
+- Should characters have different starting equipment or stats?
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 
