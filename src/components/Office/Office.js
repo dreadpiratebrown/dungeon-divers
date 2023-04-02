@@ -30,21 +30,22 @@ export const Office = ({ onStartClick, newGame }) => {
       <img src={Logo} alt="Dungeon Divers" className={styles.logo} />
       {!introViewed && (
         <>
-          <h1>Welcome adventurer!</h1>
-          <p>
+          <h1 className={styles.text}>Welcome adventurer!</h1>
+          <p className={styles.text}>
             You are the proprietor of Dungeon Divers, Inc., a new business
             dedicated to one thing: prowling the deepest, darkest dungeons in
             search of treasure and fame. It's dangerous work at best, though,
             which is why you're going to hire heroes to do your dirty work for
             you.
           </p>
-          <p>
+          <p className={styles.text}>
             Earn gold, find treasure, increase your fame, and make Dungeon
             Divers the best adventuring firm in town!
           </p>
           <button
             onClick={() => dispatch(viewIntroText())}
             data-testid="gotitBtn"
+            className={styles.actionBtn}
           >
             Got It
           </button>
@@ -52,8 +53,14 @@ export const Office = ({ onStartClick, newGame }) => {
       )}
       {introViewed && (
         <>
-          Gold: {gold} Fame: {fame}{" "}
-          <button onClick={onStartClick} data-testid="startBtn">
+          <p>
+            Gold: {gold} Fame: {fame}{" "}
+          </p>
+          <button
+            onClick={onStartClick}
+            data-testid="startBtn"
+            className={styles.actionBtn}
+          >
             Start Game
           </button>
         </>

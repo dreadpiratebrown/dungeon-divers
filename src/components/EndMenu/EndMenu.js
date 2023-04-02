@@ -27,8 +27,10 @@ export const EndMenu = ({ winner, onStartClick }) => {
   return (
     <div className={styles.main}>
       <img src={tombstone} alt="tombstone" />
-      <h1>You have died. The dungeon claims another victim.</h1>
-      <p>
+      <h1 className={styles.text}>
+        You have died. The dungeon claims another victim.
+      </h1>
+      <p className={styles.text}>
         Gold: {gold}
         <br />
         Steps Taken: {steps}
