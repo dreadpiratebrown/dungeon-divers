@@ -42,6 +42,8 @@ https://medium.com/free-code-camp/how-to-make-your-own-procedural-dungeon-map-ge
 - Can't show quests by level range, you might level out of quests that are in progress
 - When you teleport out and then re-enter the dungeon, where should you start?
 - Should characters have different starting equipment or stats?
+- Should quests be global or local?
+- Should unarmed be an option?
 
 Test play: too much gold. Cost steps for items too small. Too many treasure encounters. Leveling is too fast.
 

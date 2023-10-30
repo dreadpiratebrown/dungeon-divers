@@ -117,8 +117,8 @@ export const TravelScreen = ({ onFightClick, onCarryOn, newGame }) => {
       {confirmTeleport && (
         <div className={styles.main} style={{ opacity: `${opacity}` }}>
           <p>
-            Are you sure you want to teleport out? Your teleport skill will take
-            some time to recharge.
+            Are you sure you want to teleport out? This will consume one of your
+            Scrolls of Return.
           </p>
           <button className={styles.fightBtn} onClick={teleportOut}>
             Yes, take me out

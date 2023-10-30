@@ -9,7 +9,6 @@ export const armor = [
     equippable: true,
     usable: false,
     buy: 50,
-    sell: 10,
   },
   {
     id: "00ed6b38-9fcf-4dc6-ae48-00382221d35b",
@@ -20,8 +19,7 @@ export const armor = [
     defense: 35,
     equippable: true,
     usable: false,
-    buy: 70,
-    sell: 14,
+    buy: 90,
   },
   {
     id: "2000a8e5-020b-4313-9035-651a439b88a9",
@@ -32,8 +30,7 @@ export const armor = [
     defense: 45,
     equippable: true,
     usable: false,
-    buy: 90,
-    sell: 18,
+    buy: 150,
   },
   {
     id: "296f1466-6396-4a21-8c66-b365b6e8ad76",
@@ -44,8 +41,7 @@ export const armor = [
     defense: 55,
     equippable: true,
     usable: false,
-    buy: 110,
-    sell: 22,
+    buy: 270,
   },
   {
     id: "152e09e0-a443-47d1-87d2-829044519a23",
@@ -56,8 +52,7 @@ export const armor = [
     defense: 65,
     equippable: true,
     usable: false,
-    buy: 130,
-    sell: 26,
+    buy: 470,
   },
   {
     id: "4d92fbfa-6ca8-4cd5-b578-621fc56ffb8d",
@@ -68,8 +63,7 @@ export const armor = [
     defense: 75,
     equippable: true,
     usable: false,
-    buy: 150,
-    sell: 30,
+    buy: 820,
   },
   {
     id: "ca69b28f-7be8-41c5-9e4a-a5fbdf41c6d3",
@@ -80,8 +74,7 @@ export const armor = [
     defense: 85,
     equippable: true,
     usable: false,
-    buy: 170,
-    sell: 34,
+    buy: 1435,
   },
   {
     id: "a2c6089b-e068-471e-9bfe-1a8f5f029c3b",
@@ -92,7 +85,6 @@ export const armor = [
     defense: 95,
     equippable: true,
     usable: false,
-    buy: 190,
-    sell: 38,
+    buy: 2515,
   },
 ];

@@ -385,7 +385,7 @@ export const Shop = ({ onCloseClick }) => {
               {item.quantity > 1 && <> x {item.quantity}</>}
               {item.sell && (
                 <button onClick={() => sellItem(item)}>
-                  Sell ({item.sell})
+                  Sell ({item.buy / 5})
                 </button>
               )}
             </Tooltip>

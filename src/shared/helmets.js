@@ -9,7 +9,6 @@ export const helmets = [
     equippable: true,
     usable: false,
     buy: 50,
-    sell: 10,
   },
   {
     id: "1012b303-9a03-4564-93f9-f1b3842c358d",
@@ -20,8 +19,7 @@ export const helmets = [
     defense: 35,
     equippable: true,
     usable: false,
-    buy: 70,
-    sell: 14,
+    buy: 80,
   },
   {
     id: "7ae79d12-bf8b-4dc2-8b9d-8999c6506fb5",
@@ -32,8 +30,7 @@ export const helmets = [
     defense: 45,
     equippable: true,
     usable: false,
-    buy: 90,
-    sell: 18,
+    buy: 120,
   },
   {
     id: "47486d93-8eb1-4e31-8b21-de8b6aefb128",
@@ -44,8 +41,7 @@ export const helmets = [
     defense: 55,
     equippable: true,
     usable: false,
-    buy: 110,
-    sell: 22,
+    buy: 185,
   },
   {
     id: "8b315f7f-d615-4abf-84e9-8a9a0152fe57",
@@ -56,8 +52,7 @@ export const helmets = [
     defense: 65,
     equippable: true,
     usable: false,
-    buy: 130,
-    sell: 26,
+    buy: 290,
   },
   {
     id: "98df6556-4ee6-49aa-bfaf-c6dc8e9e8991",
@@ -68,8 +63,7 @@ export const helmets = [
     defense: 75,
     equippable: true,
     usable: false,
-    buy: 150,
-    sell: 30,
+    buy: 445,
   },
   {
     id: "9553b510-2247-4356-a3e0-128ea8663fc2",
@@ -80,8 +74,7 @@ export const helmets = [
     defense: 85,
     equippable: true,
     usable: false,
-    buy: 170,
-    sell: 34,
+    buy: 695,
   },
   {
     id: "f1583fe8-2e58-48ab-8f38-9547b67e5585",
@@ -92,7 +85,6 @@ export const helmets = [
     defense: 95,
     equippable: true,
     usable: false,
-    buy: 190,
-    sell: 38,
+    buy: 1075,
   },
 ];

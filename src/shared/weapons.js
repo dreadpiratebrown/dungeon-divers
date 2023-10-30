@@ -10,7 +10,6 @@ export const swords = [
     equippable: true,
     usable: false,
     buy: 20,
-    sell: 4,
   },
   {
     id: "7999aa65-4a2d-4291-839d-99d715c7ff43",
@@ -22,8 +21,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 40,
-    sell: 8,
+    buy: 35,
   },
   {
     id: "7cef0bad-283b-46ce-b877-12c9d14bb537",
@@ -36,7 +34,6 @@ export const swords = [
     equippable: true,
     usable: false,
     buy: 60,
-    sell: 12,
   },
   {
     id: "9ed409e6-36af-4773-8310-f1b275917a4b",
@@ -48,8 +45,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 80,
-    sell: 16,
+    buy: 105,
   },
   {
     id: "5e35e275-05d0-4c60-9643-9efa4725cfa1",
@@ -61,8 +57,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 100,
-    sell: 20,
+    buy: 190,
   },
   {
     id: "0d89899a-af60-4355-a854-f4cd30f4d6fc",
@@ -74,8 +69,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 120,
-    sell: 24,
+    buy: 330,
   },
   {
     id: "a31c7082-c4c1-43c8-9e89-f47ca24ee528",
@@ -87,8 +81,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 140,
-    sell: 28,
+    buy: 575,
   },
   {
     id: "afb43e96-7b2e-48b5-9dbd-1c1cccd5588a",
@@ -100,8 +93,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 160,
-    sell: 32,
+    buy: 1005,
   },
   {
     id: "99e8af2b-c10c-4bf6-97b5-e6ff31db0f05",
@@ -113,8 +105,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 180,
-    sell: 36,
+    buy: 1760,
   },
   {
     id: "231f5c2c-7987-48f5-9f65-2a61e6bc9f89",
@@ -126,8 +117,7 @@ export const swords = [
     ranged: false,
     equippable: true,
     usable: false,
-    buy: 200,
-    sell: 40,
+    buy: 3075,
   },
 ];
 
@@ -143,7 +133,6 @@ export const bows = [
     equippable: true,
     usable: false,
     buy: 30,
-    sell: 6,
   },
   {
     id: "d53c1b27-f408-4357-be54-322b9d1b7dff",
@@ -156,7 +145,6 @@ export const bows = [
     equippable: true,
     usable: false,
     buy: 50,
-    sell: 10,
   },
   {
     id: "0f6e4bde-a4e8-45a3-9ac2-9c947d705429",
@@ -168,8 +156,7 @@ export const bows = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 70,
-    sell: 14,
+    buy: 90,
   },
   {
     id: "8a9abef9-fdad-4d18-abdd-9cc6d98f038d",
@@ -181,8 +168,7 @@ export const bows = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 90,
-    sell: 18,
+    buy: 160,
   },
   {
     id: "16d31fa9-4579-4677-9968-ef7b6f3b8f6d",
@@ -194,8 +180,7 @@ export const bows = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 110,
-    sell: 22,
+    buy: 280,
   },
   {
     id: "7ed739ed-ef54-491d-814b-6d0fe3617056",
@@ -207,7 +192,6 @@ export const bows = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 130,
-    sell: 26,
+    buy: 490,
   },
 ];

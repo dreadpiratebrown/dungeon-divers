@@ -9,7 +9,6 @@ export const boots = [
     equippable: true,
     usable: false,
     buy: 10,
-    sell: 2,
   },
   {
     id: "b7223cb9-348f-42b1-8d24-942d29d69e19",
@@ -20,8 +19,7 @@ export const boots = [
     value: 2,
     equippable: true,
     usable: false,
-    buy: 20,
-    sell: 4,
+    buy: 45,
   },
   {
     id: "6f42419b-d1aa-44da-b026-a372971930ca",
@@ -32,8 +30,7 @@ export const boots = [
     value: 3,
     equippable: true,
     usable: false,
-    buy: 30,
-    sell: 6,
+    buy: 190,
   },
   {
     id: "8c92ef96-2e4c-4d60-8af4-56af0958882c",
@@ -44,8 +41,7 @@ export const boots = [
     value: 4,
     equippable: true,
     usable: false,
-    buy: 40,
-    sell: 8,
+    buy: 800,
   },
   {
     id: "7e6ec5e4-a5bf-4d9d-9a34-0ac4ab5b2913",
@@ -56,8 +52,7 @@ export const boots = [
     value: 5,
     equippable: true,
     usable: false,
-    buy: 50,
-    sell: 10,
+    buy: 3500,
   },
 ];
 
@@ -72,7 +67,6 @@ export const gloves = [
     equippable: true,
     usable: false,
     buy: 15,
-    sell: 3,
   },
   {
     id: "bfc34b6e-a2a6-4252-b112-c6ae9f97193f",
@@ -83,8 +77,7 @@ export const gloves = [
     value: 10,
     equippable: true,
     usable: false,
-    buy: 30,
-    sell: 6,
+    buy: 35,
   },
   {
     id: "5bd66341-e039-4cb1-bd5e-ba1e46237774",
@@ -95,8 +88,7 @@ export const gloves = [
     value: 15,
     equippable: true,
     usable: false,
-    buy: 45,
-    sell: 9,
+    buy: 75,
   },
   {
     id: "c4fcd1ec-29e2-4aed-a5ff-78d5f4a0cf62",
@@ -107,8 +99,7 @@ export const gloves = [
     value: 20,
     equippable: true,
     usable: false,
-    buy: 60,
-    sell: 12,
+    buy: 170,
   },
   {
     id: "99fa1366-aa69-4112-8764-84fa080887c1",
@@ -119,8 +110,7 @@ export const gloves = [
     value: 25,
     equippable: true,
     usable: false,
-    buy: 75,
-    sell: 15,
+    buy: 400,
   },
 ];
 
@@ -135,7 +125,6 @@ export const bracelets = [
     equippable: true,
     usable: false,
     buy: 15,
-    sell: 3,
   },
   {
     id: "9b21716c-b5e1-45d5-8064-f3eba6eae09c",
@@ -146,8 +135,7 @@ export const bracelets = [
     value: 10,
     equippable: true,
     usable: false,
-    buy: 30,
-    sell: 6,
+    buy: 35,
   },
   {
     id: "a305b5fa-82dc-4a46-beb2-0dfd614c9e61",
@@ -158,8 +146,7 @@ export const bracelets = [
     value: 15,
     equippable: true,
     usable: false,
-    buy: 45,
-    sell: 9,
+    buy: 100,
   },
   {
     id: "f73ff105-6a85-4740-805f-94028f1ba33e",
@@ -170,8 +157,7 @@ export const bracelets = [
     value: 20,
     equippable: true,
     usable: false,
-    buy: 60,
-    sell: 12,
+    buy: 385,
   },
   {
     id: "69b344cb-70dc-475a-a233-af8d9a8c6d67",
@@ -182,8 +168,7 @@ export const bracelets = [
     value: 25,
     equippable: true,
     usable: false,
-    buy: 75,
-    sell: 15,
+    buy: 2285,
   },
 ];
 
@@ -198,7 +183,6 @@ export const jewelry = [
     equippable: true,
     usable: false,
     buy: 15,
-    sell: 3,
   },
   {
     id: "6fa989fb-6c13-4263-b3af-7d9a4f1a95fb",
@@ -209,8 +193,7 @@ export const jewelry = [
     value: 10,
     equippable: true,
     usable: false,
-    buy: 30,
-    sell: 6,
+    buy: 35,
   },
   {
     id: "797e2bed-5d94-4204-87df-8d8e47ba2b28",
@@ -221,8 +204,7 @@ export const jewelry = [
     value: 15,
     equippable: true,
     usable: false,
-    buy: 45,
-    sell: 9,
+    buy: 95,
   },
   {
     id: "a205652c-6585-432b-8d0b-ca91081ab993",
@@ -233,8 +215,7 @@ export const jewelry = [
     value: 20,
     equippable: true,
     usable: false,
-    buy: 60,
-    sell: 12,
+    buy: 340,
   },
   {
     id: "92d63a1c-1def-4ea6-ba8f-d2066421839a",
@@ -245,8 +226,7 @@ export const jewelry = [
     value: 25,
     equippable: true,
     usable: false,
-    buy: 75,
-    sell: 15,
+    buy: 1665,
   },
 ];
 
@@ -261,7 +241,6 @@ export const necklaces = [
     equippable: true,
     usable: false,
     buy: 15,
-    sell: 3,
   },
   {
     id: "56238ec0-81a9-4bf1-8062-461ae41d8d04",
@@ -273,7 +252,6 @@ export const necklaces = [
     equippable: true,
     usable: false,
     buy: 30,
-    sell: 6,
   },
   {
     id: "971db5c8-a098-4da7-9835-73c8e32c2213",
@@ -284,8 +262,7 @@ export const necklaces = [
     value: 15,
     equippable: true,
     usable: false,
-    buy: 45,
-    sell: 9,
+    buy: 80,
   },
   {
     id: "f296189d-3b43-48a8-8218-3645cfff6a07",
@@ -296,8 +273,7 @@ export const necklaces = [
     value: 20,
     equippable: true,
     usable: false,
-    buy: 60,
-    sell: 12,
+    buy: 280,
   },
   {
     id: "5fe7a606-598e-49e2-907e-9d32c18b96a7",
@@ -308,7 +284,6 @@ export const necklaces = [
     value: 25,
     equippable: true,
     usable: false,
-    buy: 75,
-    sell: 15,
+    buy: 1330,
   },
 ];

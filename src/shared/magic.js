@@ -10,7 +10,6 @@ export const magic = [
     equippable: true,
     usable: false,
     buy: 20,
-    sell: 4,
   },
   {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
@@ -22,8 +21,7 @@ export const magic = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 50,
-    sell: 10,
+    buy: 40,
   },
   {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
@@ -35,8 +33,7 @@ export const magic = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 80,
-    sell: 16,
+    buy: 70,
   },
   {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
@@ -48,8 +45,7 @@ export const magic = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 110,
-    sell: 22,
+    buy: 130,
   },
   {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
@@ -61,8 +57,7 @@ export const magic = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 140,
-    sell: 28,
+    buy: 230,
   },
   {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
@@ -74,8 +69,7 @@ export const magic = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 170,
-    sell: 34,
+    buy: 435,
   },
   {
     id: "3ef03218-0809-4abc-9524-5cd814843594",
@@ -87,8 +81,7 @@ export const magic = [
     ranged: true,
     equippable: true,
     usable: false,
-    buy: 200,
-    sell: 40,
+    buy: 800,
   },
 ];
 
@@ -105,7 +98,6 @@ export const scrolls = [
     equippable: false,
     usable: true,
     buy: 40,
-    sell: 8,
   },
   {
     id: "47b27620-1bd8-45c7-be26-ce7fe6319b4b",
@@ -119,7 +111,6 @@ export const scrolls = [
     equippable: false,
     usable: true,
     buy: 100,
-    sell: 20,
   },
   {
     id: "c1ec51fd-f7bc-4386-a1b6-c46b7ac5cfab",
@@ -132,8 +123,7 @@ export const scrolls = [
     icon: require("../images/scroll-unfurled.png"),
     equippable: false,
     usable: true,
-    buy: 200,
-    sell: 40,
+    buy: 250,
   },
   {
     id: "1576e7b7-42ef-4b7c-a807-b012832dd60e",
@@ -146,6 +136,5 @@ export const scrolls = [
     equippable: false,
     usable: true,
     buy: 75,
-    sell: 15,
   },
 ];
