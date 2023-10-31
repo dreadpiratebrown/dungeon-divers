@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./styles.module.css";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -28,6 +29,15 @@ import {
 import { add, remove } from "features/inventory/inventorySlice";
 import uuid from "react-uuid";
 
+const buyItem = (item, dispatch) => {
+  dispatch(decreaseGold(item.buy));
+  const tempItem = { ...item };
+  if (!tempItem.id) {
+    tempItem.id = uuid();
+  }
+  dispatch(add(tempItem));
+};
+
 const TableHeader = () => {
   return (
     <thead>
@@ -41,18 +51,7 @@ const TableHeader = () => {
   );
 };
 
-const WeaponRow = ({ weapon, gold }) => {
-  const dispatch = useDispatch();
-
-  const buyItem = (item) => {
-    dispatch(decreaseGold(item.buy));
-    const tempItem = { ...item };
-    if (!tempItem.id) {
-      tempItem.id = uuid();
-    }
-    dispatch(add(tempItem));
-  };
-
+const WeaponRow = ({ weapon, gold, dispatch }) => {
   return (
     <tr>
       <td>
@@ -66,7 +65,7 @@ const WeaponRow = ({ weapon, gold }) => {
       <td>{weapon.buy}</td>
       <td>
         <button
-          onClick={() => buyItem(weapon)}
+          onClick={() => buyItem(weapon, dispatch)}
           disabled={weapon.buy > gold ? "disabled" : ""}
         >
           Buy
@@ -76,18 +75,7 @@ const WeaponRow = ({ weapon, gold }) => {
   );
 };
 
-const ArmorRow = ({ armor, gold }) => {
-  const dispatch = useDispatch();
-
-  const buyItem = (item) => {
-    dispatch(decreaseGold(item.buy));
-    const tempItem = { ...item };
-    if (!tempItem.id) {
-      tempItem.id = uuid();
-    }
-    dispatch(add(tempItem));
-  };
-
+const ArmorRow = ({ armor, gold, dispatch }) => {
   return (
     <tr>
       <td>
@@ -100,7 +88,7 @@ const ArmorRow = ({ armor, gold }) => {
       <td>{armor.buy}</td>
       <td>
         <button
-          onClick={() => buyItem(armor)}
+          onClick={() => buyItem(armor, dispatch)}
           disabled={armor.buy > gold ? "disabled" : ""}
         >
           Buy
@@ -110,17 +98,7 @@ const ArmorRow = ({ armor, gold }) => {
   );
 };
 
-const ScrollRow = ({ scroll, gold }) => {
-  const dispatch = useDispatch();
-
-  const buyItem = (item) => {
-    dispatch(decreaseGold(item.buy));
-    const tempItem = { ...item };
-    if (!tempItem.id) {
-      tempItem.id = uuid();
-    }
-    dispatch(add(tempItem));
-  };
+const ScrollRow = ({ scroll, gold, dispatch }) => {
   return (
     <tr>
       <td>
@@ -131,7 +109,7 @@ const ScrollRow = ({ scroll, gold }) => {
       <td>{scroll.buy}</td>
       <td>
         <button
-          onClick={() => buyItem(scroll)}
+          onClick={() => buyItem(scroll, dispatch)}
           disabled={scroll.buy > gold ? "disabled" : ""}
         >
           Buy
@@ -141,17 +119,7 @@ const ScrollRow = ({ scroll, gold }) => {
   );
 };
 
-const AccessoryRow = ({ accessory, gold }) => {
-  const dispatch = useDispatch();
-
-  const buyItem = (item) => {
-    dispatch(decreaseGold(item.buy));
-    const tempItem = { ...item };
-    if (!tempItem.id) {
-      tempItem.id = uuid();
-    }
-    dispatch(add(tempItem));
-  };
+const AccessoryRow = ({ accessory, gold, dispatch }) => {
   return (
     <tr>
       <td>
@@ -164,7 +132,7 @@ const AccessoryRow = ({ accessory, gold }) => {
       <td>{accessory.buy}</td>
       <td>
         <button
-          onClick={() => buyItem(accessory)}
+          onClick={() => buyItem(accessory, dispatch)}
           disabled={accessory.buy > gold ? "disabled" : ""}
         >
           Buy
@@ -240,10 +208,20 @@ export const Shop = ({ onCloseClick }) => {
               <TableHeader />
               <tbody>
                 {swords.map((sword, index) => (
-                  <WeaponRow weapon={sword} key={index} gold={hero.gold} />
+                  <WeaponRow
+                    weapon={sword}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
                 {bows.map((bow, index) => (
-                  <WeaponRow weapon={bow} key={index} gold={hero.gold} />
+                  <WeaponRow
+                    weapon={bow}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
               </tbody>
             </table>
@@ -253,10 +231,20 @@ export const Shop = ({ onCloseClick }) => {
               <TableHeader />
               <tbody>
                 {magic.map((spell, index) => (
-                  <WeaponRow weapon={spell} key={index} gold={hero.gold} />
+                  <WeaponRow
+                    weapon={spell}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
                 {scrolls.map((scroll, index) => (
-                  <ScrollRow scroll={scroll} key={index} gold={hero.gold} />
+                  <ScrollRow
+                    scroll={scroll}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
               </tbody>
             </table>
@@ -266,7 +254,12 @@ export const Shop = ({ onCloseClick }) => {
               <TableHeader />
               <tbody>
                 {armor.map((a, index) => (
-                  <ArmorRow armor={a} key={index} gold={hero.gold} />
+                  <ArmorRow
+                    armor={a}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
               </tbody>
             </table>
@@ -276,7 +269,12 @@ export const Shop = ({ onCloseClick }) => {
               <TableHeader />
               <tbody>
                 {helmets.map((helmet, index) => (
-                  <ArmorRow armor={helmet} key={index} gold={hero.gold} />
+                  <ArmorRow
+                    armor={helmet}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
               </tbody>
             </table>
@@ -286,13 +284,19 @@ export const Shop = ({ onCloseClick }) => {
               <TableHeader />
               <tbody>
                 {boots.map((boot, index) => (
-                  <AccessoryRow accessory={boot} key={index} gold={hero.gold} />
+                  <AccessoryRow
+                    accessory={boot}
+                    key={index}
+                    gold={hero.gold}
+                    dispatch={dispatch}
+                  />
                 ))}
                 {gloves.map((glove, index) => (
                   <AccessoryRow
                     accessory={glove}
                     key={index}
                     gold={hero.gold}
+                    dispatch={dispatch}
                   />
                 ))}
                 {bracelets.map((bracelet, index) => (
@@ -300,6 +304,7 @@ export const Shop = ({ onCloseClick }) => {
                     accessory={bracelet}
                     key={index}
                     gold={hero.gold}
+                    dispatch={dispatch}
                   />
                 ))}
                 {necklaces.map((necklace, index) => (
@@ -307,6 +312,7 @@ export const Shop = ({ onCloseClick }) => {
                     accessory={necklace}
                     key={index}
                     gold={hero.gold}
+                    dispatch={dispatch}
                   />
                 ))}
                 {jewelry.map((jewel, index) => (
@@ -314,6 +320,7 @@ export const Shop = ({ onCloseClick }) => {
                     accessory={jewel}
                     key={index}
                     gold={hero.gold}
+                    dispatch={dispatch}
                   />
                 ))}
               </tbody>
